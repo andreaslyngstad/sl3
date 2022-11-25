@@ -1,0 +1,15 @@
+<div id="html_tabs"  class="orange_bgr">
+  	<ul>
+  		<!-- <# if can? :read, Firm #> -->
+  		<li><%= link_to (t 'navigation.dashboard') , dashboard_path, data:{name: "Dashboard"}%></li>
+  		<li><%= link_to (t 'navigation.statistics') , charts_path, data:{name: "Statistics"}%></li>
+	    <li><%= link_to (t 'navigation.reports'), reports_path, data:{name: "Reports"}%></li>
+	    <!-- <#end#>
+	   	<# if can? :manage, Firm #> -->
+
+	   	<li><%= link_to (t'activerecord.models.plan.one').capitalize , plans_path , data:{name: "Plan"} %> </li>
+	   	<li><%= link_to (t'general.payments').capitalize , payments_path , data:{name: "Payments"} %> </li>
+	   		<li><%= link_to (t 'navigation.settings'), firm_show_path, data:{name: "Account"}%></li>
+	   	<!-- <# end #> -->
+	</ul>
+</div>

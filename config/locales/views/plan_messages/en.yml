@@ -1,0 +1,25 @@
+en:
+  message: 
+    plan_update_html: <p>You're %{grad} from the %{current_plan} plan at %{current_plan_price} per month 
+                       to the %{new_plan} plan at %{new_plan_price} per month.</p>
+                       <p>When you submit credit card information, the %{current_plan} plan 
+                       subscription will canceled and the %{new_plan} 
+                       plan subscription will start. </p>
+                       <p>The %{new_plan} plan subscription will be renewed and %{new_plan_price} will be withdrawn from your account every month.</p>
+    thank_you: Thank you!
+    we_suggest: We suggest that you check your data before you proceed with the downgrade
+    keep_in_mind: Keep in mind that you have more than..
+    will_be_deleted: ..the last ones you created will be deleted.
+    cancel_html:  <p>Thanks for having subscribed to a Squadlink plan!</p>
+                  <p>You can delete your firm from squadlink entirely or just cancel the 
+                    plan and continue with the free plan.</p>
+                  <p>Remember that either way data may be lost. </p>
+                  <p>If you delete the firm all data will be deleted.</p>
+                  <p>By revering to the free plan, all data that extends the limit of the free plan will be deleted.</p> 
+                  <p>We are trying to improve the service all the time. Do you want to pop us a line about why you are canceling?</p> 
+                  <p>%{link}</p>
+    closed_message_html: Hi. We have not recived payment and your account is locked.<br>No worries though, just
+                    sign up to the subscription you want and submit your card to unlock your account.<br>
+                    If you leave your account locked, we will change your plan to the Free plan after 30 days. This can lead to lost data. 
+    opening_closed: Thanks! Just enter a vaild card and we'll open the account at once.
+    are_you_really_sure: Are you really sure you want to delete your firm? All data will be gone forever!

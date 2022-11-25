@@ -1,0 +1,4 @@
+$('.listing_invoices > tbody:last').prepend('<%= j(render "invoices/invoice", invoice: @klass) %>');
+$('#credit_note_<%= @invoice.id %>_form').remove()
+$('#invoice_<%= j(@invoice.id.to_s) %>').replaceWith('<%= j(render @invoice) %>');
+<%= render "js_partial" %>

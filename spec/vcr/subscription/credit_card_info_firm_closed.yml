@@ -1,0 +1,465 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://4ee8641e5f7fc12b7117eef1adbd0968:@api.paymill.de/v2/clients
+    body:
+      encoding: US-ASCII
+      string: email=test2%40test.no&description=test
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 15 Jan 2014 11:40:32 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - PHPSESSID=qh8ke07lalc4su0lm7ahi15pl3; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Server:
+      - paymill-web03.paymill.de
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"client_038ef815568b08ee679a\",\n\t\t\"email\":\"test2@test.no\",\n\t\t\"description\":\"test\",\n\t\t\"created_at\":1389786032,\n\t\t\"updated_at\":1389786032,\n\t\t\"app_id\":null,\n\t\t\"payment\":[\n\n\t\t],\n\t\t\"subscription\":null\n\t},\n\t\"mode\":\"test\"\n}"
+    http_version: 
+  recorded_at: Wed, 15 Jan 2014 11:40:40 GMT
+- request:
+    method: post
+    uri: https://4ee8641e5f7fc12b7117eef1adbd0968:@api.paymill.de/v2/payments
+    body:
+      encoding: US-ASCII
+      string: token=098f6bcd4621d373cade4e832627b4f6&client=client_038ef815568b08ee679a
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 15 Jan 2014 11:40:33 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - PHPSESSID=0l0lo2hmn5jj6u4u8gkc8kjma0; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Server:
+      - paymill-web02.paymill.de
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"pay_a7e92b1e7bc8ae8b7d5b0d22\",\n\t\t\"type\":\"creditcard\",\n\t\t\"client\":\"client_038ef815568b08ee679a\",\n\t\t\"card_type\":\"visa\",\n\t\t\"country\":null,\n\t\t\"expire_month\":\"12\",\n\t\t\"expire_year\":\"2015\",\n\t\t\"card_holder\":\"\",\n\t\t\"last4\":\"1111\",\n\t\t\"created_at\":1389786033,\n\t\t\"updated_at\":1389786033,\n\t\t\"app_id\":null\n\t},\n\t\"mode\":\"test\"\n}"
+    http_version: 
+  recorded_at: Wed, 15 Jan 2014 11:40:41 GMT
+- request:
+    method: post
+    uri: https://4ee8641e5f7fc12b7117eef1adbd0968:@api.paymill.de/v2/subscriptions
+    body:
+      encoding: US-ASCII
+      string: offer=offer_dbe27a284b10c57ba23e&client=client_038ef815568b08ee679a&payment=pay_a7e92b1e7bc8ae8b7d5b0d22
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 15 Jan 2014 11:40:34 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - PHPSESSID=tkhehpr6calkc13sjsi75hah53; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Server:
+      - paymill-web05.paymill.de
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"sub_58bea46a729f0e43604a\",\n\t\t\"offer\":{\n\t\t\t\"id\":\"offer_dbe27a284b10c57ba23e\",\n\t\t\t\"name\":\"test\",\n\t\t\t\"amount\":9900,\n\t\t\t\"currency\":\"NOK\",\n\t\t\t\"interval\":\"1
+        MONTH\",\n\t\t\t\"trial_period_days\":0,\n\t\t\t\"created_at\":1382389539,\n\t\t\t\"updated_at\":1382389539,\n\t\t\t\"subscription_count\":{\n\t\t\t\t\"active\":\"10\",\n\t\t\t\t\"inactive\":0\n\t\t\t},\n\t\t\t\"app_id\":null\n\t\t},\n\t\t\"livemode\":false,\n\t\t\"cancel_at_period_end\":false,\n\t\t\"trial_start\":null,\n\t\t\"trial_end\":null,\n\t\t\"next_capture_at\":1392464434,\n\t\t\"created_at\":1389786034,\n\t\t\"updated_at\":1389786034,\n\t\t\"canceled_at\":null,\n\t\t\"app_id\":null,\n\t\t\"payment\":{\n\t\t\t\"id\":\"pay_a7e92b1e7bc8ae8b7d5b0d22\",\n\t\t\t\"type\":\"creditcard\",\n\t\t\t\"client\":\"client_038ef815568b08ee679a\",\n\t\t\t\"card_type\":\"visa\",\n\t\t\t\"country\":null,\n\t\t\t\"expire_month\":\"12\",\n\t\t\t\"expire_year\":\"2015\",\n\t\t\t\"card_holder\":\"\",\n\t\t\t\"last4\":\"1111\",\n\t\t\t\"created_at\":1389786033,\n\t\t\t\"updated_at\":1389786033,\n\t\t\t\"app_id\":null\n\t\t},\n\t\t\"client\":{\n\t\t\t\"id\":\"client_038ef815568b08ee679a\",\n\t\t\t\"email\":\"test2@test.no\",\n\t\t\t\"description\":\"test\",\n\t\t\t\"created_at\":1389786032,\n\t\t\t\"updated_at\":1389786032,\n\t\t\t\"app_id\":null,\n\t\t\t\"payment\":[\n\t\t\t\t{\n\t\t\t\t\t\"id\":\"pay_a7e92b1e7bc8ae8b7d5b0d22\",\n\t\t\t\t\t\"type\":\"creditcard\",\n\t\t\t\t\t\"client\":\"client_038ef815568b08ee679a\",\n\t\t\t\t\t\"card_type\":\"visa\",\n\t\t\t\t\t\"country\":null,\n\t\t\t\t\t\"expire_month\":\"12\",\n\t\t\t\t\t\"expire_year\":\"2015\",\n\t\t\t\t\t\"card_holder\":\"\",\n\t\t\t\t\t\"last4\":\"1111\",\n\t\t\t\t\t\"created_at\":1389786033,\n\t\t\t\t\t\"updated_at\":1389786033,\n\t\t\t\t\t\"app_id\":null\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"subscription\":null\n\t\t}\n\t},\n\t\"mode\":\"test\"\n}"
+    http_version: 
+  recorded_at: Wed, 15 Jan 2014 11:40:42 GMT
+- request:
+    method: get
+    uri: https://4ee8641e5f7fc12b7117eef1adbd0968:@api.paymill.de/v2/subscriptions/sub_58bea46a729f0e43604a
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 15 Jan 2014 11:40:35 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - PHPSESSID=1v18q27lel81qdl2rb7a7j90n5; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      X-Server:
+      - paymill-web03.paymill.de
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"sub_58bea46a729f0e43604a\",\n\t\t\"offer\":{\n\t\t\t\"id\":\"offer_dbe27a284b10c57ba23e\",\n\t\t\t\"name\":\"test\",\n\t\t\t\"amount\":9900,\n\t\t\t\"currency\":\"NOK\",\n\t\t\t\"interval\":\"1
+        MONTH\",\n\t\t\t\"trial_period_days\":0,\n\t\t\t\"created_at\":1382389539,\n\t\t\t\"updated_at\":1382389539,\n\t\t\t\"subscription_count\":{\n\t\t\t\t\"active\":\"10\",\n\t\t\t\t\"inactive\":0\n\t\t\t},\n\t\t\t\"app_id\":null\n\t\t},\n\t\t\"livemode\":false,\n\t\t\"cancel_at_period_end\":false,\n\t\t\"trial_start\":null,\n\t\t\"trial_end\":null,\n\t\t\"next_capture_at\":1392464434,\n\t\t\"created_at\":1389786034,\n\t\t\"updated_at\":1389786034,\n\t\t\"canceled_at\":null,\n\t\t\"app_id\":null,\n\t\t\"payment\":{\n\t\t\t\"id\":\"pay_a7e92b1e7bc8ae8b7d5b0d22\",\n\t\t\t\"type\":\"creditcard\",\n\t\t\t\"client\":\"client_038ef815568b08ee679a\",\n\t\t\t\"card_type\":\"visa\",\n\t\t\t\"country\":null,\n\t\t\t\"expire_month\":\"12\",\n\t\t\t\"expire_year\":\"2015\",\n\t\t\t\"card_holder\":\"\",\n\t\t\t\"last4\":\"1111\",\n\t\t\t\"created_at\":1389786033,\n\t\t\t\"updated_at\":1389786033,\n\t\t\t\"app_id\":null\n\t\t},\n\t\t\"client\":{\n\t\t\t\"id\":\"client_038ef815568b08ee679a\",\n\t\t\t\"email\":\"test2@test.no\",\n\t\t\t\"description\":\"test\",\n\t\t\t\"created_at\":1389786032,\n\t\t\t\"updated_at\":1389786032,\n\t\t\t\"app_id\":null,\n\t\t\t\"payment\":[\n\t\t\t\t{\n\t\t\t\t\t\"id\":\"pay_a7e92b1e7bc8ae8b7d5b0d22\",\n\t\t\t\t\t\"type\":\"creditcard\",\n\t\t\t\t\t\"client\":\"client_038ef815568b08ee679a\",\n\t\t\t\t\t\"card_type\":\"visa\",\n\t\t\t\t\t\"country\":null,\n\t\t\t\t\t\"expire_month\":\"12\",\n\t\t\t\t\t\"expire_year\":\"2015\",\n\t\t\t\t\t\"card_holder\":\"\",\n\t\t\t\t\t\"last4\":\"1111\",\n\t\t\t\t\t\"created_at\":1389786033,\n\t\t\t\t\t\"updated_at\":1389786033,\n\t\t\t\t\t\"app_id\":null\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"subscription\":[\n\t\t\t\t\"sub_58bea46a729f0e43604a\"\n\t\t\t]\n\t\t}\n\t},\n\t\"mode\":\"test\"\n}"
+    http_version: 
+  recorded_at: Wed, 15 Jan 2014 11:40:43 GMT
+- request:
+    method: post
+    uri: https://4ee8641e5f7fc12b7117eef1adbd0968:@api.paymill.com/v2/clients
+    body:
+      encoding: US-ASCII
+      string: email=test2%40test.no&description=test
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 10 Jun 2014 09:53:02 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - PHPSESSID=4i7ku9updgpa3p6h7saifvbrg5; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"client_1544bef7f0fdc0eeeffc\",\n\t\t\"email\":\"test2@test.no\",\n\t\t\"description\":\"test\",\n\t\t\"app_id\":null,\n\t\t\"updated_at\":1402393982,\n\t\t\"created_at\":1402393982,\n\t\t\"payment\":null,\n\t\t\"subscription\":null\n\t},\n\t\"mode\":\"test\"\n}"
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 09:53:03 GMT
+- request:
+    method: post
+    uri: https://4ee8641e5f7fc12b7117eef1adbd0968:@api.paymill.com/v2/payments
+    body:
+      encoding: US-ASCII
+      string: token=098f6bcd4621d373cade4e832627b4f6&client=client_1544bef7f0fdc0eeeffc
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 10 Jun 2014 09:53:03 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - PHPSESSID=fommhsp9df9t6adcrrvo264do5; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"pay_d2a4ebb9a39585c8ebb26286\",\n\t\t\"type\":\"creditcard\",\n\t\t\"client\":\"client_1544bef7f0fdc0eeeffc\",\n\t\t\"card_type\":\"visa\",\n\t\t\"country\":null,\n\t\t\"bin\":null,\n\t\t\"expire_month\":\"12\",\n\t\t\"expire_year\":\"2015\",\n\t\t\"card_holder\":\"\",\n\t\t\"last4\":\"1111\",\n\t\t\"updated_at\":1402393983,\n\t\t\"created_at\":1402393983,\n\t\t\"app_id\":null\n\t},\n\t\"mode\":\"test\"\n}"
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 09:53:04 GMT
+- request:
+    method: post
+    uri: https://4ee8641e5f7fc12b7117eef1adbd0968:@api.paymill.com/v2/subscriptions
+    body:
+      encoding: US-ASCII
+      string: offer=offer_dbe27a284b10c57ba23e&client=client_1544bef7f0fdc0eeeffc&payment=pay_d2a4ebb9a39585c8ebb26286
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 10 Jun 2014 09:53:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - PHPSESSID=0gtpqrr1vff23aclvk6olkntj2; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"sub_ab27a3ec7892c60ce984\",\n\t\t\"offer\":{\n\t\t\t\"id\":\"offer_dbe27a284b10c57ba23e\",\n\t\t\t\"name\":\"test\",\n\t\t\t\"amount\":9900,\n\t\t\t\"currency\":\"NOK\",\n\t\t\t\"interval\":\"1
+        MONTH\",\n\t\t\t\"trial_period_days\":0,\n\t\t\t\"created_at\":1382389539,\n\t\t\t\"updated_at\":1382389539,\n\t\t\t\"subscription_count\":{\n\t\t\t\t\"active\":\"25\",\n\t\t\t\t\"inactive\":0\n\t\t\t},\n\t\t\t\"app_id\":null\n\t\t},\n\t\t\"livemode\":false,\n\t\t\"cancel_at_period_end\":false,\n\t\t\"trial_start\":null,\n\t\t\"trial_end\":null,\n\t\t\"next_capture_at\":1404985984,\n\t\t\"created_at\":1402393984,\n\t\t\"updated_at\":1402393984,\n\t\t\"canceled_at\":null,\n\t\t\"payment\":{\n\t\t\t\"id\":\"pay_d2a4ebb9a39585c8ebb26286\",\n\t\t\t\"type\":\"creditcard\",\n\t\t\t\"client\":\"client_1544bef7f0fdc0eeeffc\",\n\t\t\t\"card_type\":\"visa\",\n\t\t\t\"country\":null,\n\t\t\t\"bin\":null,\n\t\t\t\"expire_month\":\"12\",\n\t\t\t\"expire_year\":\"2015\",\n\t\t\t\"card_holder\":\"\",\n\t\t\t\"last4\":\"1111\",\n\t\t\t\"updated_at\":1402393983,\n\t\t\t\"created_at\":1402393983,\n\t\t\t\"app_id\":null\n\t\t},\n\t\t\"app_id\":null,\n\t\t\"client\":{\n\t\t\t\"id\":\"client_1544bef7f0fdc0eeeffc\",\n\t\t\t\"email\":\"test2@test.no\",\n\t\t\t\"description\":\"test\",\n\t\t\t\"app_id\":null,\n\t\t\t\"updated_at\":1402393982,\n\t\t\t\"created_at\":1402393982,\n\t\t\t\"payment\":[\n\t\t\t\t{\n\t\t\t\t\t\"id\":\"pay_d2a4ebb9a39585c8ebb26286\",\n\t\t\t\t\t\"type\":\"creditcard\",\n\t\t\t\t\t\"client\":\"client_1544bef7f0fdc0eeeffc\",\n\t\t\t\t\t\"card_type\":\"visa\",\n\t\t\t\t\t\"country\":null,\n\t\t\t\t\t\"bin\":null,\n\t\t\t\t\t\"expire_month\":\"12\",\n\t\t\t\t\t\"expire_year\":\"2015\",\n\t\t\t\t\t\"card_holder\":\"\",\n\t\t\t\t\t\"last4\":\"1111\",\n\t\t\t\t\t\"updated_at\":1402393983,\n\t\t\t\t\t\"created_at\":1402393983,\n\t\t\t\t\t\"app_id\":null\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"subscription\":null\n\t\t}\n\t},\n\t\"mode\":\"test\"\n}"
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 09:53:05 GMT
+- request:
+    method: get
+    uri: https://4ee8641e5f7fc12b7117eef1adbd0968:@api.paymill.com/v2/subscriptions/sub_ab27a3ec7892c60ce984
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 10 Jun 2014 09:53:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - PHPSESSID=736o701oo9akrtqnbcgavhhch1; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=16070400
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"sub_ab27a3ec7892c60ce984\",\n\t\t\"offer\":{\n\t\t\t\"id\":\"offer_dbe27a284b10c57ba23e\",\n\t\t\t\"name\":\"test\",\n\t\t\t\"amount\":9900,\n\t\t\t\"currency\":\"NOK\",\n\t\t\t\"interval\":\"1
+        MONTH\",\n\t\t\t\"trial_period_days\":0,\n\t\t\t\"created_at\":1382389539,\n\t\t\t\"updated_at\":1382389539,\n\t\t\t\"subscription_count\":{\n\t\t\t\t\"active\":\"25\",\n\t\t\t\t\"inactive\":0\n\t\t\t},\n\t\t\t\"app_id\":null\n\t\t},\n\t\t\"livemode\":false,\n\t\t\"cancel_at_period_end\":false,\n\t\t\"trial_start\":null,\n\t\t\"trial_end\":null,\n\t\t\"next_capture_at\":1404985984,\n\t\t\"created_at\":1402393984,\n\t\t\"updated_at\":1402393984,\n\t\t\"canceled_at\":null,\n\t\t\"payment\":{\n\t\t\t\"id\":\"pay_d2a4ebb9a39585c8ebb26286\",\n\t\t\t\"type\":\"creditcard\",\n\t\t\t\"client\":\"client_1544bef7f0fdc0eeeffc\",\n\t\t\t\"card_type\":\"visa\",\n\t\t\t\"country\":null,\n\t\t\t\"bin\":null,\n\t\t\t\"expire_month\":\"12\",\n\t\t\t\"expire_year\":\"2015\",\n\t\t\t\"card_holder\":\"\",\n\t\t\t\"last4\":\"1111\",\n\t\t\t\"updated_at\":1402393983,\n\t\t\t\"created_at\":1402393983,\n\t\t\t\"app_id\":null\n\t\t},\n\t\t\"app_id\":null,\n\t\t\"client\":{\n\t\t\t\"id\":\"client_1544bef7f0fdc0eeeffc\",\n\t\t\t\"email\":\"test2@test.no\",\n\t\t\t\"description\":\"test\",\n\t\t\t\"app_id\":null,\n\t\t\t\"updated_at\":1402393982,\n\t\t\t\"created_at\":1402393982,\n\t\t\t\"payment\":[\n\t\t\t\t{\n\t\t\t\t\t\"id\":\"pay_d2a4ebb9a39585c8ebb26286\",\n\t\t\t\t\t\"type\":\"creditcard\",\n\t\t\t\t\t\"client\":\"client_1544bef7f0fdc0eeeffc\",\n\t\t\t\t\t\"card_type\":\"visa\",\n\t\t\t\t\t\"country\":null,\n\t\t\t\t\t\"bin\":null,\n\t\t\t\t\t\"expire_month\":\"12\",\n\t\t\t\t\t\"expire_year\":\"2015\",\n\t\t\t\t\t\"card_holder\":\"\",\n\t\t\t\t\t\"last4\":\"1111\",\n\t\t\t\t\t\"updated_at\":1402393983,\n\t\t\t\t\t\"created_at\":1402393983,\n\t\t\t\t\t\"app_id\":null\n\t\t\t\t}\n\t\t\t],\n\t\t\t\"subscription\":[\n\t\t\t\t\"sub_ab27a3ec7892c60ce984\"\n\t\t\t]\n\t\t}\n\t},\n\t\"mode\":\"test\"\n}"
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 09:53:06 GMT
+- request:
+    method: post
+    uri: https://e182c1a46cfaf1b70308d973d940b970:@api.paymill.com/v2/clients
+    body:
+      encoding: US-ASCII
+      string: email=test2%40test.no&description=test
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+<<<<<<< HEAD
+      - Thu, 12 Feb 2015 09:47:46 GMT
+=======
+      - Thu, 12 Feb 2015 13:31:27 GMT
+>>>>>>> rails417
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Strict-Transport-Security:
+      - max-age=16070400; includeSubDomains
+    body:
+      encoding: UTF-8
+<<<<<<< HEAD
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"client_800192df24a44410010e\",\n\t\t\"email\":\"test2@test.no\",\n\t\t\"description\":\"test\",\n\t\t\"app_id\":null,\n\t\t\"updated_at\":1423734466,\n\t\t\"created_at\":1423734466,\n\t\t\"payment\":[\n\n\t\t],\n\t\t\"subscription\":null\n\t},\n\t\"mode\":\"live\"\n}"
+    http_version: 
+  recorded_at: Thu, 12 Feb 2015 09:47:47 GMT
+=======
+      string: "{\n\t\"data\":{\n\t\t\"id\":\"client_5b0fa603511a00503198\",\n\t\t\"email\":\"test2@test.no\",\n\t\t\"description\":\"test\",\n\t\t\"app_id\":null,\n\t\t\"updated_at\":1423747887,\n\t\t\"created_at\":1423747887,\n\t\t\"payment\":[\n\n\t\t],\n\t\t\"subscription\":null\n\t},\n\t\"mode\":\"live\"\n}"
+    http_version: 
+  recorded_at: Thu, 12 Feb 2015 13:31:27 GMT
+>>>>>>> rails417
+- request:
+    method: post
+    uri: https://e182c1a46cfaf1b70308d973d940b970:@api.paymill.com/v2/payments
+    body:
+      encoding: US-ASCII
+<<<<<<< HEAD
+      string: token=098f6bcd4621d373cade4e832627b4f6&client=client_800192df24a44410010e
+=======
+      string: token=098f6bcd4621d373cade4e832627b4f6&client=client_5b0fa603511a00503198
+>>>>>>> rails417
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+<<<<<<< HEAD
+      - Thu, 12 Feb 2015 09:47:48 GMT
+=======
+      - Thu, 12 Feb 2015 13:31:29 GMT
+>>>>>>> rails417
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"exception\":\"token_not_found\",\n\t\"error\":\"Token not Found\"\n}"
+    http_version: 
+<<<<<<< HEAD
+  recorded_at: Thu, 12 Feb 2015 09:47:49 GMT
+=======
+  recorded_at: Thu, 12 Feb 2015 13:31:29 GMT
+>>>>>>> rails417
+recorded_with: VCR 2.9.0

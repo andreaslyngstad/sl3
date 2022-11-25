@@ -1,0 +1,20 @@
+
+<%= render "invoices/header" %>
+<div class="eco_stats_wrapper">
+<div id="ecominc_statistics_charts" style="float:left;width:600px;">	
+		<div class="state_headers dashboard_chart_display"><%=  t'dashboard.income_last_12' %></div>
+		<div id="income_stack" style="float:left;height:300px; width:900px;">	
+
+		<svg style="height:300px; width:900px;"></svg>
+		</div>
+	</div>
+
+	<% if !@logs_uninvoiced.blank? %>
+
+	  	<div class="state_headers"><%= t('economic.uninvoiced') %></div>
+	  	<div class="state_log"><%= time_format(@logs_uninvoiced.to_f) %> <%= t('times.hour.more' )%>, 
+	  		<%= t('economic.value' )%> <%= currency_converter(@log_worth)%></div>
+
+
+ <% end %>
+ </div>

@@ -1,0 +1,9 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+var tab = $("li.active").children("a").attr("href")
+$(tab).empty().append("<%= j( render :partial => "projects_tab")  %>")
+$("#dialog_project").UIdialogs_links();
+$('.date_format_setter').set_date_format()
+$(".open_project_update").UIdialogs_edit_links();
+$(".activate_projects_no_button").activate_projects_no_button();
+NProgress.done()

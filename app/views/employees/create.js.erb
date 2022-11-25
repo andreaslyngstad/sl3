@@ -1,0 +1,6 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.discard(:notice))%>")
+$('.employee_table > tbody:last').append("<%=j(render(:partial => @klass)) %>");
+$("#employee_<%= j(@klass.id.to_s)%>").find(".open_employee_update").UIdialogs_edit_links();
+$("#new_employee")[0].reset();
+NProgress.done();

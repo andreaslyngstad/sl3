@@ -1,0 +1,48 @@
+<% content_for :help do %>
+<div class="page_help">
+	<div class="page_help_container">
+		<%= t "help.projects_show_html" %>
+	</div>
+</div>
+<% end %>
+
+<nav id="html_tabs" class="orange_bgr">
+  <div class="name_and_back_button">
+    <%= truncate(@klass.name, length: 100, omission: "") %>
+    <% if true  %><%# if can? :manage, @klass %>
+      <span class="open_project_update edit_text" id="project_update" data-id="<%= @klass.id %>" data-object="project"><%= t('edit') %></span>
+    <% end %>
+    <div class="dialog_form" id="project_update_<%=@klass.id %>_form" title="<%= t'helpers.submit.update', model: Project.model_name.human %>" style="display:none;"></div>
+  </div>
+  <ul>
+  	<li class="">
+    	<%=link_to (t"navigation.home"), tabs_state_path(string_for_klass(@klass),@klass.id), class: "tab_state"%>
+    </li>
+    <li class="">
+    	<%=link_to ((t'activerecord.models.todo.more').capitalize), tabs_todos_path(string_for_klass(@klass), @klass.id ), class: "tab_tasks"%>
+    </li>
+    <li class="">
+    	<%=link_to (t('activerecord.models.log.more' ).capitalize), tabs_logs_path(string_for_klass(@klass), @klass.id), class: "tab_logs"%>
+    </li>
+    <li class="">
+    	<%=link_to (t('activerecord.models.milestone.more' ).capitalize), tabs_milestones_path(string_for_klass(@klass), @klass.id), class: "tab_milestones"%>
+    </li>
+    <% if true  %><%# if can? :manage, User%>
+    <li class="">
+    	<%=link_to (t('activerecord.models.user.more' ).capitalize), tabs_users_path(string_for_klass(@klass), @klass.id), class: "tab_users"%>
+    </li>
+    <% end %>
+    <li class="">
+    	<%=link_to (t('navigation.statistics' ).capitalize), tabs_statistics_path(string_for_klass(@klass), @klass.id), class: "tab_statistics"%>
+    </li>
+    <%# <li class="">
+        <#=link_to (t('navigation.spendings').capitalize), tabs_spendings_path(string_for_klass(@klass), @klass.id), class: "tab_spendings"#>
+    </li> 
+     #%>
+    <%#<% if true  %><%# if can? :read, Invoice %>
+	    <%#<li class="">
+	    	<%=link_to (t('activerecord.models.invoice.more' ).capitalize), tabs_invoices_path(string_for_klass(@klass), @klass.id), class: "tab_invoices"%>
+	    <%#</li>
+    <% end %>
+  </ul>
+</nav>

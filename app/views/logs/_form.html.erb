@@ -1,0 +1,89 @@
+<%= form_for(@log, :remote => true) do |f| %>
+<ul>
+  <li><%= f.label :log %><%= f.text_area(:event, :class => "required log_edit_event", :minlength => "2", :AUTOCOMPLETE => "OFF") %></li>
+  <li><div class="date_on_log"><%= f.label :date, :class => "required" %><%= f.text_field(:log_date, :value => date_format(@log.log_date), :class => "log_date", :id => "log_date_edit_#{@log.id}") %>
+  </div></li>
+  <li style="margin-bottom: 0px;">
+    <label class="log_time_labels" for="log_from"><%= t('activerecord.attributes.log.from') %></label>
+    <label class="log_time_labels" for="log_to"><%= t('activerecord.attributes.log.to') %></label>
+    <label class="log_time_labels" for="log_rate"><%= t('activerecord.attributes.log.rate') %></label>
+  </li>
+  <li><%= f.text_field(:begin_time, :value => clock_format(@log.begin_time), :class => "log_times required clock", :id => "log_times_from_#{@log.id}") %>
+  <%= f.text_field(:end_time, :value => clock_format(@log.end_time), :class => "log_times required clock", :id => "log_times_to_#{@log.id}") %>
+  <%= f.text_field(:rate, :class => "log_times", :id => "log_times_to_#{@log.id}") %>
+</li>
+ <li id="slider_range_<%= @log.id %>" log="<%= @log.id %>"></li>
+
+  <li><%= f.label :project %>
+   <select class="searchableSE" id="logProjectId<%= @log.id %>" log="<%= @log.id %>" name="log[project_id]">
+     <option value="" data-customer=""><%= t'general.none' %></option>
+     <% all_projects.each do |project| %>
+          <% if project == @log.project  %>
+            <option value="<%= project.id %>" selected="selected"><%= project.name %></option>
+          <% else %>
+            <option value="<%= project.id %>"><%= project.name %></option>
+            <% end %>
+           <% end %>
+    </select></li>
+    <li><span style="display:block;float:left;width: 300px;"><%= f.label :task %></span>
+      <% if @log.todo %>
+      <% if @log.todo.completed == true %>
+      <%= f.label :done?%><%= check_box_tag "done", 1 ,true %>
+      <% else %>
+      <%= f.label :done?%><%= check_box_tag "done" %>
+      <% end %>
+      <% else %>
+      <%= f.label :done? %><%= check_box_tag "done" %>
+      <% end %>
+      <select class="searchableSE" id="logTodoId<%= @log.id %>" log="<%= @log.id %>" name="log[todo_id]">
+        <% if @log.project.nil? %>
+    <option value="" id="value"><%= t'general.select' %> <%= (t'activerecord.models.project.one') %></option>
+    <%else%>
+
+    <% if @log.todo %>
+    <option value="<%= @log.todo.id %>" selected="selected"><%=@log.todo.name%></option>
+    <% @log.project.todos.not_complete.each do |tod| %>
+    <option value="<%= tod.id %>"><%= tod.name%></option>
+    <% end %>
+    <%else%>
+    <option value><%= t'general.none'%></option>
+    <% @log.project.todos.not_complete.each do |tod| %>
+    <option value="<%= tod.id %>"><%= tod.name%></option>
+    <% end %>
+    <% end %>
+    <% end %>
+    </select>
+  </li>
+    <li><%= f.label :customer %>
+      <select class="searchableSE" id="logCustomerId<%= @log.id %>" log="<%= @log.id %>" name="log[customer_id]">
+        <% if !@log.project.nil? and !@log.project.customer.nil? %>
+        <option value="<%=@log.project.customer.id%>" selected="selected"><%=@log.project.customer.name%></option>
+        <% else %>
+        <option value=""><%= t'general.none' %></option>
+        <% all_customers.each do |customer| %>
+        <% if customer == @log.customer %>
+        <option value="<%= customer.id %>" selected="selected"><%= customer.name %></option>
+        <% else %>
+        <option value="<%= customer.id %>"><%= customer.name %></option>
+        <% end %>
+        <% end %>
+        <% end %>
+      </select>
+    </li>
+  <li><%= f.label :employee %>
+    <select class="searchableSE" id="logEmployeeId<%= @log.id %>" log="<%= @log.id %>" name="log[employee_id]">
+        <option value><%= t'general.none' %></option>
+        <% if !@log.customer.nil? %>
+        <% @log.customer.employees.each do |employee| %>
+          <% if employee == @log.employee %>
+      <option value="<%= employee.id %>" selected="selected"><%=employee.name%></option>
+      <%else%>
+      <option value="<%= employee.id %>"><%= employee.name%></option>
+      <% end %>
+        <% end %>
+        <% end %>
+    </select>
+  </li>
+<li><%= f.submit (t'save'), :class => "submit", :id => "log_edit_submit" %></li>
+</ul>
+<% end %>

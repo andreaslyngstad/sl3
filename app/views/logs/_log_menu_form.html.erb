@@ -1,0 +1,94 @@
+<ul>
+<li><%= l.label :log %><%= l.text_area(:event, :class => "required log_new_event", :minlength => "2", :AUTOCOMPLETE => "OFF") %></li>
+<li><div class="date_on_log">
+	<%= l.label :date %><%= l.text_field(:log_date, :value => date_format(time_zone_now.to_date), :class => "date", :id => "log_date_new") %>
+</div></li>
+<li style="margin-bottom: 0px;">
+	<label class="log_time_labels" for="log_from"><%= t('activerecord.attributes.log.from') %></label>
+	<label class="log_time_labels" for="log_to"><%= t('activerecord.attributes.log.to') %></label>
+	<label class="log_time_labels" for="log_rate"><%= t('activerecord.attributes.log.rate') %></label>
+</li>
+<li><%= l.text_field(:begin_time, :value => clock_format(time_zone_now), :class => "log_times required clock", :id => "log_times_from_") %>
+	<%= l.text_field(:end_time, :value => clock_format(time_zone_now), :class => "log_times required clock", :id => "log_times_to_") %>
+	 <% if @klass.class.to_s == "User"%>
+	 	<%= l.text_field(:rate, :value => @klass.hourly_rate, :class => "log_times required") %>
+	 <% else %>
+	 	<%= l.text_field(:rate, :value => current_user.hourly_rate, :class => "log_times required") %>
+	 <% end %>
+</li>
+<li class="slider_range" log=""></li>
+<% if @klass.class.to_s == "User"%>
+	<%= l.hidden_field :user_id, :value => @klass.id %>
+	<% end %>
+<% if @klass.class.to_s == "Project"%>
+	<li><%= l.label :project %>:  <%= truncate_string(@klass.name) %></li>
+		<%= l.hidden_field :project_id, :value => @klass.id %>
+	<li><span style="display:block;float:left;width: 300px;"><%= l.label :task %></span><%= l.label :done? %><%= check_box_tag "done"%>
+		<select class="searchableS" id="logTodoId" name="log[todo_id]">
+			<option value=""><%= t'general.none' %></option>
+		  	<% @klass.todos.not_complete.each do |todo| %>
+		  	<option value="<%= todo.id %>"><%= truncate_string(todo.name) %></option>
+		  	<% end %>
+		</select>
+	</li>
+<% else %>
+	<li><%= l.label :project %>
+		<select class="searchableS" id="logProjectId" log="" name="log[project_id]">
+		   <option value=""><%= t'general.none' %></option>
+		   <% all_projects.each do |project| %>
+		  <option value="<%= project.id %>"><%= truncate_string(project.name) %></option>
+		  <% end %>
+		</select>
+	</li>
+
+	<li><span style="display:block;float:left;width: 300px;"><%= l.label :task %></span>
+		<%= l.label :done? %><%= check_box_tag "done"%>
+		<select class="searchableS" id="logTodoId" name="log[todo_id]">
+		  <option value="" id="value"><%= t'general.select' %> <%= (t'activerecord.models.project.one') %></option>
+		</select>
+	</li>
+  <% end %>
+<% if true  %><%# if can? :read, Firm %>
+
+  	<% if @klass.class.to_s == "Project" && @klass.customer%>
+		<li><%= l.label :customer %>:  <%= truncate_string(@klass.customer.name) %></li>
+		  	<%= l.hidden_field :customer_id, :value => @klass.customer.id %>
+		<li><%= l.label :employee %>
+			<select class="searchableS" id="logEmployeeId" name="log[employee_id]">
+				<option value=""><%= t'general.none' %></option>
+				<% @klass.customer.employees.each do |todo| %>
+				  <option value="<%= todo.id %>"><%= truncate_string(todo.name) %></option>
+				  <% end %>
+			</select>
+		</li>
+	<% else %>
+   <% if @klass.class.to_s == "Customer"%>
+	<li><%= l.label :customer %>: <%= truncate_string(@klass.name) %></li>
+		<%= l.hidden_field :customer_id, :value => @klass.id %>
+	<li><%= l.label :employee %>
+		<select class="searchableS" id="logEmployeeId" name="log[employee_id]">
+			<option value=""><%= t'general.none' %></option>
+			<% @klass.employees.each do |todo| %>
+			  <option value="<%= todo.id %>"><%= truncate_string(todo.name) %></option>
+			  <% end %>
+		</select>
+	</li>
+   <% else %>
+	<li><%= l.label :customer %>
+		<select class="searchableS" id="logCustomerId" log="" name="log[customer_id]">
+		  <option value=""><%= t'general.none' %></option>
+		  <% all_customers.each do |customer| %>
+		  <option value="<%= customer.id %>"><%= truncate_string(customer.name).html_safe %></option>
+		  <% end %>
+		</select>
+	</li>
+	<li><%= l.label :employee %>
+		<select class="searchableS" id="logEmployeeId" name="log[employee_id]">
+		<option value=""><%= t'general.select' %> <%= (t'activerecord.models.customer.one') %></option>
+		</select>
+	</li>
+<% end %>
+<% end %>
+<% end %>
+  <li><%= l.submit (t'save'), :class => "submit", :id => "new_log_submit" %></li>
+</ul>

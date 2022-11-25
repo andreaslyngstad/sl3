@@ -1,0 +1,23 @@
+<%= content_for :head do %>
+<script type="text/javascript">
+  var PAYMILL_PUBLIC_KEY = '2028155948642eecacb7b872c5169aa6';
+</script>
+<%= javascript_include_tag "https://bridge.paymill.com/" %>
+<% end %>
+<%= render "shared/home_header" %>
+<div id="left" class="home_content">
+ <div class="blue2">
+ 	<%= t "message.cancel_html", link: (mail_to "support@squadlink.com", "support@squadlink.com", subject: "Canceling")  %>
+ 	<a class="red_font delete_link" title="Delete Firm"><%= t("general.delete_firm") %>?</a>
+				<div class="delete_for_sure" style="display:none; background-color: #F5E6F5; padding: 10px;">
+					<p><%= t'message.are_you_really_sure' %></p>
+					<input class="subdomain_checker delete_subdomain_validation delete_validation" data-validate="<%= current_firm.subdomain %>" placeholder="Enter your subdomain" ><br>
+					<input class="name_checker delete_name_validation delete_validation" style="display:none;" data-validate="<%= current_user.name %>" placeholder="Enter your name" ><br>
+					<%= link_to t("general.delete_firm"), current_firm, data: { confirm: t('are_you_sure?') }, :class => "red_font delete_for_real_link delete_validation", :style => "display:none;", :title => "Delete Firm", :method => :delete %>
+ 	</div>
+ 	<%= link_to t("general.free_plan"), subscription_path(current_firm.subscription), :confirm => "Are you sure?", :title => "Revert to free", :method => :delete, class: "button"%>
+ 	<%= link_to(t("general.do_nothing"), plans_path, class: "button")%>
+ <p> <%= t "message.thank_you" %></p>
+ </div>
+</div>
+ 	

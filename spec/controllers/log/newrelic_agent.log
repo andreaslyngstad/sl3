@@ -1,0 +1,25 @@
+# Logfile created on 2013-06-11 11:18:36 +0200 by logger.rb/31641
+[06/11/13 11:18:36 +0200 ofelia (19805)] ERROR : Unable to read configuration file : can't convert nil into String
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Starting the New Relic Agent.
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Environment: test
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Dispatcher: thin
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Application: test
+[06/11/13 11:18:36 +0200 ofelia (19805)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'test'
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Installing ActiveRecord instrumentation
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Installing Net instrumentation
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Installing Rails3 Error instrumentation
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Installing Rails 3 Controller instrumentation
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[06/11/13 11:18:36 +0200 ofelia (19805)] INFO : Finished instrumentation
+[06/11/13 11:19:14 +0200 ofelia (19857)] ERROR : Unable to read configuration file : can't convert nil into String
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Starting the New Relic Agent.
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Environment: test
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Dispatcher: thin
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Application: test
+[06/11/13 11:19:14 +0200 ofelia (19857)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'test'
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Installing ActiveRecord instrumentation
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Installing Net instrumentation
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Installing Rails3 Error instrumentation
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Installing Rails 3 Controller instrumentation
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Installing Rails 3.1/3.2 view instrumentation
+[06/11/13 11:19:14 +0200 ofelia (19857)] INFO : Finished instrumentation

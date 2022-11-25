@@ -1,0 +1,29 @@
+<% content_for :help do %>
+<div class="page_help">
+	<div class="page_help_container">
+		<%= t "help.projects_index_html" %>
+	</div>
+</div>
+<% end %>
+<div class="index-view">
+	<div class="list_header orange_bgr">
+
+		<% if true  %><%# if can? :archive, Project %>
+		<%= link_to (t'general.archive'), archive_path, :id => "archive"%>
+		<% end %>
+		<% if true  %><%# if can? :create, Project %>
+		<a id="dialog_project" data-object="project"><%= t('helpers.submit.create', model: Project.model_name.human) %></a>
+		<div id="dialog_project_form" class="dialog_form" title="<%= t('helpers.submit.create', model: Project.model_name.human) %>" style="display:none;">
+      <%= render 'form' %>
+      </div>
+      <% end %>
+	    <div class="search">
+	        <input type="text" autofocus="autofocus" placeholder="<%= t'general.search' %>" name="search" AUTOCOMPLETE=OFF value="" title="search" id="id_search_list">
+	    </div>
+	</div>
+	<div id="cus_pro_us_listing_container">
+  <ul id="cus_pro_us_listing">
+	<%= render :partial => "projects_index",  :collection => @projects, :as => :project  %>
+  </ul>
+  </div>
+</div>

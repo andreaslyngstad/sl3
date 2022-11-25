@@ -1,0 +1,49 @@
+en:
+  help:
+   account_html: <h2>Account settings</h2>
+                 <p>You can see and change you account settings.</p>
+                 <p>By clicking on the "Subscription" button, you can upgrade or downgrade you plan.</p>
+                 <p>Click on the "Edit Preference" button to change settings.</p>
+   statistics_html:  <h2>Statistics</h2>
+                  <p>You can see statistics for users, projects and customers in a selected time frame, presented in charts.</p> 
+               
+   plan_index_html: <h2>Your plan.</h2>
+                    <p>You can upgrade or downgrade your plan at any time. 
+                    <p>Payments are done up front each month and there is no refunds. If you change your subscription to a 
+                      different plan, the old subscription gets canceled and the new starts. But, the monthly payment for the old subscription is not refunded.</p> 
+                    <p>Be aware if you downgrade!</p> 
+                    <p>If you, for instance want to change from GOLD to BRONZE and have 62 projects, the 12 oldest projects will be deleted.</p>
+   logs_index_html: <h2>Tracking logs</h2>
+                    <p>Your logs are listed here and you can make new logs.</p>
+                    <p>You can log your time in two ways.</p> 
+                    <ul><li>1. Write what you are working on and click on the green arrow. When you stop working click on the stop button.
+                           You can click on the small grey arrow add more details about the log.</li><li>2. You can also add logs by clicking on the "Add log" button.</li> 
+                    </ul>
+                    <p>Tip; If you want to find logs on a particular project or customer, go to the project or customer and click on the logs tab.</p>
+   timesheets_html:  <h2>Timesheet use.</h2>
+                      <p>You can add hours to a project by selecting it on the left side and type in hours on the various days.
+                      You enter not whole hours in two ways 
+                      <ul>
+                        <li>1. If you use a colon like this "2:32". The digits after the colon will
+                      be interpered as minutes.</li>
+                        <li>2. You can use a period like this "2.32" for desimals. In this case the time will be 2 hours and 19 minutes.
+                      </ul>  
+                      For every entry to the timesheet, a log is created with the event "Added on timesheet". Just edit the log if you need corrections.
+                      </p> 
+                      
+   customers_index_html:  <h2>Customers</h2>
+                          <p>Here you can see all your customers</p> 
+                          <p>Search by typing in the search box</p>
+                          <p>You can email, edit or delete the customers</p>
+                          <p>By clicking on the customers name, you'll go to that customers page</p>
+   projects_index_html:  <h2> Projects</h2>
+                          <p>Here you can see all your projects</p> 
+                          <p>Search by typing in the search box</p>
+                          <p>You can edit or archive the projects</p>
+                          <p>By clicking on the project name, you'll go to that projects page</p>
+   projects_show_html:    <h2>The project page</h2>
+                          <p>Here you can see information about your project</p> 
+                          <p>By clicking on the tabs, you'll see tasks, logs, milestones and users that are associated to this project</p> 
+                          <p>You can also create, edit and delete the assosiated objects, except on the users tab</p>
+                          <p>On the users tab you can decide what users you want on this project by dragging them over to the "Squad on this project" box</p> 
+                          <p>By dragging them back to the "Available squaders" box you'll remove them from this project</p>

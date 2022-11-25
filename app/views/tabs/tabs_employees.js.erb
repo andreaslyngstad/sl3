@@ -1,0 +1,8 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+var tab = $("li.active").children("a").attr("href")
+$(tab).empty().append("<%= j( render :partial => "employees_tab")  %>")
+$("#dialog_employees").UIdialogs_links();
+$('.date_format_setter').set_date_format()
+$(".open_employee_update").UIdialogs_edit_links();
+NProgress.done()

@@ -1,0 +1,60 @@
+
+<tr class="invoice_list" id="invoice_<%= invoice.id.to_s %>">
+	<% invoice.due_today_or_overdue %>
+	<td class="status" style="color:<%= invoice.status_string[0] %>"><%= invoice.status_string[1] %></td>
+	<td class="invoice_dates"><%= date_format(invoice.last_due) %></td>
+	<td class="invoice_number"><%= invoice.number_string %></td>
+	<% if invoice.customer.nil?%>
+		<td class="invoice_customer"><%= link_to truncate(invoice.customer_all.name, :length => 80), customer_path(invoice.customer_all) %><span style="font-size:50%">(deleted)</span></td>
+	<% else %>
+		<td class="invoice_customer"><%= link_to truncate(invoice.customer.name, :length => 80), customer_path(invoice.customer) %></td>
+	<% end %>
+	
+	
+	<td class="invoice_amount" data-value="<%= invoice.total %>"><%= currency_converter(invoice.total.to_s) %></td>
+	<td class="invoice_links">
+		<%= link_to(t('show'), invoice_path(invoice), class: 'invoice_buttons button') %>
+		<span class='download_invoice edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'download' %> <%= t'activerecord.models.invoice.one' %>"><%= t'download' %></span>
+	
+		<% case invoice.status  %>
+			<% when 1 then %>
+			<% if !invoice.customer.email.blank? %>
+			<span class='quick_send_invoice edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'send' %> <%= t'activerecord.models.invoice.one' %>"><%= t'quicksend' %></span>
+			<% end %>
+				<span class='slow_sending_invoices edit button invoice_buttons' id="sending_invoice" data-id="<%= invoice.id %>" data-object="invoice" title="<%= t'send' %> <%= t'activerecord.models.invoice.one' %>"><%= t'send' %></span>
+				<span class='open_invoices_update edit button invoice_buttons' id="invoice_update" data-id="<%= invoice.id %>" data-object="invoice" title="<%= t'edit' %> <%= t'activerecord.models.invoice.one' %>"><%= t'edit' %></span>
+				<%= link_to (t"delete"), invoice, data: { confirm: ( t'are_you_sure?') }, :title => (t"delete"), :method => :delete, :class => "delete_invoice button invoice_buttons", :remote => true %>
+			<% when 2 then %>	
+			<span class='slow_sending_invoices edit button invoice_buttons' id="sending_invoice" data-id="<%= invoice.id %>" data-object="invoice" title="<%= t'send' %> <%= t'activerecord.models.invoice.one' %>"><%= t'send' %></span>
+			
+			<span class='credit_invoice edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'credit_note' %> <%= t'activerecord.models.invoice.one' %>"><%= (t'credit_note').downcase %></span>
+			<span class='invoice_paid edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'paid' %>"><%= t'paid' %></span>
+			<% when 3 then %>	
+			<span class='credit_invoice edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'credit_note' %> <%= t'activerecord.models.invoice.one' %>"><%= (t'credit_note').downcase %></span>
+			<span class='remind_invoice edit button invoice_buttons button invoice_buttons' id="sending_invoice" data-id="<%= invoice.id %>"  title="<%= t'send_reminder' %> <%= t'activerecord.models.invoice.one' %>"><%= t'send_reminder' %></span>
+			<span class='invoice_paid edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'paid' %>"><%= t'paid' %></span>
+			<% when 4 then %>	
+			<span class='credit_invoice edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'credit_note' %> <%= t'activerecord.models.invoice.one' %>"><%= (t'credit_note').downcase %></span>
+			<span class='remind_invoice edit button invoice_buttons' id="sending_invoice" data-id="<%= invoice.id %>"  title="<%= t'send_reminder' %> <%= t'activerecord.models.invoice.one' %>"><%= t'send_reminder' %></span>
+			<span class='invoice_paid edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'paid' %>"><%= t'paid' %></span>
+			<% when 5 then %>
+			
+			<span class='credit_invoice edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'credit_note' %> <%= t'activerecord.models.invoice.one' %>"><%= (t'credit_note').downcase %></span>
+			<span class='remind_invoice edit button invoice_buttons' id="sending_invoice" data-id="<%= invoice.id %>" data-object="invoice" title="<%= t'send_reminder' %> <%= t'activerecord.models.invoice.one' %>"><%= t'send_reminder' %></span>
+			<span class='invoice_paid edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'paid' %>"><%= t'paid' %></span>
+			<% when 6 then %>
+			<span class='slow_sending_invoices edit button invoice_buttons' id="sending_invoice" data-id="<%= invoice.id %>" data-object="invoice" title="<%= t'send' %> <%= t'activerecord.models.invoice.one' %>"><%= t'send' %></span>
+			<span class='invoice_paid edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'paid' %>"><%= t'not_paid' %></span>
+			<% when 7 then %>
+			<span class='slow_sending_invoices edit button invoice_buttons' id="sending_invoice" data-id="<%= invoice.id %>" data-object="invoice" title="<%= t'send' %> <%= t'activerecord.models.invoice.one' %>"><%= t'send' %></span>
+			<span class='credit_invoice edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'credit_note' %> <%= t'activerecord.models.invoice.one' %>"><%= (t'credit_note').downcase %></span><span class='invoice_paid edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'paid' %>"><%= t'paid' %></span>
+			<% when 8 then %>
+			<span class='slow_sending_invoices edit button invoice_buttons' id="sending_invoice" data-id="<%= invoice.id %>" data-object="invoice" title="<%= t'send' %> <%= t'activerecord.models.invoice.one' %>"><%= t'send' %></span>
+			<% when 9 then %>
+			<span class='slow_sending_invoices edit button invoice_buttons' id="sending_invoice" data-id="<%= invoice.id %>" data-object="invoice" title="<%= t'send' %> <%= t'activerecord.models.invoice.one' %>"><%= t'send' %></span>
+			<span class='credit_invoice edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'credit_note' %> <%= t'activerecord.models.invoice.one' %>"><%= (t'credit_note').downcase %></span><span class='invoice_paid edit button invoice_buttons' data-id="<%= invoice.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'paid' %>"><%= t'paid' %></span>
+		<% end %>
+	</td>
+  </tr>
+  <div class="dialog_form dialog_invoice_form" id="invoice_update_<%= invoice.id %>_form" title="<%= t'helpers.submit.update', model: Invoice.model_name.human %>" style="display:none;"></div>
+

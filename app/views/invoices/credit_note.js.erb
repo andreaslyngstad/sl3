@@ -1,0 +1,40 @@
+$('.dialog_credit_note_form').remove()
+
+$('body').append('<div class="dialog_credit_note_form" id="credit_note_<%= @invoice.id %>_form" title="<%= t"general.create_new" %> <%= t"economic.credit_note" %>" style="display:none;"></div>')
+
+var form = $('#credit_note_<%= j (@invoice.id.to_s) %>_form')
+form.empty().append("<%= j( render "credit_note_form")  %>")
+form.UIdialogs_invoices();
+form.find(".new_invoice").validateWithErrors();
+form.find("select#invoice_customer_id").invoice_object_select();
+form.find("#invoice_customer_id").chosen({width:'200px'});
+form.find("#dialog_customer").UIdialogs_links();
+form.find("select#invoice_project_id").invoice_object_select();
+form.find("#invoice_project_id").chosen({width:'200px'});
+form.find("#dialog_project").UIdialogs_links();
+$('.remove_log').remove_log_from_invoice()
+
+//
+form.find('.listing_logs_invoice_container').log_related_updates()
+//
+<% if @invoice.invoice_lines.count > 0 %>
+ $('.free_lines_table_container').show();
+<% end %>
+
+form.find('.remove_fields').remove_line_from_invoice()
+form.find('.invoice_line_quantity').quantity_price_vat_lines();
+form.find('.invoice_line_price').quantity_price_vat_lines();
+form.find('.invoice_line_vat').quantity_price_vat_lines();
+form.find('.invoice_line_vat').change_vat()
+// form.find('.tax_field').change_vat()
+form.find('.total_on_log').total_on_log()
+form.find('.total_on_invoice').total_on_invoice()
+// $("#add_lines").add_lines()
+form.find('.total_on_log').set_logs_to_minus()
+
+form.find(".add_fields").add_fields()
+form.find('.total_on_line').sum_fields()
+form.find(".date").datepicker();
+form.find('.invoice_line_price').set_all_to_minus();
+// form.find('.total_on_this').total_on_log()
+NProgress.done()

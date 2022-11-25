@@ -1,0 +1,78 @@
+<table border="0" cellspacing="0" cellpadding="10" class="plans">
+	
+	<tr><th></th>
+		<% @plans.each do |plan| %>
+		<th class="sub_1"><div class="name"><%= plan.name %></div></th>
+		<% end %>
+		
+		</tr>
+		<tr><td></td>
+		<% @plans.each do |plan| %>
+        	<td class="">
+        		<p class="price"><%=  prices_to_currency plan.price, plan.currency %></p>
+        		<p class="per_month">per month</p>
+        	</td>
+
+		<% end %>	
+		<td style="text-align:left"><span class="change_price_currency_link">
+			<% if @plans.first.currency == "$" %>
+			<p><%= link_to "Prices in €", pricing_path(:currency => "€") %></p>
+			<% else %>
+			<p><%= link_to "Prices in $", pricing_path(:currency => "$") %></p>
+			<% end %>
+		</span></td>
+	</tr>
+		<tr><td class="left_column">Users</td>
+		<% @plans.each do |plan| %>
+			<% if plan.users.nil? %>
+	        	<td class="">unlimited</td>
+	        <% else %>
+	        	<td class=""><%=  plan.users %></td>
+	        <% end %>
+		<% end %>	
+	</tr>
+	<tr><td class="left_column">Projects</td>
+		<% @plans.each do |plan| %>
+			<% if plan.projects.nil? %>
+	        	<td class="">unlimited</td>
+	        <% else %>
+	        	<td class=""><%= plan.projects %></td>
+	        <% end %>
+		<% end %>	
+	</tr>
+	<tr><td class="left_column">Customers</td>
+		<% @plans.each do |plan| %>
+			<% if plan.customers.nil? %>
+	        	<td class="">unlimited</td>
+	        <% else %>
+	        	<td class=""><%= plan.customers %></td>
+	        <% end %>
+		<% end %>	
+	</tr>
+	<tr><td class="left_column">Logs</td>
+		<% @plans.each do |plan| %>
+		<% if plan.logs.nil? %>
+			<td class="">unlimited</td>
+			<% else %>
+	        	<td class=""><%=  plan.logs %></td>
+	        <% end %>
+		<% end %>
+	</tr>
+	
+	<tr><td class="left_column">Daily backups</td>
+		<% @plans.each do |plan| %>
+			<td class="">yes</td>
+		<% end %>
+	</tr>
+	<tr><td class="left_column">SSL encryption</td>
+		<% @plans.each do |plan| %>
+			<td class="">yes</td>
+		<% end %>
+	</tr>
+	<tr><td></td>
+		
+	</tr>
+</table>
+<div class="signup_wrapper">
+    <%= link_to('Sign up for free', register_path, :class => "signup_button")  %>
+</div>

@@ -1,0 +1,11 @@
+<% if milestone.overdue? %>
+<div class="statistics_unit_milestone passed yellow" id="milestone_slider_<%= milestone.id %>">
+	<%= date_format(milestone.due) %><br/>
+	<%= truncate(milestone.goal, :omission => "...", :length => 60) %>
+</div>
+<% else %>
+<div class="statistics_unit_milestone upcomming green_gr" id="milestone_slider_<%= milestone.id %>">
+	<%= date_format(milestone.due) %><br/>
+	<%= truncate(milestone.goal, :omission => "...", :length => 60) %>
+</div>
+<% end %>

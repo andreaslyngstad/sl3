@@ -1,0 +1,23 @@
+nb:
+  message: 
+    plan_update_html: <p>Du %{grad} fra %{current_plan} som koster %{current_plan_price} per måned 
+                       til %{new_plan} plan til %{new_plan_price} per måned.</p>
+                       <p>Når du har lagt in kreditkort informasjon, avbrytes %{current_plan} abonnementet og %{new_plan} 
+                       abonnementet starter. </p>
+                       <p>%{new_plan} abonnementet blir fornyet og %{new_plan_price} blir trukket fra kontoen din hver måned.</p>
+    thank_you: Tusen takk!
+    we_suggest: Gå grundig gjennom dataene dine før du nedgraderer
+    keep_in_mind: Du har mer enn..
+    will_be_deleted: ..de siste du laget blir slettet.
+    cancel_html:  <p>Takk for at du abonnerer på en Squadlink tjeneste!</p>
+                  <p>Du kan slette firmaet ditt helt fra squadlink eller nedgradere og fortsette med gratis abonnementet</p>
+                  <p>Husk at dette kan føre til at data går tapt. </p>
+                  <p>Hvis du sletter firmaet, går alle data tapt.</p>
+                  <p>Hvis du endrer til en gratis konto (Free), vil all data som overskrider grensen for dette abonnementet slettes.</p> 
+                  <p>Vi prøver å forbedre oss. Kan du være så snill å skrive noen linjer om hvorfor du avbryter dette abonnemetet</p> 
+                  <p>%{link}</p>
+    closed_message_html: Hei. Vi har ikke mottatt betaling og kontoen din er midlertidig stengt.<br>Ingen fare, bare
+                    velg abonnementet og legg inn kredittkortet ditt for å åpne kontoen.<br>
+                    Hvis du ikke åpner konoten din, blir abonnemetet ditt endret til Free etter 30 dager. Dette kan føre til tap av data. 
+    opening_closed: Tusen takk! Bare legg inn kredittkortet ditt, så åpner vi kontoen din med en gang.
+    are_you_really_sure: Er du virkelig sikker på at du vil slette kontoen din? Alle data vil bli borte for alltid!

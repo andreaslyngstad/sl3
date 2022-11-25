@@ -1,0 +1,16 @@
+# Logfile created on 2013-09-05 10:56:59 +0200 by logger.rb/36483
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Starting the New Relic agent in "test" environment.
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "test" section of your newrelic.yml.
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Reading configuration from 
+[09/05/13 10:56:59 +0200 ofelia (19390)] ERROR : Unable to read configuration file : no implicit conversion of nil into String
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Enabling the Request Sampler.
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Environment: test
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Dispatcher: thin
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Application: test
+[09/05/13 10:56:59 +0200 ofelia (19390)] WARN : No license key found in newrelic.yml config. This often means your newrelic.yml is missing a section for the running environment 'test'
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Installing Net instrumentation
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Installing ActiveRecord 4 instrumentation
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Installing Rails 4 view instrumentation
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Installing Rails4 Error instrumentation
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Installing Rails 4 Controller instrumentation
+[09/05/13 10:56:59 +0200 ofelia (19390)] INFO : Finished instrumentation

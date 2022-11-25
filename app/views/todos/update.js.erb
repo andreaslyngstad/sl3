@@ -1,0 +1,54 @@
+$('.flash_error').empty();
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.discard(:notice))%>")
+
+
+var todojs 		= $("#todo_<%= j(todo.id.to_s)%>")
+var roster_todo = $("#roster_todo_<%= j(todo.id.to_s)%>")
+var db_todo = $("#db_todo_<%= j(todo.id.to_s)%>")
+<% if todo.completed %> 
+	$("#done_tasks").append(todojs)
+	$("#not_done_tasks").find(todojs).remove()	
+  $(".tasks_percent").data("complete", $(".tasks_percent").data("complete") + 1 )
+  $(".tasks_percent").data("notcomplete", $(".tasks_percent").data("notcomplete") - 1 )
+	roster_todo.remove()
+  db_todo.remove()
+  
+<%else%>
+	$("#not_done_tasks").append(todojs)
+	$("#done_tasks").find(todojs).remove()
+	$.getScript("/roster_task")	
+<%end%>
+
+todojs.replaceWith("<%= j(render todo) %>")
+$("#<%= j(todo.id.to_s)%>").click(function() { 
+  	 var id = $(this).attr("id")
+  	 $("#edit_done_todo_" + id).submitDoneWithAjax(id)
+  });
+$("#todo_<%= j(todo.id.to_s)%>").find(".logs_pluss").click(function() {
+ 	$(".flash_notice").empty() 
+ 	NProgress.start();
+ 	$(this).hide()
+ 	$(this).next(".logs_minus").show()
+  	var id = $(this).attr("id")	
+  	$.get("/get_logs_todo/" + id)
+  });
+   
+$("#todo_<%= j(todo.id.to_s)%>").find(".logs_minus").click(function() {
+ 	$(".flash_notice").empty() 
+ 	var id = $(this).attr("id")
+ 	$("#todo_logs_"+ id ).slideUp()
+ 	$("#todo_logs_"+ id ).children().empty().remove()
+ 	$(this).hide()
+ 	$(this).prev(".logs_pluss").show()
+  });
+$(".add_new_todo_button").UIdialogs_links();
+$(".open_todo_update").UIdialogs_edit_links();
+$("#dialog_todo_form").UIdialogs();
+$("#todo_<%= j(todo.id.to_s)%>").find(".open_todo_update").UIdialogs_edit_links();
+$(".searchableTaskCustomer").chosen({width: '369px'});
+$('.date_format_setter').set_date_format()
+if($('.far_right_container[style*="none"]').data() === null){
+
+}
+NProgress.done();

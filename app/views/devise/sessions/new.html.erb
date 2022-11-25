@@ -1,0 +1,20 @@
+<div id="register_container">
+  <div id="registration" class="blue">
+   	<p>Please sign in.</p>
+    <span class="flash_notice"><%= flash[:notice] %></span>
+    <span class="flash_notice"><%= flash[:alert] %> </span>
+  </div>
+  <div class="signup signup_firm">
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <div class="signup-form-field"><%= f.label :email %><%= f.email_field :email, id:"user_email2" %></div>
+      <div class="signup-form-field"><%= f.label :password %><%= f.password_field :password, id: "user_password2"%></div>
+      <% if devise_mapping.rememberable? -%>
+        <div class="signup-form-field checkbox"><%= f.check_box :remember_me, :id => "check" %> <%= f.label :remember_me %></div>
+      <% end -%>
+      <div class="signup-form-field"><%= f.submit "Sign in", class: "submit", id: "sign_in2"%></div>
+    <% end %>
+  </div>
+    <div class="instruction_1">
+  	<p><%= render "links" %></p>
+  </div>
+</div>

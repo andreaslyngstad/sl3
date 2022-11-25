@@ -1,0 +1,64 @@
+    <div class="tracking_select" style="display: none;">
+	<div id="tracking_project_task">
+    <%= n.label :project %>
+         <select class="searchableS_tracking" id="logProjectIdTracking" log="<%= log.id %>" name="log[project_id]">
+           <option value="" data-customer=""><%= t'general.none' %></option>
+           <% all_projects.each do |project| %>
+                <% if project == log.project  %>
+                  <option value="<%= project.id %>" selected="selected"><%= project.name %></option>
+                <% else %>
+                  <option value="<%= project.id %>"><%= project.name %></option>
+                  <% end %>
+                 <% end %>
+          </select>
+          <div><%= n.label :task %>
+          <select class="searchableS_tracking" id="logTodoIdTracking<%= log.id %>" log="<%= log.id %>" name="log[todo_id]">
+              <% if log.project.nil? %>
+          <option value="" id="value"><%= t'general.select' %> <%= (t'activerecord.models.project.one') %></option>
+          <%else%>
+          <option value><%= t'general.none' %></option>
+          <% log.project.todos.not_complete.each do |todo| %>
+          <% if todo == log.todo %>
+          <option value="<%= todo.id %>" selected="selected"><%=todo.name%></option>
+          <%else%>
+          <option value="<%= todo.id %>"><%= todo.name%></option>
+          <% end %>
+          <% end %>
+          <% end %>
+          </select>
+                      <% if !log.todo.nil? %>
+            <% if log.todo.completed == true %>
+            <%= n.label :done?%><%= check_box_tag "done", 1 ,true, {class: 'tracking_checkbox'} %>
+            <% else %>
+            <%= n.label :done?%><%= check_box_tag "done", 1, false, {class: 'tracking_checkbox'}  %>
+            <% end %>
+            <% else %>
+            <%= n.label :done?%><%= check_box_tag "done", 1, false, {class: 'tracking_checkbox'}  %>
+            <% end %>
+           </div> </div>
+           <% if true  %><%# if can? :read, Firm %>
+           <div id="tracking_customer_employee">
+          <%= n.label :customer %>
+          	<%= n.select(:customer_id, all_customers.map {|customer| [customer.name, customer.id]},
+          	{ :include_blank =>  (t'general.none')}, :class => "searchableS_tracking", :id => "logCustomerIdTracking#{log.id}", :log => "#{log.id}" )%>
+       <%= n.label :employee %>
+       <select class="searchableS_tracking" id="logEmployeeIdTracking<%= log.id %>" log="<%= log.id %>" name="log[employee_id]">
+
+            <% if !log.customer.nil? %>
+             <option value><%= t'general.none' %></option>
+            <% log.customer.employees.each do |employee| %>
+              <% if employee == log.employee %>
+          <option value="<%= employee.id %>" selected="selected"><%=employee.name%></option>
+          <%else%>
+          <option value="<%= employee.id %>"><%= employee.name%></option>
+          <% end %>
+            <% end %>
+            <%else%>
+            <option value=""><%= t'general.select' %> <%= (t'activerecord.models.customer.one') %></option>
+            <% end %>
+        </select>
+
+
+      </div>
+      <% end %>
+      </div>

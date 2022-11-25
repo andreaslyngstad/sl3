@@ -1,0 +1,18 @@
+<% if !@klass.logs.empty? %>
+<div class="state_logs">
+  	<div class="state_headers"><%= t('general.last') %> <%= t('activerecord.models.log.more' )%></div>
+    <% @klass.logs.order("log_date DESC").limit(3).each do |log| %>
+	    <div class="state_last_logs_header">
+	    	<div><%= link_to image(log.user, "image32"), user_path(log.user) %></div>
+		    <div class="date_format_setter" data-date="<%= log.log_date %>"><%= log.log_date %></div><br/>
+		    <div class="in_db" data-hours="<%= log.hours %>"><%=  time_format(log.hours) %> <%= t'times.hour.more' %></div> 
+	    </div>
+	    <div class="state_last_logs_text">
+	    <%= simple_format(log.event, class: 'log_event_paragraf') %> 
+	    <% if log.end_time.nil? %>
+	    	<span style="font-size: 60%"><%=link_to( t('general.in_progress'), logs_path) %></span>
+	    <% end %>
+	    </div>
+    <% end %>
+</div>
+ <% end %>

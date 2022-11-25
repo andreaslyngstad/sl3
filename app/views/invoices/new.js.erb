@@ -1,0 +1,37 @@
+form = $("#dialog_invoice_form")
+$(".flash_notice").empty()
+form.empty().append("<%= j( render "form")  %>")
+// console.log(form)
+form.UIdialogs_invoices()
+<% if @instance.class.to_s == "Customer" %>
+<% @customer = @instance  %>
+form.find('#selected_customer').remove();
+form.find('#invoice_customer_select').after("<%= j(render 'selected_customer') %>");
+form.find('#dialog_customer').hide();
+form.find('#invoice_customer_select').hide();
+form.find('.listing_logs_invoice_container').empty();
+form.find("#invoice_project_id").attr("data-other-object" ,"<%= j(@customer.id.to_s) %>")
+form.find("#change_customer").remove();
+<% end %>
+
+form.find("select#invoice_customer_id").invoice_object_select();
+form.find("#invoice_customer_id").chosen({width:'200px'});
+form.find("#dialog_customer").UIdialogs_links();
+form.find("select#invoice_project_id").invoice_object_select();
+form.find("#invoice_project_id").chosen({width:'200px'});
+form.find("#dialog_project").UIdialogs_links();
+
+form.find(".invoice_date").datepicker();
+form.find(".invoice_due").datepicker();
+//
+form.find('.listing_logs_invoice_container').log_related_updates()
+//
+form.find('.remove_fields').remove_line_from_invoice()
+form.find('.invoice_line_quantity').quantity_price_vat_lines();
+form.find('.invoice_line_price').quantity_price_vat_lines();
+form.find('.invoice_line_vat').quantity_price_vat_lines();
+form.find('.invoice_line_vat').change_vat()
+form.find('.tax_field').change_vat()
+// form.find("#add_lines").add_lines()
+form.find(".add_fields").add_fields()
+NProgress.done()

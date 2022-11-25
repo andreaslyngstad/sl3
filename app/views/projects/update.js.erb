@@ -1,0 +1,15 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>");
+$("#project_<%= j(@klass.id.to_s)%>").replaceWith("<%= j( render :partial => "projects_index", :locals => { :project => @klass })  %>")
+$(".button").button();
+$("#project_list_<%= j(@klass.id.to_s)%>").replaceWith("<%= j(render @klass) %>")
+$("#project_list_<%= j(@klass.id.to_s)%>").css("background-color", "#DBFFDE");
+$(".activate_project").activate_projects();
+$(".activate_projects_no_button").activate_projects_no_button();
+$(".open_project_update").UIdialogs_edit_links();
+$(".dialog_form:last").remove();
+$("#description").replaceWith("<%= j( render :partial => 'projects/description') %>")
+$('.budget').replaceWith("<%= j( render :partial => 'projects/budget') %>")
+$(".budget_green").set_buget_width()
+NProgress.done();

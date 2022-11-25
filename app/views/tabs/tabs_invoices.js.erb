@@ -1,0 +1,10 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+var tab = $("li.active").children("a").attr("href")
+$(tab).empty().append("<%= j( render :partial => "invoices/listing_invoices")  %>")
+// $("#dialog_invoice").UIdialogs_invoices_link();
+// $("#dialog_invoice_form").UIdialogs_invoices();
+$(".date").datepicker();
+$(".button").button();
+ready_invoice()
+NProgress.done()

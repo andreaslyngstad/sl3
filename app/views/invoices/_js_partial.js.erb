@@ -1,0 +1,15 @@
+$('.invoice_paid').invoice_paid()
+$('.invoice_lost').invoice_lost()
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>")
+$(".open_invoices_update").UIdialogs_edit_invoices_links();
+// $('.invoice_list').find('.invoice_amount').convert_money_field()
+$('.quick_send_invoice').send_invoice()
+$('.download_invoice').sending_to_handeling_invoice("download")
+$(".dialog_sending_invoice_form").UIdialogs()
+$('.remind_invoice').UIdialogs_sending_reminder_links()
+$(".slow_sending_invoices").UIdialogs_sending_invoices_links();
+$('.credit_invoice').credit_invoice()
+$(".button").button()
+$(".date").datepicker();
+NProgress.done()

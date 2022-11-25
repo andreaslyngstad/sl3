@@ -1,0 +1,65 @@
+<div class="signup signup_firm">
+<%= form_for @firm, :url => create_firm_path,  :html => { :class => "register_firm", :id => "register_firm" } do |firm| %>
+    <div class="signup-form-field">
+    <%= firm.label "Firm name" %>
+    <%= firm.text_field :name, :class => "required form-input", :AUTOCOMPLETE => "OFF" %>
+    </div>
+ 	<div class="signup-form-field-subdomain">
+    <%= firm.label "Secure Site", :title => "This is the domain for your firms squadlink account" %>
+    <%= firm.text_field :subdomain, :class => "required noSpecialChars form-input register_firm_subdomain", :AUTOCOMPLETE => "OFF" %>
+   	<div id="loggyit_sub">.squadlink.com</div>
+  	</div>
+	<div class="not_required" style="display: none;">
+	<div class="signup-form-field">
+    <%= firm.label "Phone" %>
+    <%= firm.text_field :phone, :class => "form-input", :AUTOCOMPLETE => "OFF" %>
+    </div>
+	<div class="signup-form-field" style="height:100px;">
+    <%= firm.label "address" %>
+    <%= firm.text_area :address, :class => "form-input", :AUTOCOMPLETE => "OFF", style:  "height:80px;"%>
+    </div>
+    <div class="signup-form-field">
+    <%= firm.label "language" %>
+    <%= firm.select :language, language {},  :class => "form-input" %>
+    </div> 
+	<div class="signup-form-field">
+    <%= firm.label "currency" %>
+    <%= firm.select :currency, currency,  {},  :class => "form-input"%>
+    </div>
+    <div class="signup-form-field">
+            <%= firm.label "bank_account" %>
+            <%= firm.text_field :bank_account, :class => "text-input", :AUTOCOMPLETE => "OFF" %>
+        </div>
+        <div class="signup-form-field">
+            <%= firm.label "vat_number" %>
+            <%= firm.text_field :vat_number, :class => "text-input", :AUTOCOMPLETE => "OFF" %>
+        </div>
+    <div class="signup-form-field">
+        <%= firm.label "Tax (VAT) %" %>
+        <%= firm.text_field :tax, :class => "text-input", :AUTOCOMPLETE => "OFF", :value => 0 %>
+    </div>
+	<div class="signup-form-field">
+    <%= firm.label "time_zone" %>
+    <%= firm.time_zone_select :time_zone,  nil, :class => "form-input", :default => "UTC"%>
+    </div>
+	<div class="signup-form-field">
+	    <%= firm.label "time_format" %>
+	 	<%= firm.select :time_format, options_for_select([['Hour:minute', 1], ['Hour,desimal', 2]]), {},:class => "form-input" %>		
+    </div>
+	<div class="signup-form-field">
+	    <%= firm.label "date_format" %>
+		<%= firm.select :date_format, options_for_select([['Day.Month.Year', 1], ['Month/Day/Year', 2]]),{},:class => "form-input" %>	    
+    </div>
+	<div class="signup-form-field">
+	    <%= firm.label "clock_format" %>
+		<%= firm.select :clock_format, options_for_select([['24 hours', 1], ['12 hours', 2]]),{},:class => "form-input" %>	    
+    </div>
+	</div>
+    <div class="signup-form-field">
+        <%= firm.submit "next", :class => "submit", :id => "next" %>
+    </div>
+<% end %>
+<div class="open_not_required_container">
+    <span href="" class="open_not_required" title="Fill in not required field"></span>
+    </div>
+</div> 

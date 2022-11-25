@@ -1,0 +1,10 @@
+// document.querySelector(".flash_notice").empty()
+// document.querySelector(".flash_notice").insertAdjacentHTML("beforeend","<%= escape_javascript(flash.discard(:notice))%>")
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.discard(:notice))%>")
+$("#cus_pro_us_listing").append("<%= j( render :partial => "customers/customer", :locals => { :customer => @klass })  %>");
+
+$("#new_customer")[0].reset();
+$(".button").button();
+$(".open_customer_update").UIdialogs_edit_links();
+NProgress.done();

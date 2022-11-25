@@ -1,0 +1,47 @@
+<div class="log_menu">
+	<span class="add_some_invoice">
+		<% if true  %><%# if can? :manage, Invoice %>
+
+		<a id="dialog_invoice" data-object="invoice" data-url="<%= @klass ? @klass.class : "index" %>" data-id="<%= @klass ? @klass.id : "index" %>"><%= t'helpers.submit.create', model: Invoice.model_name.human %></a>
+		<div id="dialog_invoice_form" class="dialog_form dialog_invoice_form" title="<%= t'helpers.submit.create', model: Invoice.model_name.human %>" style="display:none;">
+   </div>
+		<% end %>
+	</span>
+
+	<div class="range_invoice">
+		<%= form_tag('/invoice_range', :id => "invoice_range_form", :remote => true, :method => :get) do -%>
+		<%= hidden_field_tag "url", @klass ? @klass.class : "index"  %>
+		<%= hidden_field_tag "id", @klass ? @klass.id : "index"%>
+		<div id="range_date_fields_invoice">
+		  <%= text_field_tag 'from', date_format(time_zone_now - 6.months), :class => "invoice_range_date"%>
+			<%= text_field_tag 'to',date_format(time_zone_now), :class => "invoice_range_date"  %>
+		</div>
+		<div class="invoices_pr_status">
+		<select class="small_selector" id="invoices_pr_status_select" name="status">
+			 <option value="0..100"><%= t'general.all' %></option>
+			 <option value="1"><%= t'economic.invoice_draft' %></option>
+       <option value="2"><%= t'economic.invoice_sent' %></option>
+       <option value="3"><%= t'economic.invoice_due' %> </option>
+       <option value="4"><%= t'economic.invoice_overdue' %></option>
+       <option value="5"><%= t'economic.invoice_reminded' %></option>
+       <option value="6"><%= t'economic.invoice_paid' %></option>
+       <option value="7"><%= t'economic.invoice_credit' %></option>
+       <option value="8"><%= (t'economic.credit').capitalize %></option>
+		</select>
+	</div>
+		<% end %>
+	</div>
+
+	<div class="logs_pr_date">
+		<select class="small_selector" id="invoices_pr_date_select" data-url="<%= @klass ? @klass.class : "index" %>" data-id="<%= @klass ? @klass.id : "index" %>">
+			 <option value="to_day"><%= t'times.to_day' %></option>
+       <option value="this_week"><%= t'times.this_week' %></option>
+       <option value="this_month"><%= t'times.this_month' %> </option>
+       <option value="this_year"><%= t'times.this_year' %></option>
+       <option value="yesterday"><%= t'times.yesterday' %></option>
+       <option value="last_week"><%= t'times.last_week' %></option>
+       <option value="last_month"><%= t'times.last_month' %></option>
+       <option value="last_year"><%= t'times.last_year' %></option>
+		</select>
+	</div>
+</div>

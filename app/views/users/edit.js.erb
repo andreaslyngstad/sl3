@@ -1,0 +1,6 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>")
+var form_wrapper = $("#user_update_<%= j (@user.id.to_s) %>_form")
+form_wrapper.empty().append("<%= j( render :partial => "form")  %>")
+form_wrapper.find(".edit_user").validateWithErrors();
+form_wrapper.find("select").chosen({width: '369px'});

@@ -1,0 +1,41 @@
+ <%= form_for todo, :remote => true do |f| %>
+ <ul>
+ 	<li><%= f.label :name %><%= f.text_area :name, :class => "required", :minlength => "2" %></li>
+ 	<li><%= f.label :Priority %>
+	  	<%= f.radio_button :prior, 1 %><%= label :role, 'Normal', class: "todo_green" %>
+	  	<%= f.radio_button :prior, 2 %><%= label :role, 'Middle', class: "todo_yellow"  %>
+	  	<%= f.radio_button :prior, 3 %><%= label :role, 'High', class: "todo_red" %>
+	</li>
+			<li><%= f.label :user %>
+			<select class="searchableTaskCustomer" id="todoUserId" name="todo[user_id]"><option value=""><%= t'general.select' %> <%= t'activerecord.models.user.one' %></option>
+			  <%for user in todo.project.users do %>
+			  <option value="<%=user.id.to_i%>"<%if user == current_user%>selected="<%=current_user.id.to_i%>"<%end%>>
+			  <%= user.name %></option>
+			  <% end %>
+			</select> 
+			</li>
+    <li><%= f.label :customer_id%>
+		<select class="searchableTaskCustomer" name="todo[customer_id]">
+			<option value=""><%= t'general.select' %> <%= t'activerecord.models.customer.one' %></option>
+		  	<% current_firm.customers.each do |customer| %>
+		  	<option value="<%=customer.id.to_i%>"<%if todo.customer == customer%> selected="<%=customer.id.to_i%>"<%end%>>
+		  		<%= customer.name %></option>
+		  	<% end %>
+		</select> 
+    </li>
+    <li><%= f.label :project_id %>
+       	<select class="searchableTaskCustomer required" name="todo[project_id]">
+       		<option value=""><%= t'general.select' %> <%= t'activerecord.models.project.one' %></option>
+	          	<% current_user.projects.each do |project| %>
+	          	<option value="<%=project.id.to_i%>"<%if todo.project == project%> selected="<%=project.id.to_i%>"<%end%>>
+	          		<%= project.name %>
+	          		</option>
+	          	<% end %>
+	    </select>
+	 </li>
+       <li><%= f.label :due %><%= f.text_field :due, :value => date_format(todo.due), :class => "date", :id => "date_todo_#{todo.id}" %>
+       </li>
+
+       <li><%= f.submit (t'save'), :class => 'submit', :id => "edit_todo_submit"%></li>
+ </ul>
+  <% end %>  

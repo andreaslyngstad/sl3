@@ -1,0 +1,25 @@
+<div class="index-view">
+	<div class="list_header orange_bgr">
+		<%= link_to ((t'general.open').capitalize + ' ' + (t'activerecord.models.project.more')), projects_path, :id => "active_projects"%>
+	    <div class="search">
+	        <input type="text" autofocus="autofocus" placeholder="<%= t'general.search' %>" name="search" AUTOCOMPLETE=OFF value="" title="search" id="id_search_list">
+	    </div>
+	</div>
+	<div id="cus_pro_us_listing_container">
+  <ul id="cus_pro_us_listing">
+    <% @projects.each do |project| %>
+  <li class="tab_list" id="project_<%= project.id.to_s %>"> 
+  	<div class="tab_list_text">
+ <%= project.name %>
+  </div>
+  <div class="button_wrapper">
+    <a class="reopen_project button" id="reopen_project_<%= project.id.to_s %>" data-object="project" data-id="<%= project.id.to_s %>"><%= t'general.open' %></a>
+    <%= link_to( project_path(project),data: { confirm: 'This will destroy the project and all tasks and logs associated to this project. Are you sure? The project with its tasks and logs will be accessable if you reopen the project.' }, id: "delete_#{project.id.to_s}" , :title => "Delete project", :method => :delete, :remote => true, :class => 'delete_project') do%>
+      <span class='button'><%= t'delete' %></span>
+    <% end %>
+    <% end %>
+    </div>
+    </li>
+  </ul>
+  </div>
+</div>

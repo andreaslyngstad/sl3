@@ -1,0 +1,51 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+<% if @tracking %>
+  <% if @log.nil? %>
+    var customer = $("#logCustomerIdTracking")
+    var employee = $("#logEmployeeIdTracking")
+    var form   = $("#start_tracking_form")  
+  <% else %>
+    $("#log_<%= escape_javascript(@log.id.to_s)%>").replaceWith("<%= escape_javascript(render(:partial => @log)) %>");
+    var form   = $("#log_update_<%= j(@log.id.to_s) %>_form")
+    var customer = $("#logCustomerIdTracking<%= j(@log.id.to_s)%>")
+    var employee = $("#logEmployeeIdTracking<%= j(@log.id.to_s) %>")
+  <% end %>  
+<% else %>
+  <% if @log.nil? %>
+    var form	 = $(".new_log")
+    var customer = form.find("#logCustomerId")
+    var employee = form.find("#logEmployeeId")
+  <% else %>
+    var form	 = $("#log_update_<%= j(@log.id.to_s) %>_form")
+    var customer = $("#logCustomerId<%= j(@log.id.to_s)%>")
+    var employee = $("#logEmployeeId<%= j(@log.id.to_s) %>")
+  <% end %>   
+<% end %>
+<% if @todo %>
+    <% unless @todo.project.customer %>
+        customer.empty();
+        employee.empty();
+      <% if @todo.customer %> 
+        customer.append("<option value='" + "<%= j(@todo.customer.id.to_s) %>" + "'>" + "<%= j(@todo.customer.name) %>" + "</option>");
+          <% if @todo.customer.employees.empty? %>
+              employee.append("<option value=''><%= t'general.nott' %> <%= t'activerecord.models.employee.more' %></option>");
+          <% else %>
+            employee.append("<option value=''><%= t'general.select' %> <%= t'activerecord.models.employee.one' %></option>");
+            <% @todo.customer.employees.each do |employees| %>
+            employee.append("<option value='" + "<%= j(employees.id.to_s) %>" + "'>" + "<%= j(employees.name) %>" + "</option>");
+            <% end %>
+          <% end %>
+      <% else %>
+        customer.append("<option value=''>" + "<%= t'general.none' %>" + "</option>");
+        employee.append("<option value=''><%= t'general.select' %> <%= t'activerecord.models.customer.one' %></option>");
+        <% all_customers.each do |customer| %>
+          customer.append("<option value='" + "<%= j(customer.id.to_s) %>" + "'>" + "<%= j(customer.name) %>" + "</option>");
+        <% end %>
+      <% end %> 
+    <% end %> 
+<% end %>
+form.find(".searchableS").trigger("chosen:updated");
+form.find(".searchableSE").trigger("chosen:updated");
+form.find(".searchableS_tracking").trigger("chosen:updated");
+NProgress.done();

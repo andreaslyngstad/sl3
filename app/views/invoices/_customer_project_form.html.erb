@@ -1,0 +1,22 @@
+<div id="dialog_customer_form" class="dialog_form" title="<%= t'helpers.submit.create', model: Customer.model_name.human %>" style="display:none;">
+ <%= form_for(current_firm.customers.new, :url => 'invoices/customers_create', :remote => true) do |f| %>
+  <ul>
+    <li><%= f.label :name %><%= f.text_field :name, :class => "required", :minlength => "2"  %></li>
+    <li><%= f.label :phone %><%= f.text_field :phone %></li>
+    <li><%= f.label :email %><%= f.text_field :email %></li>
+    <li><%= f.label :address %><%= f.text_area :address %></li>
+    <li><%= f.submit (t'save'), :class => 'submit' %></li>
+  </ul>
+<% end %>
+</div>
+<div id="dialog_project_form" class="dialog_form" title="<%= t'helpers.submit.create', model: Project.model_name.human %>" style="display:none;">
+  <%= form_for(current_firm.projects.build, :url => 'invoices/projects_create', :remote => true) do |p| %>
+    <ul>
+      <li><%= p.label :name %><%= p.text_field :name, :class => "required"%></li>
+      <li><%= p.label :description %><%= p.text_area :description %></li>
+      <li><%= p.label :customer %><%= p.select(:customer_id, all_customers.map {|customer| [customer.name, customer.id]}, :prompt => (t'general.select') + ' ' + (t'activerecord.models.customer.one'), :class => "searchable")%></li>
+      <li><%= p.label :budget %><div id="project_budget_wrapper"><%= p.text_field(:budget)%>  <%= current_firm.currency %></div></li>
+      <li><%= p.submit (t'save'), :class => 'submit' %></li>
+    </ul>
+  <% end %>
+</div>

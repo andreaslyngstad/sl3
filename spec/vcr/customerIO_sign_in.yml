@@ -1,0 +1,451 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/1/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397423060
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:04:20 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:04:21 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/2/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397423315
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:08:35 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:08:35 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/3/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397423406
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:10:06 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:10:07 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/6/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424287
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:24:47 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:24:48 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/7/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424299
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:24:59 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:00 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/8/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424305
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:25:06 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:06 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/9/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424307
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:25:07 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:07 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/10/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424308
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:25:08 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:08 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/17/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424313
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:25:13 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:13 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/18/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424325
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:25:25 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:26 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/22/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424340
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:25:40 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:41 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/23/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424341
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:25:41 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:42 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/28/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424344
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:25:44 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:45 GMT
+- request:
+    method: post
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/29/events
+    body:
+      encoding: UTF-8
+      string: name=Signed%20in&data[date]=1397424354
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:25:55 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:25:55 GMT
+recorded_with: VCR 2.9.0

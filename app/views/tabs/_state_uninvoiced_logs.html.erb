@@ -1,0 +1,6 @@
+<% if !@klass.logs.uninvoiced.empty? %>
+<div class="hours_done_wrapper">
+  	<div class="state_headers"><%= t('economic.uninvoiced') %> <%= t('times.hour.more' )%></div>
+  	<div class="state_unit"><%= time_format(@logs_uninvoiced.to_f) %></div>
+</div>
+ <% end %>

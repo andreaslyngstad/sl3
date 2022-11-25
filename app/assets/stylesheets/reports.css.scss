@@ -1,0 +1,44 @@
+.range_select, .format_select{
+	width:195px;
+	
+}
+.report_form{
+	margin-left: 5px;
+}
+.report_form li {
+	padding: 10px 0 10px 0;	
+	width: 336px;
+}
+.right{
+	float:right;
+}
+#report_heading{
+	padding-left: 40px;
+}
+.report_table {
+	width: 980px;
+	
+}
+.report_table th{
+	text-align: left;
+	color: green;
+}
+.payments_wrapper{
+	float:left;
+	margin-left: 5px;
+
+	width: 100%;
+}
+.payments_table{
+width: 100%;
+}
+.payments_table th{
+	text-align: left;
+	color: green;
+}
+
+.report_event{width:290px; padding:5px;}
+.report_hours{width:54px;text-align:right; padding:5px; border-right: 1px solid #e5eff8}
+.report_user, .report_project, .report_customer{width:210px;padding:5px;}
+
+.report_date{width:72px;}

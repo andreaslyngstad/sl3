@@ -1,0 +1,20 @@
+<% if true  %><%# if can? :manage, project %>
+
+<li class="tab_list" id="project_<%= project.id.to_s %>">
+	<div class="tab_list_text">
+	<%= link_to truncate(project.name, :length => 80), project_path(project) %>
+	</div>
+	<div class="button_wrapper">
+		<span class='view-tabs-list' data-id="<%= project.id %>" data-object="project" title="View project" data-firm-id="<%= current_firm.id %>"></span>
+		<% if true  %><%# if can? :manage, project %>
+
+			<span class='open_project_update button edit' id="project_update" data-id="<%= project.id %>" data-object="project" title="Edit project"><%= t'edit' %></span>
+		<% end %>
+		<% if true  %><%# if can? :archive, project %>
+
+			<a class="activate_project button" id="archive_<%= project.id.to_s %>" data-object="project" data-id="<%= project.id.to_s %>"><%= t'general.archive_verb' %></a>
+		<% end %>
+	</div>
+	<div class="dialog_form" id="project_update_<%= project.id %>_form" title="<%= t('helpers.submit.update', model: Project.model_name.human) %>" style="display:none;"></div>
+</li>
+<% end %>

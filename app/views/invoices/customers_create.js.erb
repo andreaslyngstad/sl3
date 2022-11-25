@@ -1,0 +1,14 @@
+$(".flash_error").empty()
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>")
+$('#selected_customer').remove();
+$('#invoice_customer_select').after("<%= @customer = @klass; j(render 'selected_customer') %>");
+$('#dialog_customer').hide();
+$('#invoice_customer_select').hide();
+$('#invoice_customer_select').find('select').prepend('<option value="<%= j(@klass.id.to_s) %>"><%= j(@klass.name) %></option>')
+$('#invoice_customer_select').find('select').val("<%= j(@klass.id.to_s) %>");
+$(".log_list_element").show();
+$('.listing_logs_invoice_container').empty();
+$("#invoice_project_id").attr("data-other-object" ,"<%= j(@klass.id.to_s) %>")
+$("#change_customer").change_object()
+NProgress.done()

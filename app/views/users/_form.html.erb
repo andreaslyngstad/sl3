@@ -1,0 +1,17 @@
+<%= form_for(@user, :remote => true) do |f| %>
+  <ul>
+	  <li><%= f.label :name %><%= f.text_field :name , :class => "required"%> </li>
+	  <li><%= f.label :email %><%= f.text_field :email, :class => "required", :email => "true"  %></li>
+	  <li><%= f.label :password %><%= f.password_field :password, :autocomplete => "OFF" %></li>
+	  <li><%= f.label :phone %><%= f.text_field :phone %></li>
+	  <li><%= f.label :hourly_rate %><div id="money_input_wrapper"><%= f.text_field(:hourly_rate)%> <%= currency_symbol %></div> </li>
+	    <% if true  %><%# if can? :manage, current_firm %>
+	  <li>
+	  	<p><%= f.radio_button :role, 'Admin', :checked => true %> <%= f.label :admin %></p>
+	  	<p><%= f.radio_button :role, 'Member' %> <%= f.label :member %></p>
+	  	<p><%= f.radio_button :role, 'external_user' %> <%= f.label :external_user %></p>
+	  </li>
+	  	<% end %>
+	  <li><%= f.submit (t'save'), :class => "submit" %></li>
+	</ul>
+<% end %>

@@ -1,0 +1,29 @@
+ ul li{
+  list-style: none;
+    }
+.invoice_wrapper{
+  font-size: 100%; 
+  padding: 1.333cm;
+
+   box-shadow: 0 0 0px #888;
+  margin: 0 0 0 0;
+  margin-top: 0px;
+  position:relative;
+  margin-top: 0px;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  border-top: 0;
+  // border-bottom: 1px solid #000;
+  page-break-before: always;
+
+}
+.invoice_wrapper .free_lines_table tbody .invoice_line td {
+padding-top: 2%;
+height: 35px;}
+
+.invoice_table{position:absolute; width:88.5%; bottom:10px;}
+table{
+  width: 100%;
+}
+ .checking_height{float:left;}

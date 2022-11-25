@@ -1,0 +1,19 @@
+columns do
+      column do
+        panel firm.name + ": " + firm.projects_count.to_s + " projects" do
+	table_for assigns[:firm].projects do
+		column "Name", :sortable => :name do |project|
+		 link_to project.name, obeqaslksdssdfnfdfysdfxm_project_path(project)
+		end
+		column :created_at
+		column "" do |project|
+  		  links = ''.html_safe
+		  links += link_to I18n.t('active_admin.edit'), edit_obeqaslksdssdfnfdfysdfxm_project_path(project), :class => "member_link edit_link"
+		  links += link_to I18n.t('active_admin.delete'), obeqaslksdssdfnfdfysdfxm_project_path(project), :method => :delete, :confirm => I18n.t('active_admin.delete_confirmation'), :class => "member_link delete_link"
+		  links
+		end
+	end
+	end
+end
+
+end

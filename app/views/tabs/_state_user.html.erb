@@ -1,0 +1,18 @@
+<div class="state_wrapper">
+	<% if @klass.logs.sum(:hours) > 0 %>
+	<div class="hours_done_wrapper">
+		<div class="state_headers"><%= t('times.hour.more').capitalize %> <%= t('economic.total').downcase %></div>
+		<div class="state_unit" data-hours=""><%= time_format @klass.logs.sum(:hours) %></div>
+	</div> 
+	<% end %>
+  <% if @klass.todos.count >= 1 %>
+  	<div class="hours_done_wrapper">
+		<div class="state_headers"><%= t('activerecord.attributes.todo.done' ).capitalize%> <%= t('activerecord.models.todo.more' )%></div>
+		<div class="state_unit tasks_percent" data-complete="<%= @klass.todos.where(["completed = ?", true]).count %>" data-notcomplete="<%= @klass.todos.where(["completed = ?", false]).count %>"></div>
+		</div>
+	<% end %>
+	 <%= render "state_uninvoiced_logs" %>
+		<%= render "state_logs" %>
+</div>
+<%= render 'users/description' %>
+</div>

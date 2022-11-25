@@ -1,0 +1,23 @@
+<% content_for :help do %>
+<div class="page_help">
+	<div class="page_help_container">
+		<%= t "help.customers_index_html" %>
+	</div>
+</div>
+<% end %>	
+<div class="index-view">
+	<div class="list_header orange_bgr">
+		<a id="dialog_customer" data-object="customer"><%= t('helpers.submit.create', model: Customer.model_name.human) %></a>
+		<div id="dialog_customer_form" class="dialog_form" title="<%= t('helpers.submit.create', model: Customer.model_name.human) %>" style="display:none;">
+			<%= render "customers/new_form" %>
+    	</div>
+	    <div class="search">
+	        <input type="text" autofocus="autofocus" placeholder="<%= t'general.search' %>" name="search" AUTOCOMPLETE=OFF value="" id="id_search_list">
+	    </div>
+	</div>
+	<div id="cus_pro_us_listing_container">
+		<ul id="cus_pro_us_listing">
+		<%= render @customers %>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,178 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://17cd58a53c05ca61bd329b031a7063c5:@api.paymill.de/v2/subscriptions/test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 10 Jun 2013 20:22:25 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Set-Cookie:
+      - PHPSESSID=l2k2khpm9m3r0ci1v434s1rvg4; path=/
+      Expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Pragma:
+      - no-cache
+    body:
+      encoding: US-ASCII
+      string: '{"error":"Subscription not found","exception":"subscription_not_found"}'
+    http_version: 
+  recorded_at: Mon, 10 Jun 2013 20:22:25 GMT
+- request:
+    method: delete
+    uri: https://e182c1a46cfaf1b70308d973d940b970:@api.paymill.com/v2/subscriptions/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 412
+      message: Precondition Failed
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Feb 2015 11:26:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"error\":{\n\t\t\"messages\":{\n\t\t\t\"required\":\"Parameter
+        is mandatory\"\n\t\t},\n\t\t\"field\":\"Identifier\"\n\t}\n}"
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 11:26:39 GMT
+- request:
+    method: delete
+    uri: https://e182c1a46cfaf1b70308d973d940b970:@api.paymill.com/v2/clients/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 412
+      message: Precondition Failed
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Feb 2015 12:36:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"error\":{\n\t\t\"messages\":{\n\t\t\t\"required\":\"Parameter
+        is mandatory\"\n\t\t},\n\t\t\"field\":\"Identifier\"\n\t}\n}"
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 12:36:32 GMT
+- request:
+    method: delete
+    uri: https://e182c1a46cfaf1b70308d973d940b970:@api.paymill.com/v2/subscriptions/test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Feb 2015 13:13:53 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"exception\":\"subscription_not_found\",\n\t\"error\":\"Subscription
+        not found\"\n}"
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 13:13:55 GMT
+- request:
+    method: get
+    uri: https://e182c1a46cfaf1b70308d973d940b970:@api.paymill.com/v2/subscriptions/test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Feb 2015 13:17:29 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"exception\":\"subscription_not_found\",\n\t\"error\":\"Subscription
+        not found\"\n}"
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 13:17:30 GMT
+recorded_with: VCR 2.9.0

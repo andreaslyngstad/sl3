@@ -1,0 +1,7 @@
+<div class="blogs">
+<% @blogs.each do |blog| %>
+	<h2><%= link_to blog.title, blog_path(blog)%></h2>
+	<p class="author">Posted by <%= blog.author %> on <%= blog.created_at.strftime("%b %d %Y") %></p>
+	<p><%= blog.content.html_safe %></p>
+<% end %>
+</div>

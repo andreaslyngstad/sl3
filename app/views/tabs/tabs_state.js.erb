@@ -1,0 +1,30 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+var tab = $("li.active").children("a").attr("href")
+$(tab).empty().append("<%= j( render 'state_' + @klass.class.to_s.downcase )  %>")
+$(".budget_green").set_buget_width()
+$(".total_log_time").set_hours()
+//invoice
+$('.money').convert_money_field()
+$('.total_on_this').total_on_log()
+$('.invoice_table').put_total_at_bottom();
+$(".open_invoices_update").UIdialogs_edit_invoices_links();
+$('.invoice_wrapper').find('.page_counting').count_pages()
+//invoice
+$('.clock_format_setter').set_clock_format()
+$('.date_format_setter').set_date_format()
+$(".show_avatar_upload").click(function(){
+  	$(".avatar_upload").show();
+  	$(".avatar_show_page").hide();
+  	return false	
+  });
+
+  $(".hide_avatar_upload").click(function(){
+  	$(".avatar_upload").hide();
+  	$(".avatar_show_page").show();
+  	return false	
+  });
+$(".total_log_time").set_hours()
+$(".tasks_percent").countDone();
+$("#dialog_customer").UIdialogs_links();
+NProgress.done()

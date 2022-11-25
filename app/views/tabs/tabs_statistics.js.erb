@@ -1,0 +1,22 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+var tab = $("li.active").children("a").attr("href")
+<% klass = @klass.class.to_s.downcase %>
+$(tab).empty().append("<%= j( render klass + "_statistics_header")  %>")
+$(tab).append("<%= j( render "charts/index")  %>")
+$("text[x='0']").fixDateformat()	
+	var from = $(".one_month_back").data("lastmonth") 
+	var to = $(".one_month_back").data("today")
+	$("#from").val(from)
+	$("#to").val(to)
+	prepareAndCallJson()
+	$(".small_selector").chosen({width:'200px'});
+	$(".range_date_graphs").datepicker({
+		onSelect: function() {
+			prepareAndCallJson()}
+		}).attr( 'readOnly' , 'true' )
+	$("#stats").change(function() {
+		prepareAndCallJson()
+	});
+	
+NProgress.done();

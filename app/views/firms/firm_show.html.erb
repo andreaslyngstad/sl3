@@ -1,0 +1,133 @@
+<%= render "shared/home_header" %>
+<div id="left" class="home_content">
+<div class="timesheet">
+  <div class="collapse_menu">
+    <div class="pref_links_image"><%# image_tag(current_firm.logo) if !current_firm.logo.blank? %></div>
+    <div class="pref_links selected" id="account_link" data-type="account"><%= t'account_page.account' %></div>
+    <div class="pref_links" id="contact_link"  data-type="pref"><%= t'account_page.contact' %></div>
+    <div class="pref_links" id="economic_link" data-type="pref"><%= t'account_page.economic' %></div>
+    <div class="pref_links" id="formats_link" data-type="pref"><%= t'account_page.formats' %></div>
+    <div class="pref_links" id="invoicing_link" data-type="pref"><%= t'account_page.invoicing' %></div>
+    <div class="bottom_filler"></div>
+  </div>
+<div class="preferences">
+	<h2><%= current_firm.name %></h2>
+    <div class="pref_fields" id="account_link_fields">
+      <p>
+    <span class="preference_label"><%= t('general.member_since') %></span><%= date_format(current_firm.created_at.to_date) %></p>
+     <p><span class="preference_label"><%= (t'activerecord.models.plan.one').capitalize %></span><%= current_firm.plan.name %> <span style="margin-left:20px;"><%= link_to (t'edit') , plans_path%></span></p>
+    </div>
+		<%= form_for current_firm, :url => firm_update_path, :html => {:method => :put, :multipart => true }  do |firm| %>
+		<div class="pref_fields" id="contact_link_fields" style="display:none">
+      <div class="form-field">
+		    <%= firm.label :name %>
+		    <%= firm.text_field :name, :class => "required text-input", :AUTOCOMPLETE => "OFF" %>
+  		</div>
+			<div class="form-field">
+    		<%= firm.label :phone %>
+    		<%= firm.text_field :phone, :class => "text-input", :AUTOCOMPLETE => "OFF" %>
+  		</div>
+			<div class="form-field">
+		    <%= firm.label :address %>
+		    <%= firm.text_area :address, :class => "text-input", :AUTOCOMPLETE => "OFF" %>
+	    </div>
+      <div class="form-field">
+        <%# firm.label :logo %>
+        <%# firm.file_field :logo %>
+      </div>
+    </div>
+    <div class="pref_fields" id="economic_link_fields" style="display:none">
+	    <div class="form-field">
+    		<%= firm.label :bank_account %>
+    		<%= firm.text_field :bank_account, :class => "text-input", :AUTOCOMPLETE => "OFF" %>
+  		</div>
+  		<div class="form-field">
+    		<%= firm.label :vat_number %>
+    		<%= firm.text_field :vat_number, :class => "text-input", :AUTOCOMPLETE => "OFF" %>
+  		</div>
+			<div class="form-field">
+          <%= firm.label :tax %>
+          <%= firm.text_field :tax, :class => "text-input", :AUTOCOMPLETE => "OFF"%>
+      </div>
+      <div class="form-field">
+          <%= firm.label :reminder_fee %>
+          <%= firm.text_field :reminder_fee, :class => "text-input", :AUTOCOMPLETE => "OFF"%>
+      </div>
+      <div class="form-field">
+          <%= firm.label :days_to_due %>
+          <%= firm.text_field :days_to_due %>
+      </div>
+    </div>
+    <div class="pref_fields" id="formats_link_fields" style="display:none">
+    <div class="form-field">
+      <%= firm.label :language %>
+      <%= firm.select :language,  language,
+          {},  :class => "account_update_select" %>
+    </div>
+    <div class="form-field">
+      <%= firm.label :currency %>
+      <%= firm.select :currency, currency , {},  :class => "account_update_select"%>
+    </div>
+		<div class="form-field">
+    <%= firm.label :time_zone %>
+    <%= firm.time_zone_select :time_zone,  nil, {}, {:class => "account_update_select"}%>
+    </div>
+		<div class="form-field">
+			<%= firm.label :time_format %>
+			<%= firm.select :time_format, options_for_select([
+                [(t'times.hour.one').capitalize + ':' + (t'times.minute.more'), 1], [(t'times.hour.one').capitalize + '.' + (t'economic.decimal'), 2]], current_firm.time_format), {}, {:class => "account_update_select"}  %></div>
+	<div class="form-field">
+	    <%= firm.label :date_format %>
+	    <%= firm.select :date_format, options_for_select([[(t'datetime.prompts.day') + '.' + (t'datetime.prompts.month') + '.' + (t'datetime.prompts.year'), 1], [(t'datetime.prompts.month') + '/' + (t'datetime.prompts.day') + '/' + (t'datetime.prompts.year'), 2]], current_firm.date_format), {}, {:class => "account_update_select"} %>
+    </div>
+	<div class="form-field">
+	    <%= firm.label :clock_format %>
+      <%= firm.select :clock_format, options_for_select([['24 ' + (t'times.hour.more'), 1], ['12 ' + (t'times.hour.more'), 2]], current_firm.clock_format),{},:class => "account_update_select" %>
+    </div>
+    </div>
+    <div class="pref_fields" id="invoicing_link_fields" style="display:none">
+        <div class="form-field">
+            <%= firm.label :starting_invoice_number %>
+            <%= firm.text_field :starting_invoice_number, :class => "text-input-area" %>
+        </div>
+        <div class="form-field">
+            <%= firm.label :invoice_email %>
+            <%= firm.text_field :invoice_email, :class => "text-input" %>
+        </div>
+        <div class="form-field">
+            <%= firm.label :invoice_email_subject %>
+            <%= firm.text_field :invoice_email_subject, :class => "text-input" %>
+        </div>
+        <div class="form-field">
+            <%= firm.label :invoice_email_message %>
+            <%= firm.text_area :invoice_email_message, :class => "text-input-area" %>
+        </div>
+        <div class="form-field">
+            <%= firm.label :on_invoice_message %>
+            <%= firm.text_area :on_invoice_message, :class => "text-input-area" %>
+        </div>
+        <div class="form-field">
+            <%= firm.label :reminder_email_subject %>
+            <%= firm.text_field :reminder_email_subject, :class => "text-input" %>
+        </div>
+        <div class="form-field">
+            <%= firm.label :reminder_email_message %>
+            <%= firm.text_area :reminder_email_message, :class => "text-input-area" %>
+        </div>
+        <div class="form-field">
+            <%= firm.label :on_reminder_message %>
+            <%= firm.text_area :on_reminder_message, :class => "text-input-area" %>
+        </div>
+        </div>
+        <div class="form-field pref_buttons" id="pref_buttons" style='display:none'>
+  				<%= firm.submit (t'save'), :class => "submit" %>
+  			</div>
+			<% end %>
+				<div class="form-field pref_buttons" id="account_buttons">
+		      <%= link_to (t'general.upgrade') , plans_path, :class => "submit account_button"%>
+		     	<%= link_to (t'general.payments'), payments_path, :class => "submit account_button"%>
+	     	</div>
+
+</div>
+</div>
+</div>

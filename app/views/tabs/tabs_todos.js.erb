@@ -1,0 +1,30 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+var tab = $("li.active").children("a").attr("href")
+jQuery.fn.todo_pr_date_select = function(){
+		this.change(function(){
+  NProgress.start();;
+  var time = this.value
+  var url = $(this).attr("data-url");
+  var id = $(this).attr("data-id");
+  $.get("/todo_range", {time: time, url:url, id:id})
+  
+  });
+  };
+<% if @range %>
+	$("#not_done_tasks").empty().append("<%= j( render @not_done_todos)  %>")
+	$("#done_tasks").empty().append("<%= j( render @done_todos)  %>")
+  $('#range_date_fields').set_selected_value("<%= j(@time_range_first) %>", "<%= j(@time_range_last) %>" )
+	$(".todo_range_date").datepicker({ 
+		onSelect: function() {
+			$('#todo_range_form').submit();
+  		}
+  		}).attr( 'readOnly' , 'true' )		
+<% else %>
+$(tab).empty().append("<%= j( render :partial => "todos/listing_todos")  %>")
+	$(".todo_range_date").datepicker({ 
+		onSelect: function() {
+			$('#todo_range_form').submit();
+  		}
+  		}).attr( 'readOnly' , 'true' )
+<% end %>

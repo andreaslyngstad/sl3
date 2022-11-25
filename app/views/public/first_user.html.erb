@@ -1,0 +1,46 @@
+
+<div id="register_container">
+<div id="registration" class="blue">
+<p>Last step </p>
+	<span class="flash_notice" style=""><%= flash[:notice] %></span>
+	<span class="flash_notice" style="color: red;"><%= flash[:error] %></span>
+<p>This user will become a manager, but this can be changed later</p>
+</div>
+<div class="signup signup_user">
+	<%= form_for :user, :url => create_first_user_path, :html => { :class => "first_user", :id => "first_user", :multipart => true } do |f| %>
+	<div class="signup-form-field">
+		<%= f.label :name %>
+		<%= f.text_field :name, :class => "required form-input", :AUTOCOMPLETE => "OFF"%></div>
+	<div class="signup-form-field">
+	    <%= f.label :email %>
+	    <%= f.text_field :email, :class => "required form-input", :email => "true", :AUTOCOMPLETE => "OFF", :id => "user_email_reg" %>
+ 	</div>
+	<div class="signup-form-field">
+		<%= f.label :password %>
+		<%= f.password_field :password, :class => "required form-input", :minlength => "4", :AUTOCOMPLETE => "OFF", :id => "user_password_reg" %>
+  	</div>
+	<div class="not_required" style="display: none;">
+		<div class="signup-form-field">
+		    <%= f.label :phone%>
+		    <%= f.text_field :phone, :class => "form-input", :AUTOCOMPLETE => "OFF"  %>
+	  	</div>
+	  	<div class="signup-form-field">
+		    <%= f.label :hourly_rate%>
+		   	<%= f.text_field :hourly_rate %> 
+	  	</div> 
+	</div>
+	<div class="signup-form-field">
+  		<%= f.submit (t'save'), :class => "submit", :id => 'Save' %>
+  	</div>
+<% end %>
+<div class="open_not_required_container">
+    <span href="" class="open_not_required" title="Fill in not required field"></span>
+    </div>
+</div>
+<div class="instruction_1">
+	<p>The form only displays required fields.</p>
+	<p>If you are up for it now, press the arrow at the bottom to fill in more information.</p>
+	<p>You can always do this later.</p>
+	<p>By signing up you agree to Squadlink's <%= link_to "terms of service", termsofservice_url %>.</p>
+</div>
+</div>

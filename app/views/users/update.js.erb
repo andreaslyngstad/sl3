@@ -1,0 +1,9 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>");
+$("#user_<%= escape_javascript(@klass.id.to_s)%>").replaceWith("<%= j( render @klass )  %>")
+$("#user_<%= escape_javascript(@klass.id.to_s)%>").find(".open_user_update").UIdialogs_edit_links();
+$('.open_user_update').UIdialogs_edit_links();
+$(".button").button();
+$("#description").replaceWith("<%= j( render :partial => 'users/description') %>")
+NProgress.done();

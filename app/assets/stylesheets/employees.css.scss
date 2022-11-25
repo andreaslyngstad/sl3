@@ -1,0 +1,16 @@
+.employee_table{
+	width:100%;
+	float:left;
+	th{
+		color:green;
+	}
+	tbody tr:nth-child(even) {
+    background-color: #FAFDFF;
+  border-top: 1px solid #E5EFF8;
+  border-bottom: 1px solid #E5EFF8;
+  
+	}
+	.employee_table_links{
+  	width:10%;
+  }
+}

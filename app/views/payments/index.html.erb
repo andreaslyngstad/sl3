@@ -1,0 +1,34 @@
+<%= render "shared/home_header" %>
+<% content_for :help do %>
+<div class="page_help">
+	<div class="page_help_container">
+	<%= t "help.account_html" %>
+	</div>
+</div>
+<% end %>
+
+	<div class="payments_wrapper">
+	<h3>Payment history</h3>
+	<table class="payments_table">
+		<tr>
+		<th>Date</th>
+		<th>Card type</th>
+		<th>Card number</th>
+		<th>Plan</th>	
+		<th>Amount</th>
+		<th></th>
+		</tr>
+		<% @payments.each do |p| %>
+		<tr>
+		<td><%= date_format(p.created_at) %></td>
+		<td><%= p.card_type%></td>
+		<td>**** **** **** <%= p.last_four%></td>		
+		<td><%= p.plan_name %></td>	
+		<td><%= payment_currency(p) %></td>
+		<td><%=link_to 'show', payment_path(p)  %></td>
+		<td><%=link_to 'pdf', download_pdf_path(p)  %></td>
+		</tr>
+		<% end %>
+</table>
+
+</div>

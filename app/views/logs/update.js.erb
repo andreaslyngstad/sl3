@@ -1,0 +1,25 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>");
+// $(".listing_logs").find('.total_header').remove() // Should update total hours here.
+
+
+
+	if ($(".listing_logs_invoice_container").length != 0){
+		$("#log_<%= j(@klass.id.to_s)%>").replaceWith("<%= j(render(partial: "invoices/invoice_logs", locals: {log: @klass})) %>");	
+		$('.remove_log').remove_log_from_invoice()
+		$('.tax_field').change_vat()
+		$('.total_on_log').total_on_log()
+		// $('.total_on_invoice').total_on_invoice()
+	}else{
+		$("#log_<%= j(@klass.id.to_s)%>").replaceWith("<%= j(render(:partial => @klass)) %>");
+	}
+$("#log_<%= j(@klass.id.to_s)%>").css("background-color", "#DBFFDE");
+$("#log_<%= j(@klass.id.to_s)%>").find("#log_update").UIdialogs_edit_logs_links();
+
+$(".total_log_time").set_hours()
+$('.date_format_setter').set_date_format()
+$('.clock_format_setter').set_clock_format()
+$("#dialog_log").UIdialogs_links();
+$("body").find(".dialog_form:last").hide();
+NProgress.done();

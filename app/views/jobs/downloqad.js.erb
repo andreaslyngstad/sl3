@@ -1,0 +1,4 @@
+window.location.href = "<%= @java_url %>"
+$('#invoice_<%= j(@klass.id.to_s) %>').replaceWith('<%= j(render "invoices/invoice", invoice: @klass) %>')
+$('#invoice_<%= j(@klass.id.to_s) %>').css('background-color', '#DFF1F2');
+<%= render partial: "invoices/js_partial" %>

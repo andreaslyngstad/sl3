@@ -1,0 +1,9 @@
+<tr class="invoice_line">
+	<td><%= f.hidden_field :_destroy %>
+<div title="<%= t'delete' %>" class="remove_fields circle"><div class="circle-text">x</div></div></td>
+	<td><%= f.text_field :description, class: "invoice_line_description required",  data:{type: "description"}%></td>
+	<td><%= f.text_field :quantity, class: "invoice_line_quantity required", number: "true",data:{type: "quantity"}%></td>
+	<td><%= f.text_field :price, class: "invoice_line_price required", number: "true",data:{type: "price"}%></td>
+	<td><%= f.text_field :tax, value: f.object.tax.blank? ? current_firm.tax.try(:prettify) : f.object.tax.try(:prettify), class: "invoice_line_vat", data:{type: "vat"}%></td>
+	<td class="total_on_line total_on_this" data-quantity="<%= f.object.quantity %>" data-price="<%= f.object.price %>" data-vat="<%= f.object.tax.blank? ? current_firm.tax.try(:prettify) : f.object.tax.try(:prettify)%>"></td>
+</tr>

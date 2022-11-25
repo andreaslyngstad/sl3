@@ -1,0 +1,42 @@
+<div class="log_menu">
+   <div class="add_some">
+       <a id="dialog_log"><%= t('helpers.submit.create', model: Log.model_name.human) %></a>
+   </div>
+   <div id="dialog_log_form" class="dialog_form" title="<%= t('helpers.submit.create', model: Log.model_name.human) %>" style="display:none;">
+    <%= render 'logs/log_menu_form_tags' %>
+   </div>
+    <div class="view_selector" data-klass="<%=  @klass ? @klass.class : "index"  %>" data-id="<%= @klass ? @klass.id : "index"%>" data-date="<%= time_zone_now.to_date %>" data-user="<%=  @user.try(:id) %>">
+      <% if @klass %>
+      <%= link_to t("navigation.list"), timesheet_day_path( @klass ? string_for_klass(@klass) : "index" , @klass ? @klass.id : "index",time_zone_now.to_date), id: "day_link" %>
+      <% else %>
+      <%= link_to t("navigation.list"), logs_path, id: "day_link" %>
+      <% end %>
+      <% if ["Admin", "Member"].include? current_user.role %>
+      <%= link_to t('navigation.week'),  timesheet_week_path( @klass ? string_for_klass(@klass) : "index" , @klass ? @klass.id : "index",time_zone_now.to_date), id: 'week_link'%>
+      <%= link_to t('navigation.month'),  timesheet_month_path( @klass ? string_for_klass(@klass) : "index" , @klass ? @klass.id : "index",time_zone_now.to_date), id: 'month_link'%>
+      <% end %>
+    </div> 
+   <div class="range" >	   
+	    <%= form_tag('/log_range', :id => "range_form", :remote => true, method: :get) do -%>
+	    <%= hidden_field_tag "url", @klass ? @klass.class : "index"  %>
+	    <%= hidden_field_tag "id", @klass ? @klass.id : "index"%>
+	   <div id="range_date_fields">
+  		  <%= text_field_tag 'from',date_format(time_zone_now),  :class => "range_date"%>
+  			<%= text_field_tag 'to', date_format(time_zone_now), :class => "range_date"  %>
+    </div>
+		<% end %>
+   	</div>
+    
+    <div class="logs_pr_date">
+      <select class='logs_pr_date_select' id="logs_pr_date_select" data-object="log" data-url="<%= @klass ? @klass.class : "index" %>" data-id="<%= @klass ? @klass.id : "index" %>">
+           <option data-from="" data-to="" value="to_day"><%= t'times.to_day' %></option>
+           <option value="this_week"><%= t'times.this_week' %></option>
+           <option value="this_month"><%= t'times.this_month' %> </option>
+           <option value="this_year"><%= t'times.this_year' %></option>   
+           <option value="yesterday"><%= t'times.yesterday' %></option>
+           <option value="last_week"><%= t'times.last_week' %></option>
+           <option value="last_month"><%= t'times.last_month' %></option>
+           <option value="last_year"><%= t'times.last_year' %></option> 
+          </select>
+    </div> 
+</div>

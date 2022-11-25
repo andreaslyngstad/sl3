@@ -1,0 +1,55 @@
+.blue2{
+	padding:20px;
+	float:left;
+}
+.credit_card_form_holder{
+float:left;
+	width:650px;
+	border: 1px solid #999999;
+	padding:40px;
+	margin-left: 20px;
+
+  margin-top:20px;
+}
+.credit_card_form_holder .signup-form-field{
+	display: block;
+	position: relative;
+	height: 60px;
+	width: 650px;
+
+}
+.credit_card_form_holder input{
+width:355px;
+float:right;
+padding:2px; 
+font-size:20px;
+line-height: 1.2em;
+background:#fff;
+}
+.credit_card_form_holder label{
+	font-size:17px;
+	display: block;
+	float: left;
+	width: 270px;
+	line-height: 30px;
+}
+.card_expiration_right{
+	float:right;
+}
+.card_expiration_right select{
+	width: 200px;
+}
+.credit_card_form_holder .submit{
+	background:#323CED;
+	padding:10px; font-size:15px;
+	letter-spacing: 1px;
+	width: 270px;
+	float:right;
+	color: white;
+}
+.credit_card_form_holder .submit:hover{
+background:#0B16DB;
+letter-spacing: 1px;
+cursor:pointer;
+}
+.credit_card_form_holder .error_input{ border: 1px solid red}

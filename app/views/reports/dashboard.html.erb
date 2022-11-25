@@ -1,0 +1,90 @@
+<%= render "shared/home_header" %>
+<div id="left" class="home_content">
+<div class="dashboard">
+
+
+<div class="state_wrapper">
+	<% if !@tasks_overdue_and_to_day.blank? %>
+	<div class="db_state_logs">
+	  	<div class="state_headers"><%= (t'activerecord.models.todo.more').capitalize %></div>
+	  	<ul class="dashboard_tasks">	
+  <% @tasks_overdue_and_to_day.each do |todo|%>
+  <li id="db_todo_<%=todo.id%>">
+  	<div class="dashboard_row_task <% if todo.overdue %>red<% else %>green<% end %>" >
+  		<%= form_for todo, :remote => true, :html => {:id => "db_edit_done_todo_#{todo.id}"} do |f| %>
+      <div class="priority_todo <%=todo_priority(todo.prior)%>" title="Priority"></div>
+  		<%= f.check_box :completed, :class => "db_done_box", :id => todo.id %>
+	  	<% end %>
+	  	<% if todo.project %>
+	  	<%= link_to todo.name, tabs_todos_path("projects", todo.project.id ) %>
+	  	<% else %>
+	  	<%= link_to todo.name, tabs_todos_path("customers", todo.customer.id)%>
+	  	<% end %>
+  	</div> 
+  </li>
+ 
+  <%end%>
+</ul>
+	</div>
+ <% end %>
+	
+<div class="state_headers"><%= t'general.latest_activity' %></div>
+	<ul>
+	  <% @users.each do |user|%>
+	  <% if user.current_sign_in_at != nil%>
+	  <li>
+	  	<span class="db_user_name"><%= link_to user.name, user_path(user) %></span> <span style="color:green"><%= t"general.online" %></span></li>
+	  	 <%else%>
+	  	 <li><span class="db_user_name" style="color:gray; font-style:italic"><%= user.name %></span> <span style="color:#FC6868"><%= t"general.offline" %></span></li>
+	  	 <%end%>
+	  	<ul>
+	  	<% user.logs.order("log_date DESC").limit(3).each do |log| %>   
+	    <li class="db_user_logs">
+	    	<div class="db_log_header">
+	    	<span class="date_format_setter" style="font-weight:bold;" data-date="<%= log.log_date %>"><%= log.log_date %></span>|
+	  		<% if log.end_time.nil? %>
+	  			<span style=""><%=link_to( t('general.in_progress'), logs_path) %></span>
+				<% else %>
+				<div class="total_log_time in_db" data-hours="<%= log.hours %>">0:00</div><%= t'times.hour.more' %>
+					
+				<% end %>
+				</div>
+				<%= truncate(log.event , length: 40) %> 
+			</li>
+		<% end %>
+		</ul>		  
+	  <%end%>
+	</ul>
+</div>
+<div id="description">
+	<div id="dashboard_charts" style="float:left;width:600px;">	
+		<div class="state_headers dashboard_chart_display"><%=  t'dashboard.time_spent_projects' %></div><div class="state_headers dashboard_chart_display"><%=  t'dashboard.time_spent_users' %></div>  
+	<div class="one_month_back" data-lastmonth="<%= date_format(time_zone_now.to_date - 1.month) %>" data-today="<%= date_format(time_zone_now.to_date) %>"></div>
+	<div id="project_pie" class="dashboard_chart_display">	
+		<svg style="height:300px; width:300px;"></svg>
+		</div>
+	
+	<div id="user_pie" class="dashboard_chart_display">	
+		<svg style="height:300px; width:300px;"></svg>
+		</div>
+		<div class="state_headers dashboard_income_chart_display"><%=  t'dashboard.income_last_12' %></div>
+		<div id="income_stack" style="float:left;height:100px; width:600px;">	
+
+		<svg style="height:100px; width:600px;"></svg>
+		</div>
+	</div>
+	<% if !@logs_uninvoiced.blank? %>
+
+	  	<div class="state_headers"><%= t('economic.uninvoiced') %></div>
+	  	<div class="state_log"><%= time_format(@logs_uninvoiced.to_f) %> <%= t('times.hour.more' )%>, 
+	  		<%= t('economic.value' )%> <%= currency_converter(@log_worth)%></div>
+
+
+ <% end %>
+	</div>
+
+ 
+	</div>
+</div>
+</div>
+</div>

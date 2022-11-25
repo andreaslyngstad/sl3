@@ -1,0 +1,23 @@
+<li class="tab_list" id="user_<%= user.id.to_s %>">
+
+  <% if true  %><%# if can? :manage, user %>
+    <div class="tab_list_text">
+      <%= link_to truncate(user.name, :length => 80), user_path(user) %>
+    </div>
+    <div class="button_wrapper">
+      <div class="dialog_form" id="user_update_<%= user.id %>_form" title="<%= t'helpers.submit.update', model: User.model_name.human %>" style="display:none;"></div>
+      <%= mail_to user.email,(t"general.email").downcase ,:title => (t"general.email").downcase , :class => "button"%>
+      <span class='open_user_update button edit' id="user_update" data-id="<%= user.id %>" data-object="user" title="<%= t'edit' %>"><%= t'edit' %></span>
+      <%= link_to(user_path(user), data: { confirm: ( t'are_you_sure?' ) } ,:title => (t'delete'), :method => :delete, :remote => true, :class => 'delete_user') do%>
+        <span class='button'><%= t'delete' %></span>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="tab_list_text">
+      <%= truncate(user.name, :length => 80) %>
+    </div>
+    <div class="button_wrapper">
+      <%= mail_to user.email,(t"general.email") ,:title => (t"general.email"), :class => "button"%>
+    </div>
+  <% end %>
+</li>

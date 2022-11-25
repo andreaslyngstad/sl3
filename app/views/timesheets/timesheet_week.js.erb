@@ -1,0 +1,7 @@
+$('.listing_logs').empty()
+$('#dialog_log_form').empty()
+$('#dialog_log_form').append('<%= j(render "logs/log_menu_form_tags") %>')
+$('.listing_logs').append('<%= j(render "timesheet_header") %>')
+$('.listing_logs').append('<%= j(render "timesheet_table") %>')
+ready_timesheet()
+NProgress.done();

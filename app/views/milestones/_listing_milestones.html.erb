@@ -1,0 +1,19 @@
+<div class="log_menu">
+  <span class="add_some">
+    <a id="dialog_milestone" data-object="milestone"><%= t('helpers.submit.create', model: Milestone.model_name.human) %></a>
+  </span>
+  <div id="dialog_milestone_form" class="dialog_form" title="<%= t('helpers.submit.create', model: Milestone.model_name.human) %>" style="display:none;">
+      <%= form_for @klass.milestones.build, :remote => true do |n| %>
+      <%= n.hidden_field :project_id, value: @klass.id %>
+      <ul>
+      <li><%= n.label :goal %><%= n.text_area :goal, :class => "required", :minlength => "2" %></li>
+      <li><%= n.label :due %><%= n.text_field :due, :value => date_format(time_zone_now.to_date), :class => "date required", :id => "dialog_milestone_date" %>
+      </li> 
+      <li><%= n.submit (t'save'), :class => 'submit', :id => "new_milestone_submit"%></li> 
+     </ul>
+     <% end %>
+  </div>
+</div>
+<div id="listing_milestones">
+  <%= render @milestones %>
+</div>

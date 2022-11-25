@@ -1,0 +1,21 @@
+<%= form_for(@email, remote: true, url: reminder_create_path) do |f| %>
+<%= f.hidden_field :invoice_id, value: @invoice.id %>
+<%= f.hidden_field :sent, value: Date.current %>
+<ul>
+ 	<li><%= f.label :email %><%= f.text_field :address, value: @invoice.customer.email, :class => "required email", :minlength => "2"%></li>
+ 	<%= f.hidden_field :status, value: 2 %>
+ 		<li><%= f.label :subject %><%= f.text_field :subject, value: current_firm.reminder_email_subject%></li>
+	 	<li><%= f.label :content %><%= f.text_area :content, value: current_firm.reminder_email_message  %></li>
+ 	
+ 	<%= f.fields_for :reminder do |i| %>
+ 	<li><%= i.label "#{t 'economic.reminder_date'}" %> <%= i.text_field :date, :value => date_format(time_zone_now.to_date), :class => "invoice_date date", :id => "invoice_date_" %></li>
+	<li><%= i.label "#{t 'economic.invoice_due'}"  %><%= i.text_field :due, :value => date_format(time_zone_now.to_date + current_firm.days_to_due.days), :class => "invoice_due date", :id => "invoice_due_" %></li>
+		<li><%= i.label :reminder_fee %><div id="money_input_wrapper"><%= i.text_field :reminder_fee, value: current_firm.reminder_fee.try(:prettify) %> <%= currency_symbol %></div></li>
+ 		<% end %>
+ 	<li><%= f.label :attachment %></br>
+ 		<div class="file_image_container"></div>reminder_<%= current_firm.subdomain %>_<%= @invoice.number ? @invoice.number : InvoiceSender.give_invoice_number(@invoice,Invoice.last_with_number(current_firm)) %>.pdf</li>
+
+<li><%= f.submit (t'send'), :class => "submit"%></li>
+
+</ul>
+<% end %>

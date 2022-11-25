@@ -1,0 +1,13 @@
+<% if @klass.blank? %>
+	<%= render 'logs/log_top_part' %>
+<% else %>
+	<%= render @klass.class.to_s.downcase.pluralize + '/navigation_header' %>
+	<%= render 'logs/logs_menu' %>
+<% end %>
+<div id="left" class="home_content">
+	<div class="listing_logs">
+		<%= render "month_view" %>
+	</div>
+</div>
+
+	 

@@ -1,0 +1,35 @@
+<!-- <div class="log_menu">
+ <% if true  %><%# if can? :create, Firm %>
+  <div class="add_some">
+    <a id="dialog_invoice" data-object="invoice">New invoice</a>
+    <div class="dialog_form dialog_invoice_form" id="dialog_invoice_form" title="Create new invoice" style="display:none;">
+      <%= render 'invoices/form' %>
+    </div>
+  </div>
+ <% end %>
+</div>
+<div id="listing_invoices">    
+    <%= render @invoices %>
+</div>
+<div id="dialog_customer_form" class="dialog_form" title="Create new customer" style="display:none;">
+ <%= form_for(current_firm.customers.new, :remote => true) do |f| %>
+  <ul>
+    <li><%= f.label :name %><%= f.text_field :name, :class => "required", :minlength => "2"  %></li>
+    <li><%= f.label :phone %><%= f.text_field :phone %></li>
+    <li><%= f.label :email %><%= f.text_field :email %></li>
+    <li><%= f.label :address %><%= f.text_field :address %></li>
+    <li><%= f.submit 'Save', :class => 'submit' %></li>
+  </ul>
+<% end %>
+</div>
+<div id="dialog_project_form" class="dialog_form" title="Create new project" style="display:none;">
+  <%= form_for(current_firm.projects.build, :remote => true) do |p| %>
+    <ul>
+      <li><%= p.label :name %><%= p.text_field :name, :class => "required"%></li>
+      <li><%= p.label :description %><%= p.text_area :description %></li>
+      <li><%= p.label :customer_id %><%= p.select(:customer_id, all_customers.map {|customer| [customer.name, customer.id]}, :prompt => "Select customer", :class => "searchable")%></li>
+      <li><%= p.label :budget %><div id="project_budget_wrapper"><%= p.text_field(:budget)%>  <%= current_firm.currency %></div></li>
+      <li><%= p.submit 'Save', :class => 'submit' %></li>
+    </ul>
+  <% end %>
+</div> -->

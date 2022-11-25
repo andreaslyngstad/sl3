@@ -1,0 +1,17 @@
+<p>Hi, <%= @user.name %>.</p> 
+
+<p>We have not received  payment for the <%= @firm.name %> account at Squadlink. The payment is 1 month overdue.</p> 
+
+<p>Your account is reverted to a free account. This process might have caused loss of data.</p> 
+
+<p>We are really sorry about this.</p> 
+
+<p>Your account is now open, but only contains data within the free accounts limits.</p> 
+<p>Here is your sign in page</p>
+<p><%= link_to "#{@firm.subdomain}.squadlink.com", sign_in_url(subdomain:@firm.subdomain) %></p>
+
+<p>Please email us if you have any questions at <%= mail_to 'support@squadlink.com' %></p> 
+
+<p>Regards</p> 
+
+<p>Squadlink</p> 

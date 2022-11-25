@@ -1,0 +1,126 @@
+<%= render "shared/home_header" %>
+<% content_for :help do %>
+<div class="page_help">
+	<div class="page_help_container">
+		<%= t "help.plan_index_html" %>
+	</div>
+</div>
+<% end %>
+<div id="left" class="home_content">
+<table border="0" cellspacing="0" cellpadding="10" class="plans" style="float:left">
+	<tr><td></td>
+		
+	</tr>
+	<tr><th></th>
+		<% @plans.each do |plan| %>
+		<th class="<%=  current_plan_style(plan) %>"><div class="name"><%= plan.name %></div></th>
+		<% end %>
+		
+		</tr>
+		<tr><td></td> 
+		<% @plans.each do |plan| %>
+        	<td class="<%=  current_plan_style(plan) %>">
+        		<p class="price"><%=  prices_to_currency plan.price, plan.currency %></p>
+        		<p class="per_month"><%= t'general.pr_month' %></p>
+        	</td>
+
+		<% end %>	
+		<td style="text-align:left"><span class="change_price_currency_link">
+			<% if @plans.last.try(:currency) == "$" %>
+			<p><%= link_to(t("general.prices_in") + " €?", plans_path(:currency => "€")) %></p>
+			<% else %>
+			<p><%= link_to(t("general.prices_in") + " $?", plans_path(:currency => "$")) %></p>
+			<% end %>
+		</span></td>
+	</tr>
+		<tr><td class="left_column"><%= (t'activerecord.models.user.more').capitalize %></td>
+		<% @plans.each do |plan| %>
+			<% if plan.users.nil? %>
+	        	<td class="<%=  current_plan_style(plan) %>"><%= t'general.unlimited' %></td>
+	        <% else %>
+	        	<td class="<%=  current_plan_style(plan) %>"><%=  plan.users %></td>
+	        <% end %>
+		<% end %>	
+	</tr>
+	<tr><td class="left_column"><%= (t'activerecord.models.project.more').capitalize %></td>
+		<% @plans.each do |plan| %>
+			<% if plan.projects.nil? %>
+	        	<td class="<%=  current_plan_style(plan) %>"><%= t'general.unlimited' %></td>
+	        <% else %>
+	        	<td class="<%=  current_plan_style(plan) %>"><%=  plan.projects %></td>
+	        <% end %>
+		<% end %>	
+	</tr>
+	<tr><td class="left_column"><%= (t'activerecord.models.customer.more').capitalize %></td>
+		<% @plans.each do |plan| %>
+			<% if plan.customers.nil? %>
+	        	<td class="<%=  current_plan_style(plan) %>"><%= t'general.unlimited' %></td>
+	        <% else %>
+	        	<td class="<%=  current_plan_style(plan) %>"><%=  plan.customers %></td>
+	        <% end %>
+		<% end %>	
+	</tr>
+	<tr><td class="left_column"><%= (t'activerecord.models.invoice.more').capitalize %></td>
+			<% @plans.each do |plan| %>
+		<% if plan.invoices.nil? %>
+	        	<td class="<%=  current_plan_style(plan) %>"><%= t'general.unlimited' %></td>
+	        <% else %>
+	        	<td class="<%=  current_plan_style(plan) %>"><%=  plan.invoices %></td>
+	        <% end %>
+		<% end %>	
+	</tr>
+	<tr><td class="left_column"><%= (t'activerecord.models.log.more').capitalize %></td>
+		<% @plans.each do |plan| %>
+			<td class="<%=  current_plan_style(plan) %>"><%= t'general.unlimited' %></td>
+		<% end %>
+	</tr>
+
+
+	<tr><td class="left_column"><%= t'general.daily_backups' %></td>
+		<% @plans.each do |plan| %>
+			<td class="<%=  current_plan_style(plan) %>"><%= t'general.yes' %></td>
+		<% end %>
+	</tr>
+	<tr><td class="left_column"><%= t'general.ssl_encryption' %></td>
+		<% @plans.each do |plan| %>
+			<td class="<%=  current_plan_style(plan) %>"><%= t'general.yes' %></td>
+		<% end %>
+	</tr>
+	<tr><td></td>
+		<% @plans.each do |plan| %>
+			<td class="<%=  current_plan_style(plan) %>">
+				<% if current_firm.plan == plan && current_firm.plan.name != "Free"%>
+				<% if current_firm.closed %>
+					<%= link_to t("general.sign_up"), new_subscription_path(:plan_id => plan.id), :class => "submit" %>
+				<% else %>
+					<%= link_to t('general.cancel_plan'), plans_cancel_path, :class => "red_font"%>
+				<% end %>
+				<% elsif current_firm.plan == plan && current_firm.plan.name == "Free" %>
+				<a class="red_font delete_link" title="Delete Firm"><%= t("general.delete_firm") %>?</a>
+				<div class="delete_for_sure" style="display:none; background-color: #F5E6F5; padding: 10px;">
+					<p><%= t'message.are_you_really_sure' %></p>
+					<input class="subdomain_checker delete_subdomain_validation delete_validation" data-validate="<%= current_firm.subdomain %>" placeholder="<%= t('general.enter_your_subdomain') %>" ><br>
+					<input class="name_checker delete_name_validation delete_validation" style="display:none;" data-validate="<%= current_user.name %>" placeholder="<%= t('general.enter_your_name') %>" ><br>
+					<%= link_to t("general.delete_firm"), current_firm, data: { confirm: t('are_you_sure?') }, :class => "red_font delete_for_real_link delete_validation", :style => "display:none;", :title => "Delete Firm", :method => :delete %>
+	          	<% else %>	
+					<% if plan.name != "Free" %>
+	          			<%= link_to t("general.sign_up"), new_subscription_path(:plan_id => plan.id), :class => "submit" %>
+	          		<% end %>
+          		<% end %>
+          		</div>
+        	</td>
+		<% end %>
+	</tr>
+	<tr><td></td>
+	<% @plans.each do |plan| %>
+			<% if current_plan?(plan) %>
+				<td class="green"><%= t'general.current_plan' %></th>
+			<% else %>
+				<td></td>
+			<% end %>
+		<% end %>
+		</tr>
+</table>
+  <div class="clear"></div>
+</div>
+</div>

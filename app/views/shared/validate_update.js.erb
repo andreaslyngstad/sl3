@@ -1,0 +1,19 @@
+$('.flash_error').empty();
+<% if @klass %>
+var object = "<%= j(@klass.class.to_s.downcase) %>"
+var id = "<%= j(@klass.id.to_s) %>"
+<% elsif @todo %>
+var object = "<%= j(@todo.class.to_s.downcase) %>"
+var id = "<%= j(@todo.id.to_s) %>"
+<% end %>
+<% if @klass and @klass.class.to_s == "Invoice" %>
+$("#" + object + "_update_" + id + "_form").UIdialogs_invoices();
+<% else %>
+$("#" + object + "_update_" + id + "_form").UIdialogs();
+$("#" + object + "_update_" + id + "_form").children(".edit_" + object).validateWithErrors();
+$("#" + object + "_update_" + id + "_form").find(".date").datepicker();
+$("#" + object + "_update_" + id + "_form").dialog( "open" );
+$("#" + object + "_update_" + id + "_form").find(".flash_notice").empty()
+<% end %>
+$("#" + object + "_update_" + id + "_form").prepend("<%= j( render :partial => "shared/validation_error", :locals => { :object => @klass ? @klass : @todo })  %>");
+NProgress.done();

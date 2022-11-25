@@ -1,0 +1,58 @@
+<table class="timesheet_table" data-klass="<%= @klass ? @klass.class.to_s.downcase : "user" %>" data-id="<%= @klass ? @klass.id.to_s : current_user.id.to_s%>">
+<tr class="week_timesheet_header">
+	<th class="timesheet_day"></th>
+	<% @dates.each do |date|%>
+		<th class="timesheet_day">
+			<%= link_to l(date, format: :short_with_day), timesheet_day_path( @klass ? string_for_klass(@klass) : "index" , @klass ? @klass.id : "index", date) %>
+
+		</th>
+	<% end %>
+	<th class="timesheet_day" ><%= t'economic.total' %>   </th>		
+</tr>
+<% for project in @projects do %>
+<% if project_week_log_hour_total(@log_project, project) != "<span style='color:grey;'>0:00</span>" %>
+<tr class="project_hours">	
+	<td class="timesheet_project"><%= link_to truncate(project.name, length: 60, omission: "...") , project_path(project) %></td>	
+	<% @dates.each do |date| %>
+			<td class="number project_date_<%= project.id %>_<%= date %>" data-hours="<%= every_day_log_hour(@log_week_project, date, project) %>">					
+			</td>
+		<% end %>
+	<td class="project_total_<%= project.id %> total" data-hours="0"></td>
+</tr>
+<% end %>
+<% end %>
+
+<% if !@log_week_no_project.blank? %>
+<tr class="project_hours">
+	<td class="timesheet_project"><%= t'general.with_out' %> <%= (t'activerecord.models.project.one') %></td>
+<% @dates.each do |date| %>
+	<td class="number project_date__<%= date %>" data-hours="<%= every_day_log_hour_no_project(@log_week_no_project, date) %>">
+		<%= every_day_log_hour_no_project(@log_week_no_project, date)%>
+	</td>
+<% end %>
+
+<td class="project_total_ total" data-hours="0"></td>
+</tr>
+<% end %>
+<% if @user.nil? or @user == current_user %>
+<% klass = @projects.first.class.to_s.downcase %>
+<td class="timesheet_project"><%= select_tag return_symbol(@projects.first), options_from_collection_for_select(@projects, "id", "name"), 
+  		:id => "timeheet_project_select", :prompt => (t'general.select') + ' ' + (t'activerecord.models.' +  (klass != 'nilclass' ? klass : 'project') + '.one'), :data =>{klass: klass}%></td>
+<% @dates.each do |date| %>
+	<td class="number">
+<input class="form_input_cell" id="" data-date="<%= date %>" data-logid="" data-prehours="0" name="" size="3" type="text" value="<%= %>" disabled>
+		</td>
+		<% end %>	
+		<td class="number"> </td>			
+<tr>
+<% end %>
+	  <tfoot>
+	<td class="timesheet_project"><b><%= t'economic.total' %></b></td>
+	<% @dates.each do |date| %>
+			<td class="timesheet_day_total day_<%= date %>" data-hours="<%= every_day_log_hour_total(@log_week, date)%>"></td>
+		<% end %>
+	<td class="timesheet_week_total"><%= @log_total.round%></td>
+	  </tfoot>
+</tr>
+</table>
+

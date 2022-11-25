@@ -1,0 +1,597 @@
+en:
+  are_you_sure?: Are you sure?
+  delete: delete
+  edit: edit
+  save: Save
+  show: show
+  send: send
+  send_reminder: reminder
+  quicksend: quicksend
+  download: download
+  credit_note: credit
+  paid: paid
+  not_paid: not paid
+  lost: lost
+  not_lost: not lost
+  general:
+    try_again: Try again
+    sign_up: Subscribe
+    card_number: Card Nummer
+    security_code: Security Code (cvc)
+    expiration_date: Expiration Date
+    delete_firm: Delete Firm
+    cancel_plan: Cancel plan?
+    current_plan: Current plan
+    enter_your_subdomain: Enter your subdomain
+    enter_your_name: Enter your name
+    free_plan: Free plan
+    do_nothing: Do nothing
+    upgrading: upgrading
+    downgrading: downgrading
+    prices_in: Prices in
+    "yes": "yes"
+    pr_month: per month
+    unlimited: unlimited
+    daily_backups: Daily backup
+    ssl_encryption: SSL encryption
+    latest_activity: Latest activity
+    online: online
+    offline: offline
+    in_progress: in progress
+    all: All
+    was_sent: was sent
+    is_being_sent: is being sent
+    generation_of: The generation of
+    timed_out: timed out. Please try again.
+    remove_from_invoice: Remove from invoice
+    for_invoice_emails: For invoice emails
+    my_firm: My firm
+    your_firm: Your firm
+    with_out: Without
+    please_upgrade: Please upgrade
+    upgrade: Upgrade
+    payments: Payments
+    search: Search
+    subdomain: Subdomain
+    member_since: Memeber since
+    email: Email
+    nott: "no"
+    no_model: No %{model}
+    sign_out: Sign out
+    new: New
+    new_tt: New
+    create_new: Create new
+    could_not_subscribe: Could not subscribe, please try again.
+    select: Select
+    none: Not selected
+    last: Last
+    log: Log
+    project: Project
+    customer: Customer
+    employee: Employee
+    user: User
+    task: Task
+    invoice: Invoice
+    none: none
+    or: or
+    is_on: is on
+    is_not_on: is not on
+    is_active: is active
+    is_not_active: is not active
+    archive: Archive
+    archive_verb: Archive
+    open: open
+    range: Range
+    generate_report: Make report
+    format: Format
+    view_in_brower: View in browser
+    export_to_csv: Export CSV
+    export_to_excel: Export excel
+    timesheet_for: Timesheet for
+    timesheet: Timesheet
+    available: Available
+    on_this: on this
+  account_page:
+    account: Account
+    contact: Contact
+    economic: Economic
+    formats: Formats
+    invoicing: Invoicing
+  subscription:
+    thank_you_for_subscribing: Thank you for subscribing!
+    you_are_now_on_the_free_plan: You are now on the free plan
+  navigation:
+    access_denied: Access is denied.
+    your_current_role_is: Your current role is
+    you_do_not_have_permission: You do not have permission to view this page.
+    dashboard: Dashboard
+    settings: Settings
+    home: Overview
+    logs: Logs
+    list: List
+    week: Week
+    month: Month
+    projects: Projects
+    customers: Customers
+    users: Users
+    invoices: Invoices
+    statistics: Statistics
+    spendings: Spendings
+    reports: Reports
+    timesheets: Timesheets
+    account: Account
+    next: Next
+  times:
+    to_day: To Day
+    this_week: This week
+    this_month: This month
+    this_year: This year
+    yesterday: Yesterday
+    last_week: Last week
+    last_month: Last month
+    last_year: Last year
+    hour:
+      one: hour
+      more: hours
+    minute:
+      one: minute
+      more: minutes
+  economic:
+    receivable: receivable
+    value: value
+    total_hours: Total hours
+    budget: Budget
+    invoice: invoice
+    uninvoiced: Not invoiced
+    invoiced: Invoiced
+    invoice_now: Invoice now?
+    invoice_date: Invoice Date
+    reminder_date: Reminder date
+    reminder_fee: Reminder fee
+    invoice_draft: Draft
+    invoice_sent: Sent
+    invoice_due:  Due
+    invoice_overdue: Overdue
+    invoice_reminded: Reminded
+    invoice_paid: Paid
+    invoice_credit: Credited
+    invoice_lost: Lost
+    email_sent: Sent
+    email_reminder: Reminder
+    send_error: Error
+    invoice_no_number: No number
+    invoice_number: Invoice nummer
+    credit_on_invoice: Credit on invoice
+    vat_number: VAT number
+    credit_note: credit note
+    credit: Credit
+    bank_account: Bank account
+    invoice_pages: Page
+    goods: Goods
+    services: Services
+    notes: Comments (displayed on invoice)
+    notes_pub: Comments
+    vat: VAT
+    price: Price
+    quantity: Quantity
+    amount: Amount
+    description: Description
+    add_line: Add Line
+    total: Total
+    subtotal: Subtotal
+    basis: Basis
+    decimal: decimal
+  dashboard:
+    time_spent_projects: Time spent on projects last 30 days
+    time_spent_users: Time spent by users last 30 days
+    income_last_12: Income last 12 months
+  activerecord:
+    flash:
+      saved: was successfully saved
+      deleted: was deleted
+      could_not_save: could not be saved
+      nothing_to_collect: receivable is zero
+      you_are_logged_in_as: You are logged in as
+      you_cannot_delete_yourself: . You cannot delete yourself.
+    models:
+      log:
+        one: log
+        more: logs
+        other: logs
+      project:
+        the: project
+        one: project
+        more: projects
+        other: projects
+      customer:
+        one: customer
+        more: customers
+        other: customers
+      todo:
+        one: task
+        more: tasks
+        other: tasks
+      user:
+        one: user
+        other: users
+        more: users
+      invoice:
+        one: invoice
+        more: invoices
+        other: invoices
+      employee:
+        one: employee
+        more: employees
+        other: employees
+      milestone:
+        one: milestone
+        more: milestones
+        other: milestones
+      plan:
+        one: plan
+        more: plans
+        other: plans
+      subscription:
+        one: subscription
+        more: subscriptions
+        other: subscriptions
+      email:
+        other: email
+        one: email
+        more: emails
+    attributes:
+      log:
+        log: Log
+        date: Date
+        from: From
+        to: To
+        rate: Rate
+        user: User
+        project: Project
+        task: Task
+        customer: Customer
+        employee: Employee
+        done?: Done?
+        hour: Hours
+      customer:
+        name: Name
+        phone: Phone
+        email: Email
+        address: Address
+      employee:
+        name: Name
+        phone: Phone
+        email: Email
+      todo:
+        name: Name
+        priority: Priority
+        project: Project
+        customer: Customer
+        user: User
+        due: Due
+        done: Done
+        normal: Normal
+        middle: Middle
+        high: High
+      milestone:
+        goal: Goal
+        due: Due
+      user:
+        name: Name
+        phone: Phone
+        email: Email
+        role: Role
+        password: Password
+        hourly_rate: Hourly rate
+        admin: Admin (can see and edit everything)
+        member: Member(can see everything and edit projects where they are members)
+        external_user: External(can only see and edit projects where they are members)
+      project:
+        name: Name
+        description: Description
+        customer: Customer
+        budget: Budget
+      firm:
+        name: Name
+        subdomain: Subdomain
+        phone: Phone
+        address: Address
+        language: Language
+        currency: Currency
+        bank_account: Bank account
+        reminder_fee: Late fee
+        tax: VAT%
+        days_to_due: Days to due
+        time_zone: Time zone
+        time_format: Time format
+        date_format: Date format
+        clock_format: Clock format
+        invoice_email: Invoice email
+        invoice_email_subject: Invoice email subject
+        invoice_email_message: Invoice email message
+        starting_invoice_number: Starting invoice number
+        on_invoice_message: On invoice message
+        reminder_email_subject: Reminder email subject
+        reminder_email_message: Reminder email message
+        on_reminder_message: On reminder message
+      invoice:
+        receivable: Receivable
+        customer: Customer
+        project: Project
+        number: Number
+        content: Content
+        firm: Firm
+        status: Status
+        reminder_sent: Reminded
+        due: Due
+        total: Total
+        date: Date
+        discount: Discount
+        currency: Currency
+        subject: subject
+        invoice_date: Invoice date
+        invoice_due: Due
+        sent: Sent
+        change: change
+      invoice_lines:
+        quantity: Quantity
+        description: Description
+        price: Price
+        amount: Amount
+        tax: Tax
+        invoice: Invoice
+      email:
+        was_sent: was sent.
+  help:
+   account_html: <h2>Account settings</h2>
+                 <p>You can see and change you account settings.</p>
+                 <p>By clicking on the "Subscription" button, you can upgrade or downgrade you plan.</p>
+                 <p>Click on the "Edit Preference" button to change settings.</p>
+   statistics_html:  <h2>Statistics</h2>
+                  <p>You can see statistics for users, projects and customers in a selected time frame, presented in charts.</p>
+
+   plan_index_html: <h2>Your plan.</h2>
+                    <p>You can upgrade or downgrade your plan at any time.
+                    <p>Payments are done up front each month and there is no refunds. If you change your subscription to a
+                      different plan, the old subscription gets canceled and the new starts. But, the monthly payment for the old subscription is not refunded.</p>
+                    <p>Be aware if you downgrade!</p>
+                    <p>If you, for instance want to change from GOLD to BRONZE and have 62 projects, the 12 oldest projects will be deleted.</p>
+   logs_index_html: <h2>Tracking logs</h2>
+                    <p>Your logs are listed here and you can make new logs.</p>
+                    <p>You can log your time in two ways.</p>
+                    <ul><li>1. Write what you are working on and click on the green arrow. When you stop working click on the stop button.
+                           You can click on the small grey arrow add more details about the log.</li><li>2. You can also add logs by clicking on the "Add log" button.</li>
+                    </ul>
+                    <p>Tip; If you want to find logs on a particular project or customer, go to the project or customer and click on the logs tab.</p>
+   timesheets_html:  <h2>Timesheet use.</h2>
+                      <p>You can add hours to a project by selecting it on the left side and type in hours on the various days.
+                      You enter not whole hours in two ways
+                      <ul>
+                        <li>1. If you use a colon like this "2:32". The digits after the colon will
+                      be interpered as minutes.</li>
+                        <li>2. You can use a period like this "2.32" for desimals. In this case the time will be 2 hours and 19 minutes.
+                      </ul>
+                      For every entry to the timesheet, a log is created with the event "Added on timesheet". Just edit the log if you need corrections.
+                      </p>
+
+   customers_index_html:  <h2>Customers</h2>
+                          <p>Here you can see all your customers</p>
+                          <p>Search by typing in the search box</p>
+                          <p>You can email, edit or delete the customers</p>
+                          <p>By clicking on the customers name, you'll go to that customers page</p>
+   projects_index_html:  <h2> Projects</h2>
+                          <p>Here you can see all your projects</p>
+                          <p>Search by typing in the search box</p>
+                          <p>You can edit or archive the projects</p>
+                          <p>By clicking on the project name, you'll go to that projects page</p>
+   projects_show_html:    <h2>The project page</h2>
+                          <p>Here you can see information about your project</p>
+                          <p>By clicking on the tabs, you'll see tasks, logs, milestones and users that are associated to this project</p>
+                          <p>You can also create, edit and delete the assosiated objects, except on the users tab</p>
+                          <p>On the users tab you can decide what users you want on this project by dragging them over to the "Squad on this project" box</p>
+                          <p>By dragging them back to the "Available squaders" box you'll remove them from this project</p>
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%B %d, %Y'
+      short: ! '%b %d'
+      month_n: ! '%B %Y'
+      short_with_day: ! '%a %b %d'
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} hours
+      about_x_months:
+        one: about 1 month
+        other: about %{count} months
+      about_x_years:
+        one: about 1 year
+        other: about %{count} years
+      almost_x_years:
+        one: almost 1 year
+        other: almost %{count} years
+      half_a_minute: half a minute
+      less_than_x_minutes:
+        one: less than a minute
+        other: less than %{count} minutes
+      less_than_x_seconds:
+        one: less than 1 second
+        other: less than %{count} seconds
+      over_x_years:
+        one: over 1 year
+        other: over %{count} years
+      x_days:
+        one: 1 day
+        other: ! '%{count} days'
+      x_minutes:
+        one: 1 minute
+        other: ! '%{count} minutes'
+      x_months:
+        one: 1 month
+        other: ! '%{count} months'
+      x_seconds:
+        one: 1 second
+        other: ! '%{count} seconds'
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      week: Week
+      second: Seconds
+      year: Year
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      confirmation: doesn't match confirmation
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      record_invalid: ! 'Validation failed: %{errors}'
+      over_limit: Your plan only allows %{count} %{model}
+      validates_presence_of_legal_attributes: You need to provide your bank account number or/and vat number in your account.
+      credit_note_less_than_invoice: Credit note total is greater than the receivable amount of the invoice.
+      firm_is_secure: Users firm is not equal to the intance firm
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+    template:
+      body: ! 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: ! '%{count} errors prohibited this %{model} from being saved'
+  helpers:
+    select:
+      prompt: Please select
+    submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
+      send: Send %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u%n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', and '
+      two_words_connector: ! ' and '
+      words_connector: ! ', '
+  time:
+    am: am
+    formats:
+      default: ! '%a, %d %b %Y %H:%M:%S %z'
+      long: ! '%B %d, %Y %H:%M'
+      short: ! '%d %b %H:%M'
+    pm: pm

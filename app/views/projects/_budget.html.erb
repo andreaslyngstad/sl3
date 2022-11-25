@@ -1,0 +1,9 @@
+<div class="budget">
+  <% if @klass.budget %>
+  <div class="state_headers"><%= t('economic.budget') %></div>
+  <div class="state_unit">
+    <div class="budget_green" data-procent="<%= ProjectPrice.set_procentage(@klass)%>" data-budget="<%= @klass.budget %>"></div>
+    <div class="budget_red"></div>
+  </div> 
+  <% end %>
+</div>

@@ -1,0 +1,5 @@
+$('.listing_invoices > tbody:last').prepend("<%=j(render(@klass)) %>");
+$('#invoice_<%=j(@klass.id.to_s) %>').css("background-color", "#DBFFDE");
+$('body').append('<%= j(render "form_holder", invoice: @klass) %>')
+<%= render "js_partial" %>
+

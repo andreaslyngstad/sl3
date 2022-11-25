@@ -1,0 +1,17 @@
+<div id="register_container">
+	<div id="registration" class="blue">
+		<span class="flash_notice" style="color: #87E32B;"><%= flash[:notice] %></span>
+		<span class="flash_notice" style="color: red;"><%= flash[:error] %></span>
+		<p>You'll be up and running in two small steps!</p>
+		<p>First step.</p>
+		<p>Create your firms account.</p>
+	</div>
+	<%= render :partial => "public/register_form"%>
+	<div class="instruction_1">
+		<p>The form only displays required fields.</p> 
+		<p>If you are up for it now, press the arrow at the bottom to fill in more information.</p>
+		<p>You can always do this later.</p>
+		<p>You are signing up for a free plan. You can upgrade later.</p>
+		<p>By signing up you agree to Squadlink's <%= link_to "terms of service", termsofservice_url %>.</p>
+	</div>	
+</div>

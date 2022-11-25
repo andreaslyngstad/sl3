@@ -1,0 +1,17 @@
+<div class="log_menu">
+ <% if true  %><%# if can? :create, Project %>
+  <div class="add_some">
+    <a id="dialog_project" data-object="project"><%= t('helpers.submit.create', model: Project.model_name.human) %></a>
+    <div id="dialog_project_form" class="dialog_form" title="<%= t('helpers.submit.create', model: Project.model_name.human) %>" style="display:none;">
+      <%= render 'projects/form' %>
+    </div>
+  </div>
+ <% end %>
+</div>
+<div id="listing_projects">    
+  <div class="info" >
+    <div class="name_todo info_head"><%= t'activerecord.attributes.project.name' %></div>
+    <div class="project_desc info_head"><%= t'activerecord.attributes.project.description' %></div>
+	</div>
+    <%= render @projects %>
+</div>

@@ -1,0 +1,11 @@
+$('.flash_error').empty();
+var object = "<%= j(@invoice.id.to_s) %>"
+form = $("#credit_note_" + object + "_form")
+form.UIdialogs_invoices();
+form.find(".date").datepicker("hide")
+form.prepend("<%= j( render :partial => "shared/validation_error", :locals => { :object =>@invoice})  %>");
+// form.find(".date").datepicker();
+form.dialog( "open" );
+
+form.find("#invoice_content").focus()
+NProgress.done();

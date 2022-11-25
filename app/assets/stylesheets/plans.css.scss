@@ -1,0 +1,72 @@
+.plans {
+	a.red_font{
+		color: red;
+	}
+  	td {
+    width: 300px;
+    text-align: center;
+    
+	}
+  	td.left_column {
+   
+    text-align: left;
+    
+	}
+	td.sub_1{
+		background-color: #DFE5FF;
+	}
+	th.sub_1{
+		background-color: #DFE5FF;
+	}
+    .name {
+    text-align:center;
+  
+    }
+    .details {
+      padding-top: 5px;
+      border: solid 1px #8D8D8D;
+      background-color: #E8F4FD;
+      border-top: none;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      -webkit-border-bottom-left-radius: 5px;
+      -webkit-border-bottom-right-radius: 5px;
+      -moz-border-radius-bottomleft: 5px;
+      -moz-border-radius-bottomright: 5px;
+    }
+    .price {
+      font-size: 30px;
+      margin-bottom: 0px;
+    }
+    .per_month {
+    	margin-top: 0px;
+      font-size: 12px;
+      margin-bottom: 10px;
+      color: #5E5E5E;
+    }
+    .kisses {
+      font-size: 18px;
+    }
+    .signup {
+      margin: 20px;
+      a {
+        font-size: 13px;
+        padding: 5px 10px 6px 10px;
+        font-weight: bold;
+        border: 1px solid #2A7531;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        color: #FFF;
+        background: #328039;
+        background: -webkit-gradient(linear, left top, left bottom, from(#56D854), to(#328039));
+        background: -moz-linear-gradient(top,  #56D854,  #328039);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#56D854', endColorstr='#328039');
+        text-decoration: none;
+        text-shadow: 0 -1px 0 #036;
+      }
+    }
+  .delete_validation{
+    margin:10px;
+  }
+  }

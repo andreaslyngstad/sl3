@@ -1,0 +1,246 @@
+<% @klass.due_today_or_overdue %>
+<div class="invoice_wrapper" id="invoice_wrapper0">
+	<% if request.original_url.include?('Invoice')%>
+	<span class="stamp" style="color:<%= @klass.status_string[0] %>"><%= @klass.status_string[1] %></span>
+	<% end %>
+	<div class="checking_height active_height">
+		<%= render :partial => "invoices/invoice_header.html.erb", :locals => {:klass => @klass} %>
+<div class="on_what">
+	
+	<% if !@klass.content.blank?  %>
+		
+		<%= simple_format(@klass.content)%>	
+		
+	<% end %>
+	<% if !@klass.invoice_lines.blank? %>
+	
+	<div class="free_lines_table_print_container">
+	<span class="invoice_print_sub_header"><%= (t'economic.goods').capitalize %></span>	
+	<table class="free_lines_table" >
+		<thead>
+		<tr>
+			<td class="invoice_print_description"><%= t "economic.description" %></td>
+			<td><%= t "economic.quantity" %></td>
+			<td><%= t "economic.price" %></td>
+			<td><%= t "economic.vat" %>%</td>
+			<td style="text-align: right;"><%= t "economic.amount" %></td>
+		</tr>
+		</thead>
+		<tbody>
+		<% @klass.invoice_lines.each do |invoice_line| %>
+			<tr class="invoice_line line">
+				<td><%=  invoice_line.description %></td>
+				<td class="align_right"><%=  invoice_line.quantity.try(:prettify) %></td>	
+				<td class="align_right money" data-value=""><%=  currency_converter(invoice_line.price.try(:prettify).to_s) %></td>	
+				<td class="align_right"><%=  invoice_line.tax.try(:prettify) %></td>	
+				<td class="total_on_line total_on_this align_right" data-quantity="<%=  invoice_line.quantity %>" data-price="<%=  invoice_line.price %>" data-vat="<%=  invoice_line.tax.try(:prettify) %>"><%= currency_converter(invoice_line.total_price) %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+	</div>
+
+<% end %>
+<% if !@logs.blank? %>
+
+	<div class="listing_logs_invoice_container">
+			<span class="invoice_print_sub_header"><%= (t'economic.services').capitalize %></span>
+			<div class="invoice_header_log">
+				<div class="log_user"><%= (t "activerecord.models.user.one").capitalize %></div>
+				<div class="event_on_log_invoice"><%= t "economic.description" %></div>
+				<div class="hour_price_log_invoice"><%= t "economic.price" %></div>
+				<div class="date_and_times_on_log_header"><%= (t "times.hour.more").capitalize %></div>
+				<div class="tax_field_invoice"><%= t "economic.vat" %>%</div>
+				<div class="total_invoice_header"><%= t "economic.amount" %></div>
+		</div>
+		<% @logs.each do |log| %> 
+		<div class="invoice_line log">
+			<div class="log_user"><b><%= log.user.name %></b></div>
+			<div class="event_on_log_invoice">
+		  <%= simple_format(log.event, class: 'log_event_paragraf') %><br/>
+		    <div class="pro_tod_cus_emp_on_log">
+		  	<div class="pro_tod_on_log">
+		  		
+		  	</div>
+		  	<div class="cus_emp_on_log">
+		  	
+		  	</div>
+		  </div> 
+		  </div>
+		 
+		  <div class="hour_price_log_invoice money" data-value="<%= log.rate %>">
+		  	<%= currency_converter(log.rate) %>
+		  </div>
+		  <div class="date_and_times_on_log_print" >
+		    <div><%= date_format(log.log_date )%></div>
+		    <div><%= clock_format(log.begin_time) %></div><div>-</div><div><%= clock_format(log.end_time) %></div>
+		    <div class="total_log_time_print"><%= time_format(log.hours) %></div>  
+		  </div>
+			<div class="tax_field" id="logs_attributes_<%= log.id %>_tax"><%= log.tax.prettify %></div>
+			<div class="total_on_log total_on_this" data-price="<%= log.rate %>" data-quantity="<%= (log.hours/3600).prettify %>" data-vat="<%= log.tax.prettify %>"><%= currency_converter(log.total_price) %></div>
+			</div>
+		<% end %>
+  </div>
+
+<% end %>
+</div>
+<div class="invoice_table">
+
+	<div id="dialog_invoice_form">
+<% if @klass.status == 10  %>
+		<table>
+		
+		<tr class="total_line_reminder">
+			<td class="cell_1">
+				
+			</td>
+			<td class="cell_2">
+				<%= t "economic.invoice_number" %>
+			</td>
+			<td class="cell_3">
+				<%= t "economic.invoice_due" %>
+			</td>
+			<td class="cell_4">
+				
+			</td>
+		</tr>	
+		
+		<tr class="total_line_reminder">
+				<td class="cell_1">
+				<%= t "economic.invoice_overdue" %> <%= (t "economic.invoice").capitalize %>
+			</td>
+			<td class="cell_2">
+				<%= @klass.reminder_on.number %>
+			</td>
+			<td class="cell_3">
+				<%= date_format(@klass.reminder_on.due) %>
+			</td>
+			<td></td>
+			<td class="cell_5 total_on_invoice">
+				<%= currency_converter(@klass.reminder_on.total) %>
+			</td>
+		</tr>	
+		<tr class="total_line_reminder">
+				<td class="cell_1">
+				<%= (t "economic.reminder_fee").capitalize %>
+			</td>
+			<td class="cell_2">
+			
+			</td>
+			<td class="cell_3">
+			</td>
+			<td></td>
+			<td class="cell_5 total_on_invoice">
+				<%= currency_converter(@klass.reminder_fee) %>
+			</td>
+		</tr>	
+		<tr class="total_line">
+				<td class=""><%= t "economic.total" %></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="cell_5 total_on_invoice"><%= currency_converter(@klass.total) %></td>	
+
+		</tr>	
+	</table>
+
+		<% else %>
+	
+	<table>
+		<tr class="subtotal_invoice">
+				<td class="cell_1"><%= t "economic.subtotal" %></td>
+				<td class="cell_2"></td>
+				<td class="cell_3"></td>
+				<td class="cell_4"></td>
+				<td class="cell_5 subtotal_on_invoice"><%= currency_converter(@klass.subtotal) %></td>
+		</tr>	
+		<tr class="invoice_vat_head">
+			<td class="cell_1">
+				<%= t "economic.vat" %>%
+			</td>
+			<td class="cell_2">
+				<%= t "economic.basis" %>
+			</td>
+			<td class="cell_3">
+				<%= t "economic.vat" %>
+			</td>
+			<td class="cell_4">
+				<%= t "economic.total" %>
+			</td>
+		</tr>	
+		<% @klass.tax_lines.each do |procent,total_val| %>
+		<tr class="invoice_vat_line">
+				<td class="cell_1">
+				<%= procent %>%	
+			</td>
+			<td class="cell_2">
+				<%= currency_converter(total_val/(1 + (procent/100))) %>
+			</td>
+			<td class="cell_3">
+				<%= currency_converter((total_val/(1 + (procent/100))*(procent/100))) %>
+			</td>
+			<td class="cell_4">
+				<%= currency_converter(total_val)%>
+			</td>
+		</tr>	
+		<% end %>
+		<tr class="total_line">
+				<td class=""><%= t "economic.total" %></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="cell_5 total_on_invoice"><%= currency_converter(@klass.total) %></td>	
+
+		</tr>	
+	</table>
+	<% end %>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+<div class="invoice_template" id="" style="display:none">
+	<div class="checking_height">
+		<%= render :partial => "invoices/invoice_header.html.erb", :locals => {:klass => @klass}%>
+<div class="on_what">
+	
+	<div class="free_lines_table_print_container" style="display:none;">
+		<span class="invoice_print_sub_header"><%= (t'economic.goods').capitalize %></span>	
+	<table class="free_lines_table">
+		<thead>
+		<tr>
+			<td class="invoice_print_description"><%= t "economic.description" %></td>
+			<td><%= t "economic.quantity" %></td>
+			<td><%= t "economic.price" %></td>
+			<td><%= t "economic.vat" %>%</td>
+			<td style="text-align: right;"><%= t "economic.amount" %></td>
+		</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	</div>
+
+
+	<div class="listing_logs_invoice_container" style="display:none;">
+			<span class="invoice_print_sub_header"><%= (t'economic.services').capitalize %></span>
+			<div class="invoice_header_log">
+				<div class="log_user"><%= (t'activerecord.models.user.one').capitalize %></div>
+				<div class="event_on_log_invoice"><%= t "economic.description" %></div>
+				<div class="hour_price_log_invoice"><%= t "economic.price" %></div>
+				<div class="date_and_times_on_log_header"><%= (t'times.hour.more').capitalize %></div>
+				<div class="tax_field_invoice"><%= t "economic.vat" %>%</div>
+				<div class="total_invoice_header"><%= t "economic.amount" %></div>
+		</div>
+  </div>
+
+</div>
+</ul>
+<div class="invoice_table">
+</div>
+</div>
+</div>

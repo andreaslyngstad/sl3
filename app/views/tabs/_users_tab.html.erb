@@ -1,0 +1,30 @@
+<div id="users_list_header">
+	<div class="members_header">
+		<%= (t'activerecord.models.user.more').capitalize %> <%= t'general.on_this' %> <%= t'activerecord.models.project.one' %>
+	</div>
+	<% if true  %><%# if can? :manage, @klass %>
+		<div class="not_members_header">
+		<%= t'general.available' %> <%= t'activerecord.models.user.more' %>
+		</div>
+	<% end %>
+</div>
+  <div id="users_list">
+    <div id="members" class="droppable members">
+    	<% @members.each do |user| %>
+    	<div class="user_info edit white draggable member" id="user_<%=user.id%>" user_id="<%=user.id%>" project_id="<%= @klass.id %>"> 
+        <%= image(user, "image64") %>
+        <%= user.name %>
+      </div>
+      <% end %>
+    </div>
+    <% if true  %><%# if can? :manage, @klass %>
+      <div id="not_members" class="droppable">
+      <% @not_members.each do |user| %>
+      	<div class="user_info edit white draggable not_member" id="user_<%=user.id%>" user_id="<%=user.id%>" project_id="<%= @klass.id %>"> 
+       	<%= image(user, "image64") %>
+       	<%= user.name %>
+        </div> 
+      <% end %>
+      </div>
+    <% end %> 
+</div>

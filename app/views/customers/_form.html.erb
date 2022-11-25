@@ -1,0 +1,9 @@
+<%= form_for(@customer, :remote => true) do |f| %>
+<ul>
+   <li><%= f.label :name %><%= f.text_field :name, :class => "required customer_edit_name", :minlength => "2", :id => "customer_name_#{@customer.id}"  %></li>
+   <li><%= f.label :phone %><%= f.text_field :phone %></li>
+   <li><%= f.label :email %><%= f.text_field :email %></li>
+   <li><%= f.label :address %><%= f.text_area :address %></li>
+   <li><%= f.submit (t'save'), :class => 'submit', :id => "customer_edit_submit" %></li>
+</ul>
+<% end %>

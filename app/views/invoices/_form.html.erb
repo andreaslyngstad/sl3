@@ -1,0 +1,110 @@
+<%= form_for(@invoice, :remote => true) do |f| %>
+<ul>
+	<li>
+		<table class="customer_project_invoice_dates">
+		<tr>
+			<td class="customer_project_td">
+				<% if @invoice.id.nil? %>
+				<span id="invoice_customer_select"><%= f.select(:customer_id, current_firm.customers.order_by_name.map {|customer| [customer.name, customer.id]}, {include_blank: (t'general.select') + ' ' + (t'activerecord.models.customer.one')}, data: {object: "customer", invoice: @invoice.id }, )%> <br/>
+				<%= t('general.or') %>
+				<br/></span>
+				<a id="dialog_customer" data-object="customer"><%= t'helpers.submit.create', model: Customer.model_name.human %></a>
+				<% else %>
+				<%= hidden_field(@invoice, :customer_id, value: @invoice.customer.id) %>
+				<span id="">
+						<%= @invoice.customer.name %><br/>
+						<%= @invoice.customer.try(:email) %><br/>
+						<%= simple_format(@invoice.customer.try(:address), class: 'log_event_paragraf') %><br/>
+				</span> 
+				<% end %>
+			</td>
+			<td class="customer_project_td">
+				<%# <span id="invoice_project_select"><%= f.select(:project_id, current_user.firm.projects.map {|project| [project.name, project.id]}, {:prompt => (t'general.select') + ' ' + (t'activerecord.models.project.one')}, data: {object: "project", invoice: @invoice.id}) %>
+				<%#	<br/><%= t('general.or') %>
+				<%#<br/> </span><a id="dialog_project" data-object="project"><%= t'helpers.submit.create', model: Project.model_name.human %>	
+				<%#</a>%>
+			</td> 
+	<td id="dates_labels_td">
+		<%= f.label "#{t 'economic.invoice_date'}" %><br>
+		<%= f.label "#{t 'economic.invoice_due'}"  %>
+	</td>		
+  <td id="dates_td">
+  	<% if @invoice.id == nil %>
+	<%= f.text_field :date, :value => date_format(time_zone_now.to_date), :class => "invoice_date date", :id => "invoice_date_" %>
+	<%= f.text_field :due, :value => date_format(time_zone_now.to_date + current_firm.days_to_due.days), :class => "invoice_due date", :id => "invoice_due_" %>
+	<% else %>
+	<%= f.text_field :date, :value => date_format(@invoice.date), :class => "invoice_date date", :id => "invoice_date_" + @invoice.id.to_s %>
+	<%= f.text_field :due, :value => date_format(@invoice.due), :class => "invoice_due date", :id => "invoice_due_" + @invoice.id.to_s %>
+	<% end %>
+</td>
+		</tr>
+	</table>
+</li>
+<li>
+	<div>
+	<%= f.label "#{t 'economic.notes'}" %>
+	<% if  @invoice.content.nil? %>
+	<%= f.text_area :content, value: current_firm.on_invoice_message%>
+	<% else %>
+	<%= f.text_area :content%>
+	<% end %>	
+	</div>
+	<%= link_to_add_fields "#{t 'economic.add_line'}", f, :invoice_lines %>
+	<div class="free_lines_table_container" style="display:none;">
+	<table class="free_lines_table">
+		<tr>
+			 <td></td>
+				<td><%= t "economic.description" %></td>
+				<td><%= t "economic.quantity" %></td>
+				<td><%= t "economic.price" %></td>
+				<td><%= t "economic.vat" %></td>
+				<td style="text-align: right;"><%= t "economic.amount" %></td>
+		</tr>
+		<%= f.fields_for :invoice_lines do |invoice_line| %>
+			<%= render "invoices/invoice_line_fields", f: invoice_line  %>	
+		<% end %>
+	</table>
+	</div>
+</li>
+<li class="log_list_element">
+	<div class="listing_logs_invoice_container">
+		<%= render partial: "invoices/logs_list", locals: {logs: @invoice.logs, invoice: @invoice} %>
+	</div>	
+</li>
+<li>
+	<table class="invoice_table">
+		<tr class="subtotal_invoice">
+				<td class="cell_1"><%= t "economic.subtotal" %></td>
+				<td class="cell_2"></td>
+				<td class="cell_3"></td>
+				<td class="cell_4"></td>
+				<td class="cell_5 subtotal_on_invoice"></td>
+		</tr>	
+		<tr class="invoice_vat_head">
+			<td class="cell_1">
+				<%= t "economic.vat" %>%
+			</td>
+			<td class="cell_2">
+				<%= t "economic.basis" %>
+			</td>
+			<td class="cell_3">
+				<%= t "economic.vat" %>
+			</td>
+			<td class="cell_4">
+				<%= t "economic.total" %>
+			</td>
+		</tr>	
+		<tr class="total_line">
+				<td class=""><%= t "economic.total" %></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="cell_5 total_on_invoice"></td>	
+				<%= f.hidden_field :total, class: 'total_hidden_field' %>
+		</tr>	
+	</table>
+
+</li>
+	<li><%= f.submit (t'save'), :class => 'submit', :id => "new_invoice_submit" %></li>
+</ul>
+ <% end %>

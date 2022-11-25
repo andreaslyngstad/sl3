@@ -1,0 +1,24 @@
+$("#todo_<%= j( @todo.id.to_s) %>").remove();
+$("#roster_todo_<%= j( @todo.id.to_s) %>").remove();
+<% if @todo.completed == true %>
+if ($("#not_done_tasks").data() !== null ){
+	
+	 $("#done_tasks").append("<%= j(render(:partial => @todo)) %>");
+} 
+
+
+$(".open_todo_update").UIdialogs_edit_links();
+$("#dialog_todo").UIdialogs_links();
+$("#dialog_todo_form").UIdialogs();
+<% else %>
+if ($("#not_done_tasks").data !== null ){
+$("#not_done_tasks").append("<%= escape_javascript(render(:partial => @todo)) %>");
+} 
+$(".roster_tasks").empty();
+$.getScript("/roster_task")
+$(".open_todo_update").UIdialogs_edit_links();
+$("#dialog_todo").UIdialogs_links();
+$("#dialog_todo_form").UIdialogs();
+<% end %>
+$('.date_format_setter').set_date_format()
+NProgress.done();

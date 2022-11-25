@@ -1,0 +1,163 @@
+/*timesheet begin*/
+.timesheet{
+float: left;
+
+}
+.timesheet_for_user{
+	text-align:right;
+	padding: 10px;
+}
+.add_some_timesheet{ 
+  float: left;
+}
+.add_some_timesheet_buttons{
+float: left;
+width: 101px;
+}
+.month_week_buttons{
+	margin-bottom:4px;
+	float: left;
+}
+
+
+#month_week_tabs{
+	border-bottom: 1px solid #E5EFF8;
+	height:42px;
+	text-align:right;
+	}
+
+#month_week_tabs .content-wrapper {
+	padding:0px;
+	}
+#month_week_tabs ul{
+padding:14px 17px 0px;
+overflow: hidden;
+-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+-webkit-padding-start: 40px;
+margin: 0px;
+}
+#month_week_tabs ul li {
+	display: inline-block;
+	height:29px;
+	margin-right:7px;
+}
+#month_week_tabs ul li a {
+    background:#dddddd;
+    border-color:#E5EFF8;
+    border-style:solid;
+    border-width:1px 1px 0;
+    display:block;
+    color:#555;
+    font-size:12px;
+    
+    height:27px;
+    line-height:27px;
+    padding:0 12px;
+    
+}
+#month_week_tabs ul li a:hover {
+	border-top:1px solid #aaa;
+	border-left:1px solid #aaa;
+	border-right:1px solid #aaa;
+	background:#ccc;
+	color:#212121;
+	text-decoration:none
+}
+#month_week_tabs ul li a.current_link,#month_week_tabs ul li a.current_link_date {
+	background:#fff !important;
+	border:1px solid #E5EFF8;
+	border-bottom:1px solid #fff !important;
+	color:#222 !important;
+	
+
+}
+
+#timesheet_log_menu{
+float:left;
+
+width:970px;
+padding:0px 5px 0px 0px;
+background:#FFFFFF;
+
+}
+#timesheet_log_listing_wrapper{
+	float: left;
+	border-top:1px solid #e5eff8;
+	padding-top:10px;
+	margin-top:7px;
+	margin-bottom: 100px;
+}
+table.timesheet_table {
+width:980px;
+margin-top:7px;
+float: left;
+border-collapse:collapse;
+ tr{
+ 	border-bottom: 1px solid #F0F5FA;
+ }
+}
+table.timesheet_table td {
+padding:.3em 0em;
+
+}
+
+
+table.timesheet_table tr td.number, 
+table.timesheet_table tr td.total, 
+table.timesheet_table tr td.timesheet_day_total,
+table.timesheet_table tr td.timesheet_week_total {
+text-align:center;
+vertical-align: middle;
+// padding: 8px 5px 8px 0;
+}
+table.timesheet_table tbody tr td.number input {
+border: 1px solid #CCC;
+padding: 5px 2px;
+width: 50px;
+line-height: 1em;
+color: #666;
+font-size: 18px;
+font-weight: bold;
+margin: 0px;
+
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+-o-border-radius: 3px;
+-ms-border-radius: 3px;
+-khtml-border-radius: 3px;
+border-radius: 3px;
+text-align: right;
+}
+
+table.timesheet_table .timesheet_day {
+	text-align: center;
+	font-size: .8em;
+	
+}
+.go_to_day_link{
+		cursor:pointer;
+	}
+.go_to_day_link:hover{
+		text-decoration: underline;
+	}
+td.timesheet_project{
+text-align:left;
+font-size: .8em;  
+}
+table.timesheet_table .timesheet_day{
+// padding:10px 0 10px 0;
+}
+table.timesheet_table .timesheet_project{
+width: 100px;
+}
+#timeheet_project_select, #timeheet_user_select{
+	width:200px;
+}
+
+table.timesheet_table tfoot td.timesheet_total {
+ text-align: right;
+}
+/*timesheet end*/

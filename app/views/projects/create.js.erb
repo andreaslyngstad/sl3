@@ -1,0 +1,15 @@
+$('.flash_error').empty();
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>")
+if(window.location.pathname.indexOf("customers") >= 0){
+$("#listing_projects").append("<%= j(render(:partial => "project", :locals => {:project => @klass})) %>");	
+}else{
+$("#cus_pro_us_listing").prepend("<%= j( render :partial => "projects_index", :locals => { :project => @klass })  %>");
+$(".button").button();	
+}
+$(".open_project_update").UIdialogs_edit_links();
+$(".activate_project").activate_projects();
+$(".activate_projects_no_button").activate_projects_no_button();
+$('#dialog_project_form').empty().append("<%= j(render "form" )%>")
+$("#new_project")[0].reset();
+NProgress.done();

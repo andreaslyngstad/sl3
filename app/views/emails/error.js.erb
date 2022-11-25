@@ -1,0 +1,7 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>")
+$('#invoice_<%= j(@invoice.id.to_s) %> td').css('background-color', '#FCD7DB');
+$('#invoice_<%= j(@invoice.id.to_s) %> td.status').css('color', 'black');
+$('#invoice_<%= j(@invoice.id.to_s) %> td.status').text('<%= j(t"economic.send_error") %>');
+$(".flash_notice").css('background-color', '#FCD7DB');
+$(".flash_notice").css('color', 'black');

@@ -1,0 +1,14 @@
+<div class="log_menu">
+	<div class="range" >	   
+	    <div id="range_date_fields_graphs" data-klass="<%= @klass.class %>" data-id="<%= @klass.id %>">	
+		  	<%= text_field_tag 'from',date_format(time_zone_now - 1.week),  class: "range_date_graphs", id: "from_stat"%>
+			<%= text_field_tag 'to',date_format(time_zone_now), class: "range_date_graphs", id: "to_stat"  %>
+		</div> 
+   	</div>
+    <div class="logs_pr_date">
+  		<select class="small_selector" id="stats">
+          	<option value="project_users_logs"><%= t('activerecord.models.user.more' ).capitalize%></option>
+		  	<option value="project_todos_logs"><%= t('activerecord.models.todo.more' ).capitalize%></option>   
+      	</select>
+    </div> 
+</div>

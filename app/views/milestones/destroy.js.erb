@@ -1,0 +1,7 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.discard(:notice))%>")
+
+$("#milestone_slider_<%=@milestone.id%>").remove();
+$("#milestone_<%=@milestone.id%>").remove();
+NProgress.done();
+

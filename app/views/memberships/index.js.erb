@@ -1,0 +1,3 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.discard(:notice))%>")
+NProgress.done();

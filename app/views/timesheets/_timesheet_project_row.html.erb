@@ -1,0 +1,9 @@
+<tr class="project_hours">	
+	<td class="timesheet_project"><%= truncate(@log.project.name, length: 60, omission: "") %></td>	
+	<% @dates.each do |date| %>
+			<td class="number project_date_<%= @log.project.id %>_<%= date %>" data-hours="0">			
+				0:00				
+			</td>
+		<% end %>
+	<td class="project_total_<%= @log.project.id %> total" data-hours="0"></td>
+</tr>

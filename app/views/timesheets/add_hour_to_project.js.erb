@@ -1,0 +1,28 @@
+if ($(".project_total_<%= j(@log.project.id.to_s)%>").length === 0){
+	$(".week_timesheet_header").after('<%= j(render :partial => "timesheet_project_row", :locals => {:log => @log} )%>')
+}
+input = $(".log_date_<%= j(@log.log_date.to_s)%>")
+input.data("logid",<%= j(@log.id.to_s)%> )
+firm_format = $(".current_firm_data").data("timeformat")
+field = $(".project_date_<%= j(@log.project.id.to_s)%>_<%= j(@log.log_date.to_s)%>")
+prehours_input = input.data("prehours")
+total_project = $(".project_total_<%= j(@log.project.id.to_s)%>")
+prehours_total_project = total_project.data("hours")
+prehours_total_date = $(".day_<%= j(@log.log_date.to_s) %>").data("hours")
+prehours_total = $(".timesheet_week_total").data("hours")
+prehours_log = field.data("hours")
+posthours_total_project = parseFloat(prehours_total_project) - prehours_input + parseFloat(<%= j( @log.hours.to_s )%>)
+posthours_total_date = parseFloat(prehours_total_date) - prehours_input + parseFloat(<%= j( @log.hours.to_s )%>)
+posthours_total = parseFloat(prehours_total) - prehours_input + parseFloat(<%= j( @log.hours.to_s )%>)
+posthours = parseFloat(prehours_log) - prehours_input + parseFloat(<%= j( @log.hours.to_s )%>)
+
+$(".day_<%= j(@log.log_date.to_s) %>").empty().append(secondsToString(posthours_total_date,firm_format))
+$(".day_<%= j(@log.log_date.to_s) %>").data("hours",posthours_total_date) 
+total_project.empty().append(secondsToString(posthours_total_project,firm_format))
+total_project.data("hours",posthours_total_project)
+$(".timesheet_week_total").empty().append(secondsToString(posthours_total,firm_format))
+$(".timesheet_week_total").data("hours",posthours_total)
+input.data("prehours", parseFloat(<%= j(@log.hours.to_s) %>))
+field.empty().append(secondsToString(posthours,firm_format))
+field.data("hours", posthours)
+$('.spinning').hide();

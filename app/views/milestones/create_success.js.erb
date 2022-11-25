@@ -1,0 +1,15 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.discard(:notice))%>")
+$("#new_milestone")[0].reset();
+$('.date_format_setter').set_date_format()
+var milestone = "<%= escape_javascript(render(:partial => "milestones/milestone_slider", :locals => {:milestone => @milestone})) %>"
+<% if @milestone.overdue? %>
+$(".milestone_slider").prepend(milestone)
+<% else %>
+$(".milestone_slider").append(milestone)
+<% end %>
+$("#listing_milestones").append("<%= escape_javascript(render(:partial => @milestone)) %>");
+$('.date_format_setter').set_date_format()
+$(".open_milestone_update").UIdialogs_edit_links();
+NProgress.done();
+

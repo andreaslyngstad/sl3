@@ -1,0 +1,9 @@
+<div id="html_tabs"  class="orange_bgr">
+  	<ul>
+  		<% if true  %><%# if can? :read, Firm %>
+  
+  		<li><%= link_to (t 'navigation.invoices') , invoices_path, data:{name: "Invoices"}%></li>
+	    <li><%= link_to (t 'navigation.statistics'), statistics_path, data:{name: "Statistics"}%></li>
+	    <%end%>
+	</ul>
+</div>

@@ -1,0 +1,31 @@
+<% if @klass.class != User %>
+<div id="timesheet_log_menu">
+  <div class="add_some_timesheet"  data-date="<%= time_zone_now.to_date %>", data-klass="<%= @klass ? @klass.class : "index" %>", data-id="<%= @klass ? @klass.id : "index" %>">
+    <% if true  %><%# if can? :manage, Firm %>
+
+    <select id="timeheet_month_user_select" name="select_user_id">
+    	<option value=""><%= t("general.all") %></option>
+    	<% @users.each do |u| %>
+    	<% if @user == u  %>
+    	<option value="<%= u.id %>" selected="selected"><%= u.name %></option>
+    	<%else %>
+    	<option value="<%= u.id %>"><%= u.name %></option>
+    	<% end %>
+    	<% end %>
+		</select>
+    <% end %>
+   </div>
+  <div class="timesheet_for_user"><%= t'general.timesheet_for' %> <%= @user ? @user.name : t("general.all") %></div>
+</div>
+<% end %>
+<div id="calendar">
+	<%= calendar time_zone_now.to_date do |date| %>
+		<%= date.day %>
+		 <ul>
+          <li class="go_to_day_link" data-from="<%= date %>", data-to="<%= date %>", data-url="<%= @klass ? @klass.class : "index" %>", data-id="<%= @klass ? @klass.id : "index" %>">
+          	<span><%= logs_day_of_mounth_hours(@logs_by_date, date) %></span>
+
+          </li>
+		 </ul>
+  	<% end %>
+</div>

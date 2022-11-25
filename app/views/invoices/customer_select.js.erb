@@ -1,0 +1,15 @@
+$(".flash_error").empty()
+$(".flash_notice").empty()
+$('#selected_customer').remove();
+$('#invoice_customer_select').after("<%= j(render 'selected_customer',  locals: {customer: @customer}) %>");
+$('#dialog_customer').hide();
+$('#invoice_customer_select').hide();
+$('.listing_logs_invoice_container').empty();
+$("#invoice_project_id").attr("data-other-object" ,"<%= j(@customer.id.to_s) %>")
+$("#change_customer").change_object()
+$(".log_list_element").show();
+$('.listing_logs_invoice_container').append("<%= j(render 'invoices/logs_list', logs: @logs) %>");
+$('.listing_logs_invoice_container').log_related_updates()
+$("#dialog_project").UIdialogs_links();
+$("#dialog_customer").UIdialogs_links();
+NProgress.done()

@@ -1,0 +1,121 @@
+ <div id="tabs-1">
+	<div class="invoice_show">
+<% @klass.due_today_or_overdue %>
+<div class="invoice_show_left">
+<table class="show_invoices_table">
+<tr>
+<td><%= (t'activerecord.models.customer.one').capitalize  %></td>
+<td colspan="2"><%= link_to @klass.customer_all.name, customer_path(@klass.customer_all) %></td>
+<td></td>
+</tr>
+<tr>
+	<% if @klass.status == 8 %>
+<td><%= (t 'economic.credit_note').capitalize  %></td>
+	<% else %>
+	<td><%= (t 'economic.invoice').capitalize  %></td>
+	<% end %>
+	
+<td><%= @klass.number %></td>
+<td class="numbers"><%= currency_converter(@klass.total.to_s) %></td>
+</tr>
+<% if @klass.status == 8 %>
+<tr>
+<td><%= link_to((t 'economic.invoice').capitalize, invoice_path(@klass.invoice))  %> </td>
+<td><%= @klass.invoice.number %> </td>
+<td class="numbers"><%= currency_converter( @klass.invoice.total.to_s) %></td>
+</tr>
+<% end %>
+<%  @klass.credit_notes.each do |cn| %>
+<tr>
+<td><%= link_to((t 'economic.credit_note').capitalize, invoice_path(cn))  %> </td>
+<td><%= cn.number %> </td>
+<td class="numbers"><%= currency_converter(cn.total.to_s) %></td>
+</tr>
+<% end %>
+
+
+<%  @klass.reminders.each do |cn| %>
+<tr>
+<td><%= link_to((t 'economic.email_reminder').capitalize, invoice_path(cn))  %> </td>
+<td><%= cn.number %> </td>
+<td class="numbers"><%= currency_converter(cn.reminder_fee.to_s) %></td>
+</tr>
+<% end %>
+<% if @klass.status == 11 %>
+<tr style="color: red;">
+<td><%= t 'economic.invoice_lost' %> </td>
+<td></td>
+<td class="numbers">-<%= currency_converter(@klass.lost.to_s) %></td>
+</tr>
+<% end %>
+<% if @klass.status == 6 %>
+<tr style="color: green;">
+<td><%= t 'economic.invoice_paid' %> </td>
+<td></td>
+<td class="numbers">-<%= currency_converter(@klass.paid_amount.to_s) %></td>
+</tr>
+<% end %>
+<tr class="sum_receivable">
+<td><%= t'activerecord.attributes.invoice.receivable' %> </td>
+<td></td>
+<td class="numbers"><%= currency_converter(@klass.receivable.to_s) %></td>
+</tr>
+
+<% if @klass.sent != nil %>
+<tr>
+	<td>
+		<%=  date_format(@klass.sent) %>
+	</td>
+	<td></td>
+	<td class="numbers"><%= t'economic.invoice_sent' %></td>
+</tr>
+<% end %>
+<% if @klass.paid != nil and @klass.status != 8 %>
+<tr >
+	<td>
+		<%= t'economic.invoice_paid' %>
+	</td>
+	<td></td>
+	<td class="numbers"><%=  date_format(@klass.paid) %></td>
+</tr>
+<% end %>
+<% unless [8,10].include? @klass.status %>
+<tr>
+	<td colspan="3">
+		<% case @klass.status  %>
+		<% when 11 %>
+		<span class='invoice_lost edit button' data-id="<%= @klass.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'not_lost' %>"><%= t'not_lost' %></span>
+		<% when 6 %>
+		<span class='invoice_paid edit button' data-id="<%= @klass.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'not_paid' %>"><%= t'not_paid' %></span>
+		<% else %>
+		<span class='invoice_paid edit button' data-id="<%= @klass.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'paid' %>"><%= t'paid' %></span>
+		<span class='invoice_lost edit button' data-id="<%= @klass.id %>"  title="<%= t'activerecord.models.invoice.one' %> <%= t'lost' %>"><%= t'lost' %></span>
+		<% end %>
+</td>		
+</tr>
+<% end %>
+
+</table>
+<% if !@klass.emails.blank? %> 
+<h3>
+<%= (t'activerecord.models.email.more').capitalize %></h3>
+<ul>
+<% @klass.emails.order('created_at DESC').each do |e| %>
+	<li>
+		<ul class="mail_instance_wrapper">
+			<li><span style='color:<%=  e.status_string[0] %>; float:left;'><%= e.status_string[1] %></span><span><%= date_format(e.created_at )%></span></li><br>
+			<li><%= e.address %></li>
+			<li><b><%= e.subject %></b></li>
+			<li><%= simple_format(e.content, class: 'log_event_paragraf' )%></li>
+		</ul>
+	</li>
+<% end %>
+</ul>
+<% end %>
+</div>
+<div class="invoice_show_right">
+
+<%= render partial: 'invoices/invoice_show_view', locals:{ klass:  @klass} %>
+</div>
+</div>
+</div>

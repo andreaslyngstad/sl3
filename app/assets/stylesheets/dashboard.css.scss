@@ -1,0 +1,66 @@
+.dashboard{
+	ul{
+		padding:0;
+		margin: 0;
+	}
+	.db_todo_name, .db_todo_priority, .db_todo_checkbox{
+		// float:left;
+		vertical-align:text-top;
+	}
+	.db_todo_checkbox{
+		margin-top: 10px;
+	}
+	.date_format_setter{
+		display: inline-block;
+	}
+	.db_user_name{
+		font-size: 1.2em
+	}
+	.db_user_logs{
+		margin-bottom: 1em;
+		margin-top: 1em;
+		// font-size: .8em;
+	}
+	.offline_image{
+		opacity: .5
+	}
+	.state_headers{
+		  border-bottom: 1px solid #999;
+  margin-bottom: 10px;
+  font-weight: bold;
+	}
+	.state_wrapper{
+		width: 30%
+	}
+	.dashboard_row_task{
+		float:left;
+		width: 100%;
+
+		// font-size: 90%
+	}
+	.dashboard_chart_display{
+		float:left;
+		margin-right: 10px;
+		width:280px;
+	}
+	.dashboard_income_chart_display{
+		width:100%
+	}
+	.db_log_header{
+		border-bottom: 1px solid #E5EFF8
+	}
+	li.db_user_logs:nth-child(even){
+  background-color: #FAFDFF;
+
+	}
+}
+.in_db{
+		font-size: 1em;
+		display: inline-block;
+	}
+// .listing_logs li.log_list_element:nth-child(even){
+//   float:left;
+//   background-color: #FAFDFF;
+//   border-top: 1px solid #E5EFF8;
+//   border-bottom: 1px solid #E5EFF8;
+// }

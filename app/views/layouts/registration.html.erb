@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+  <%= yield :head %>
+  <title>Squadlink</title>
+
+
+  <%= stylesheet_link_tag 'registration', media: 'all', 'data-turbolinks-track': 'reload'%>
+	<%= javascript_include_tag "registration"%>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tag %>
+</head>
+<meta charset="UTF-8">
+<body>
+    <ul class="share-buttons">
+          <style type="text/css">
+.share-buttons{
+  list-style: none;
+}
+.share-buttons {
+  padding-left: 20px;
+  padding-top: 20px;
+  float:left;
+}
+
+
+.share-buttons li{
+  /*display: inline;*/
+}
+</style>
+
+  <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsquadlink.com&t=" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img src="images/flat_web_icon_set/black/Facebook.png"></a></li>
+  <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fsquadlink.com&text=:%20https%3A%2F%2Fsquadlink.com" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img src="images/flat_web_icon_set/black/Twitter.png"></a></li>
+  <li><a href="https://plus.google.com/share?url=https%3A%2F%2Fsquadlink.com" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img src="images/flat_web_icon_set/black/Google+.png"></a></li>
+  <li><a href="http://www.tumblr.com/share?v=3&u=https%3A%2F%2Fsquadlink.com&t=&s=" target="_blank" title="Post to Tumblr" onclick="window.open('http://www.tumblr.com/share?v=3&u=' + encodeURIComponent(document.URL) + '&t=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/black/Tumblr.png"></a></li>
+  <li><a href="http://www.reddit.com/submit?url=https%3A%2F%2Fsquadlink.com&title=" target="_blank" title="Submit to Reddit" onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/black/Reddit.png"></a></li>
+  <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fsquadlink.com&title=&summary=&source=https%3A%2F%2Fsquadlink.com" target="_blank" title="Share on LinkedIn" onclick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="images/flat_web_icon_set/black/LinkedIn.png"></a></li>
+  <li><a href="mailto:?subject=&body=:%20https%3A%2F%2Fsquadlink.com" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><img src="images/flat_web_icon_set/black/Email.png"></a></li>
+</ul>
+	<div class="container_registration">
+    <div id="flash_messages" style="display:none;">
+    <span class="flash_notice"><%= flash[:notice] %></span>
+  </div>
+
+    <div id="main_registration">
+      <div class="sign_in_sign_up">
+
+<!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51a7ceb7757fb5c5"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    },
+    'follow' : {
+      'services' : [
+        {'service': 'facebook', 'id': 'squadlink'},
+        {'service': 'twitter', 'id': 'squadlink'},
+        {'service': 'linkedin', 'id': 'squadlink'},
+        {'service': 'google_follow', 'id': 'squadlink'}
+      ]
+    }
+  });
+</script> -->
+<!-- AddThis Smart Layers END -->
+      <div id="login_link">
+
+        <span id="sign_in_link">Sign in</span></div>
+        <div id="login_link" >
+        <%= link_to 'Register', register_path %></div></div>
+      <div class="hide login_form">
+        <h2 style="margin-left:40px;">Sign in</h2>
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <div class="login_form_field"><%= f.text_field :email, placeholder: 'email',id: 'user_email_popup', class: 'text' %></div>
+          <div class="login_form_field"><%= f.password_field :password, placeholder: 'password',id: 'user_password_popup', class: 'text' %></div>
+          <% if devise_mapping.rememberable? -%>
+              <div class="login_form_field checkbox"><%= f.check_box :remember_me, :id => "check" %><%= f.label :remember_me, id: 'check_box_label' %> </div>
+          <% end -%>
+          <div class="login_form_field"><%= f.submit "Sign in", :class => "submit signup_button", :id => "sign_in" %></div>
+        <% end %>
+        <div class="devise_links">
+        <%= render :partial => "devise/links" %>
+        </div>
+      </div>
+      <div class="magneto front_logo">
+        <%= image_tag "squadlink.png"  %>
+      </div>
+
+		<%= yield %>
+    </div>
+  </div>
+  <div id="footer_registration">
+
+            <div class="footer_col">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><%= link_to "Pricing", pricing_path%></li>
+                </ul>
+            </div>
+            <div class="footer_col">
+                <ul>
+                    <li><%= link_to "Blog", blogs_path%></li>
+                    <li><%= link_to "Terms", termsofservice_path%>/<%= link_to "Privacy Policy", privacy_policy_path%></li>
+
+                </ul>
+            </div>
+            <div class="footer_col">
+                <ul>
+                    <li><a href="/guides">Help</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer_col">
+                <ul>
+                    <li><a href="http://twitter.com/squadlink" target="_blank">Twitter</a></li>
+                    <li><a href="http://facebook.com/squadlink" target="_blank">Facebook</a></li>
+            </ul>
+            </div>
+      </div>
+    </div>
+</body>
+</html>

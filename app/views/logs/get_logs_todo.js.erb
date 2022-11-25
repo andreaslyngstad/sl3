@@ -1,0 +1,8 @@
+$("#todo_logs_<%= escape_javascript(@todo.id.to_s)%>").append("<%= escape_javascript(render(:partial => @logs)) %>")
+$(".total_log_time").set_hours()
+$("#todo_logs_<%= escape_javascript(@todo.id.to_s)%>").slideDown()
+$(".open_log_update").UIdialogs_edit_logs_links()
+$(".total_log_time").set_hours()
+$('.date_format_setter').set_date_format()
+$('.clock_format_setter').set_clock_format()
+NProgress.done()

@@ -1,0 +1,95 @@
+<%= form_for(@credit_note, :remote => true, url: credit_note_create_path(@invoice)) do |f| %>
+<%= f.hidden_field :customer_id, value: @invoice.customer.id, id: "hidden_customer_field"%>
+<%= f.hidden_field :invoice_id, value: @invoice.id%>
+<%= f.hidden_field :invoice_receivable, value: @invoice.receivable%>
+<%= f.hidden_field :due, value: time_zone_now.to_date %>
+<ul>
+	<li>
+		<table class="customer_project_invoice_dates">
+		<tr>
+			<td class="customer_project_td">
+
+				<span id=""><%= @invoice.customer.name%></span>
+			</td>
+			<%# 
+			<td class="customer_project_td">
+				<span id="invoice_project_select"><%= (t'activerecord.models.project.one').capitalize %> <%# @invoice.project.try(:name)%><%# </span>
+			</td>%>
+	<td id="dates_labels_td">
+		<%=t'economic.invoice'.capitalize%><br><br>
+		<%= f.label "#{t 'economic.invoice_credit'}" %>
+		
+	</td>		
+  <td id="dates_td">
+  	<span class="invoice_date" style="float:none;"><%= @invoice.number %></span><br><br>
+	<%= f.text_field :date, :value => date_format(time_zone_now.to_date), :class => "invoice_date date", :id => "invoice_date_", :style => "float:none;"%>
+	 
+</td>
+		</tr>
+	</table>
+</li>
+<li>
+	<div>
+	<%= f.label "#{t 'economic.notes'}" %>
+	<%= f.text_area :content, value: (t("economic.credit_on_invoice") + ' ' + @invoice.number.to_s)%>	
+	</div>
+<%= link_to_add_fields "#{t 'economic.add_line'}", f, :invoice_lines %>
+	<div class="free_lines_table_container" style="display:none;">
+	<table class="free_lines_table">
+		<tr>
+			 <td></td>
+				<td><%= t "economic.description" %></td>
+				<td><%= t "economic.quantity" %></td>
+				<td><%= t "economic.price" %></td>
+				<td><%= t "economic.vat" %></td>
+				<td style="text-align: right;"><%= t "economic.amount" %></td>
+		</tr>
+		<%= add_fields_to_table( f, :invoice_lines, @invoice.invoice_lines).html_safe%>
+		<%= f.fields_for :invoice_lines do |invoice_line| %>
+			<%= render "invoices/invoice_line_fields", f: invoice_line  %>	
+			<% end %>
+	</table>
+	</div>
+</li>
+<li class="log_list_element">
+	<div class="listing_logs_invoice_container">
+		<%= render partial: "invoices/logs_list", locals: {logs: @invoice.logs} %>
+	</div>	
+</li>
+<li>
+	<table class="invoice_table">
+		<tr class="subtotal_invoice">
+				<td class="cell_1"><%= t "economic.subtotal" %></td>
+				<td class="cell_2"></td>
+				<td class="cell_3"></td>
+				<td class="cell_4"></td>
+				<td class="cell_5 subtotal_on_invoice"></td>
+		</tr>	
+		<tr class="invoice_vat_head">
+			<td class="cell_1">
+				<%= t "economic.vat" %>%
+			</td>
+			<td class="cell_2">
+				<%= t "economic.basis" %>
+			</td>
+			<td class="cell_3">
+				<%= t "economic.vat" %>
+			</td>
+			<td class="cell_4">
+				<%= t "economic.total" %>
+			</td>
+		</tr>	
+		<tr class="total_line">
+				<td class=""><%= t "economic.total" %></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td class="cell_5 total_on_invoice"></td>	
+				<%= f.hidden_field :total, class: 'total_hidden_field' %>
+		</tr>	
+	</table>
+
+</li>
+	<li><%= f.submit (t'save'), :class => 'submit', :id => "new_invoice_submit" %></li>
+</ul>
+ <% end %>

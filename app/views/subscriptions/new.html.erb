@@ -1,0 +1,105 @@
+<%= content_for :head do %>
+
+<% end %>
+<%= render "shared/home_header" %>
+<div id="left" class="home_content">
+  <script type="text/javascript">
+  var PAYMILL_PUBLIC_KEY = "<%= SECRETS_CONFIG[Rails.env][:paymill_public_key] %>";
+</script>
+<%= javascript_include_tag "https://bridge.paymill.com/" %>
+ <div class="blue2">
+ 	
+	<% if @plan.id > current_firm.plan.id %>
+ 		<p><%= t "message.plan_update_html", :current_plan => current_firm.plan.name, 
+ 					       :new_plan => @plan.name,
+ 						   :current_plan_price =>  (prices_to_currency(current_firm.plan.price, current_firm.plan.currency)), 
+ 						   :new_plan_price => (prices_to_currency @plan.price, @plan.currency),  
+ 						   :grad => (t"general.upgrading")
+ 						   %>
+ 		<p><%= t "message.thank_you" %></p>
+ 	<% elsif @plan.id < current_firm.plan.id %>
+ 	<p><%= t "message.plan_update_html", :current_plan => current_firm.plan.name, 
+ 					       :new_plan => @plan.name,
+ 						   :current_plan_price =>  (prices_to_currency(current_firm.plan.price , current_firm.plan.currency)), 
+ 						   :new_plan_price => (prices_to_currency @plan.price, @plan.currency),
+ 						   :grad => (t"general.downgrading")  %>
+ 	</p>
+  <% else %>
+  <p><%= t "message.opening_closed" %>
+  </p>
+ 	<% if !@plan.projects.nil? && current_firm.users.count > @plan.users || 
+ 	      !@plan.projects.nil? && current_firm.projects.count > @plan.projects ||
+ 	      !@plan.customers.nil? && current_firm.customers.count > @plan.customers
+ 		%>
+ 	<p><%= t "message.keep_in_mind" %> </p>
+ 	<ul>
+	 	<li>
+	 		<% if !@plan.projects.nil? && current_firm.users.count > @plan.users %>
+	 		<%= @plan.users %> users
+	 		<% end %>
+	 	</li>
+	 	<li>
+	 		<% if !@plan.projects.nil? && current_firm.projects.count > @plan.projects %>
+	 		<%= @plan.projects %> projects
+	 		<% end %>
+	 	</li>
+	 	<li>
+	 		<% if !@plan.customers.nil? && current_firm.customers.count > @plan.customers %>
+	 		<%= @plan.customers %> customers
+	 		<% end %>
+	 	</li>
+ 	</ul>
+ 	<p><%= t "message.will_be_deleted" %> </p>
+ 	<p><%= t "message.we_suggest" %></p>
+ 	<% end %>
+ 	<% end %>
+ 	<span class="flash_notice" style="color: #87E32B;"><%= flash[:notice] %></span>
+	<span class="flash_notice" style="color: red;"><%= flash[:error] %></span>
+ </div>
+<div class="credit_card_form_holder">
+<%= form_for @subscription,  :html => { :class => "credit_card_form"} do |f| %>
+  <% if @subscription.errors.any? %>
+    <div class="error_messages">
+      <h2><%= t"general.could_not_subscribe"%></h2>
+      <ul>
+      <% @subscription.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :plan_id %>
+  <%= f.hidden_field :name, :value => current_firm.name %>
+  <%= f.hidden_field :email, :value => current_user.email%>
+  <%= f.hidden_field :paymill_card_token %>
+  <% if @subscription.paymill_card_token.present? %>
+    <div class="signup-form-field">
+    <%= link_to t("general.try_again"), plans_path, :class => "submit" %>
+  </div>
+  <% else %>
+  <div class="signup-form-field">
+      <%= label_tag :card_number, (t"general.card_number" )%>
+      <%= text_field_tag :card_number, nil, name: nil, class: "card-number required", :creditcard => "true"%>
+    </div>
+   <div class="signup-form-field">
+      <%= label_tag :card_code, (t"general.security_code" ) %>
+      <%= text_field_tag :card_code, nil, name: nil, class: "required" %>
+    </div>
+    <div class="signup-form-field">
+      <%= label_tag :card_month, (t"general.expiration_date" ) %>
+     <div class="card_expiration_right">
+           <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "mini_selector"} %>
+           <%= select_year nil, {start_year: time_zone_now.to_date.year, end_year: time_zone_now.to_date.year+15}, {name: nil, id: "card_year", class: "mini_selector"} %>
+          </div>
+    </div>
+    <div class="signup-form-field">
+    <%= f.submit t("general.sign_up"), :class => "submit" %>
+  </div>
+  <% end %>
+  <div id="paymill_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+  </div>
+<% end %>
+</div>	 
+
+</div>	

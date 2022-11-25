@@ -1,0 +1,9 @@
+<p>Hi <%= @user.name %></p>
+<p>Your payment for the <%= @firm.name %> account at squadlink.com is 14 days overdue. </p>
+<p>Your account will stay on the <%= @subscription.plan.name.downcase %> plan for 14 more days. After that it will be reverted to a free account. This process might lead to loss of data.</p>
+<p>Your account is locked until we receive payment. Sign in to your account and follow the instructions to reopen it.</p>
+<p>Here is your sign in page</p>
+<p><%= link_to "#{@firm.subdomain}.squadlink.com", sign_in_url(subdomain:@firm.subdomain) %></p>
+<p>Please email us if you have any questions at <%= mail_to 'support@squadlink.com' %></p>
+<p>Regards</p> 
+<p>Squadlink</p>

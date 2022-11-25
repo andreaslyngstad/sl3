@@ -1,0 +1,8 @@
+$(".roster_tasks").remove();
+$("#upcomming_tasks").append("<%= j(render("tasks_roster")) %>")
+$("#upcomming_tasks").find("#ajax-loader").remove()
+$(".roster_done_box").on("click", function() { 
+  	 var id = $(this).attr("id")
+  	 $("#roster_edit_done_todo_" + id).submitDoneWithAjax(id)
+  });
+$("#accordion").accordion("refresh");

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+<title>403 - Forbidden: Access is denied.</title>
+<style type="text/css">
+<!--
+p{font-size:1.7em;margin-top:3em;} 
+
+
+#content{margin:0 0 0 2%;position:relative;}
+.content-container{background:#FFF;width:96%;font-size:.7em;margin-top:8px;padding:10px;position:relative;}
+-->
+</style>
+</head>
+<body>
+
+<div id="content">
+ <div class="content-container">
+  <div class="squadlink_logo">403 - Forbidden</div>
+  <p><%= t'navigation.access_denied' %></p>
+  <p><%= t'navigation.your_current_role_is' %> <span style="color:green"><%= current_user.role %></span>.</p> 
+  <p><%= t'navigation.you_do_not_have_permission' %></p>
+ </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+<% if @tracking %>
+  <% if @log.nil? %>  
+    var employee = $("#logEmployeeIdTracking")
+    var form   = $("#start_tracking_form")  
+  <% else %>
+    $("#log_<%= escape_javascript(@log.id.to_s)%>").replaceWith("<%= escape_javascript(render(:partial => @log)) %>");
+    var form   = $("#log_update_<%= escape_javascript(@log.id.to_s) %>_form")
+    var employee = $("#logEmployeeIdTracking<%= escape_javascript(@log.id.to_s) %>")
+  <% end %>
+<% else %>
+  <% if @log.nil? %>
+    var form	 = $(".new_log")
+    var employee = form.find("#logEmployeeId")	
+  <% else %>
+    var form	 = $("#log_update_<%= j(@log.id.to_s) %>_form")
+    var employee = $("#logEmployeeId<%= j(@log.id.to_s) %>")
+  <% end %>  
+<% end %>
+  employee.empty();
+  <% if !@customer.nil? %>
+      <% if @customer.employees.empty? %>
+          employee.append("<option value=''><%= t'general.nott' %> <%= t'activerecord.models.employee.more' %></option>");
+      <% else %>
+        employee.append("<option value=''><%= t'general.select' %> <%= t'activerecord.models.employee.one' %></option>");
+        <% @customer.employees.each do |employees| %>
+        employee.append("<option value='" + "<%= escape_javascript(employees.id.to_s) %>" + "'>" + "<%= escape_javascript(employees.name) %>" + "</option>");
+      <% end %>
+      <% end %>
+  <% else %>
+      employee.append("<option value=''><%= t'general.select' %> <%= t'activerecord.models.customer.one' %></option>");
+  <% end %>
+  form.find(".searchableS_tracking").trigger("chosen:updated")
+  form.find(".searchableS").trigger("chosen:updated")
+  form.find(".searchableSE").trigger("chosen:updated")
+NProgress.done();

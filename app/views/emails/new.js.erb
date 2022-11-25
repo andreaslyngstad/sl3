@@ -1,0 +1,14 @@
+$(".dialog_sending_invoice_form").remove()
+id = "<%= j (@invoice.id.to_s) %>"
+<% if @invoice.status == 8 %>
+	title = '<%= j((t"send").capitalize + " " + (t"economic.credit_note")) %>'
+<% else %>
+	title = '<%= j(t"helpers.submit.send", model: Invoice.model_name.human) %>'
+<% end %>
+$('body').append('<div class="dialog_form dialog_sending_invoice_form" id="sending_invoice_' + id + '_form" title="' + title + '" style="display:none;"><%= j( render "sending_form")  %></div>')
+
+form = $("#sending_invoice_" + id + "_form")
+form.UIdialogs()
+form.dialog("open")
+form.find(".new_email").validateWithErrors();
+form.find(".date").datepicker();

@@ -1,0 +1,8 @@
+$("#not_done_tasks").empty().append("<%= j( render @not_done_todos)  %>")
+$("#done_tasks").empty().append("<%= j( render @done_todos)  %>")
+$("#dialog_todo").UIdialogs_links();
+$('.date_format_setter').set_date_format()
+$(".open_todo_update").UIdialogs_edit_links();
+$("#dialog_todo_form").UIdialogs();
+sQuadLink.todosTab()
+NProgress.done();

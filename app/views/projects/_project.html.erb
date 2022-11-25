@@ -1,0 +1,28 @@
+<div id="project_list_<%= project.id %>">
+<div class="info" id="project_info_<%= project.id %>">
+  <div class="name_todo"><%= link_to project.name, project_path( project) %></div>
+  <div class="project_desc"><%= truncate_string(project.description, 70, '...') %></div>
+<div class="delete_edit">
+<% if true  %><%# if can? :manage, project %>
+<% if true  %>
+  <span class="open_project_update edit" id="project_update" data-id="<%= project.id %>" data-object="project"><%= t'edit' %></span>
+<% end %>
+<% if true  %><%# if can? :archive, project %>
+<% if true  %>
+  <a class="activate_projects_no_button" data-object="project" data-id="<%= project.id.to_s %>"><%= t'general.archive_verb' %></a>
+<% end %>
+</div>
+</div>
+<% if true  %><%# if can? :manage, project %>
+<% if true  %>
+<div class="dialog_form" id="project_update_<%= project.id %>_form" title="<%= t('helpers.submit.update', model: Project.model_name.human) %>" style="display:none;">
+      <%= form_for(project, :remote => true) do |f| %>
+      <ul>
+      <li><%= f.label :name %><%= f.text_field :name %></li>
+      <li><%= f.label :description %><%= f.text_area :description %></li>
+      <li><%= f.submit (t'save'), :class => 'submit' %></li>
+      </ul>
+      <% end %>
+</div>
+<% end %>
+</div>

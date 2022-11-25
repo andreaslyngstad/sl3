@@ -1,0 +1,477 @@
+html, body{
+  margin:0;
+  padding:0;
+   font-family: Verdana,Helvetica,sans-serif;
+  // background-color: #E6E9F5;
+  
+  }
+
+ 
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(116, 185, 239, 1);
+  border: 1px solid rgba(116, 185, 239, 1);
+}
+textarea{
+	height: 200px;
+	width: 364px;
+  
+}
+
+body a{text-decoration: none; color:#000;}
+body a:hover {text-decoration: underline; color:#000;}
+body, ul, li{list-style-type:none; padding:0; margin:0;}
+.tab_list_invoice{
+	margin-left:1px;
+	margin-bottom:1px;
+	padding: 0px 0 10px 9px;
+	list-style:none;
+	// border: 1px solid #DCDBDC;
+	color:#000;
+	border-radius: 5px;
+}
+ul li{
+	list-style:none;
+}
+// .total_line, .invoice_wrapper .subtotal_invoice {
+//     font-size: 170%;
+//     border-top: 1px solid #ddd;
+//     border-bottom: 1px solid #ddd; }
+.show_invoices_table{
+	width: 100%;
+	td{
+		padding-top: 10px;
+	}
+	td.numbers{
+		text-align: right;
+	}
+	tr.sum_receivable{
+		border-top: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+	}
+	
+	
+
+}
+
+.mail_instance_wrapper{
+	box-shadow: 0 0 10px #888;
+	padding: 10px;
+	margin-top: 10px;
+	li{
+		padding-bottom: 5px;
+		word-break:break-all;
+	}
+	li span{
+		float: right;
+	}
+
+}
+.listing_invoices{
+	width: 100%;
+	float:left;
+	margin-left:5px;
+	thead{
+		border-bottom: 1px solid #eee;
+		color:green;
+		
+	}
+	tbody tr:nth-child(even) {
+    background-color: #FAFDFF;
+  border-top: 1px solid #E5EFF8;
+  border-bottom: 1px solid #E5EFF8;
+}
+.status{
+	width: 7%;
+}
+.invoice_number{
+	width: 10%;
+
+}
+.invoice_customer{
+	width: 25%;
+}
+.invoice_amount{
+	width: 13%;
+
+}
+.invoice_dates{
+	width: 14%;
+
+}
+
+.invoice_links{
+	width: 30%;
+
+}}
+.invoice_buttons{
+	font-size: 90%;
+}
+.log_event_paragraf{
+  margin: 0 0 .5em 0; 
+}
+// .invoice_list{
+// 	float:left;
+// 	width: 100%;
+// 	.status{
+		
+// 		}
+// 	.invoice_number{
+	
+// 		}
+// 	div{
+// 		float:left;
+// 	}
+// }
+.file_image_container{
+	display:inline-block;
+	background-image: url(image-path("ui-icons_222222_256x240.png"));
+	background-position: -32px -94px;
+	height: 16px;
+	width: 16px;
+}
+// #invoices_head{
+// 	width: 100%;
+// 	padding:10px;
+// 	float:left;
+//  div{
+// 		float:left;
+// 	}
+// }
+.dialog_invoice_form, .dialog_credit_note_form{
+
+	padding: 0;
+	margin: 0;
+	span#invoice_customer_select{
+		margin-right: 110px;
+	}
+	.customer_project_invoice_dates{
+		width: 100%
+
+	}
+	.customer_project_invoice_dates td{
+			vertical-align:top;
+		}
+	#dates_labels_td{
+		width:12%;
+	}
+	#dates_labels_td label{
+	
+		line-height: 32px;
+	}
+	#dates_td{
+		width:12%;
+	}
+	#dates_td input{
+		margin-bottom: 6px;
+	}
+	.customer_project_td{
+		width:38%;
+	}
+	span#selected_customer{
+		
+		display: inline-block;
+	}
+	.invoice_due, .invoice_date{
+		width: 83px;
+		font-size: 80%;
+		display: inline-block;
+		margin-left: 10px;
+		margin-right: 10px;
+		float:right;
+	
+	}
+	
+	.invoice_sub_header{
+		font-size: 105%;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		font-weight: bold;
+	}
+	.free_line{
+
+	}
+
+	.listing_logs_invoice_container, .free_lines_table_container{
+		max-height: 180px;
+		overflow-y: scroll;
+	}
+
+	.remove_log, .remove_fields{
+		cursor:pointer;
+		color:white;
+
+	}
+	.circle {
+		display: inline-block;
+		background-color: #bbb;
+		border-radius: 50%;
+		line-height:0;
+		font-family: Helvetica, Arial Black, sans;
+		text-align:center;
+		vertical-align: middle;
+		width: 16px;
+		height: 16px; 
+		/* width and height can be anything, as long as they're equal */
+	}
+ 	.circle-text{
+ 		padding-top: 7px;
+ 	}
+ 	.circle:hover{
+ 		background-color: #999;
+ 	}
+	.event_on_log_invoice{
+		display: inline-block;
+		vertical-align: top;
+		width: 300px;
+	}
+	#invoice_content{
+		height: 50px;
+		width: 813px;
+	}
+	.invoice_line{
+		.invoice_line_description{
+			width:560px;
+		}
+		input{width: 83px;}
+		textarea{width: 400px;height: 30px;}
+		.invoice_line_vat{
+		width: 20px;
+	}
+		
+	}
+	.tax_field{
+		width: 20px;
+	}
+	.total_on_this{
+			width:100px;
+			font-size: 15px;
+			text-align: right;
+		}
+	.on_invoice{
+		width: 20px;
+	}
+	.invoice_table{
+		border-spacing: 0px;
+		width: 98%;
+		
+	}
+
+	// .total_invoice_lable{
+	// 	width: 765px;
+		
+	// }
+	.invoice_vat_line td, .subtotal_on_invoice, .total_on_invoice, .invoice_vat_head, .total_on_line{
+			text-align: right;
+			// width:100px;
+		}
+	.cell_1{
+		width:180px;
+	}
+	.cell_2{
+		width:180px;
+	}
+	.cell_3{
+		width:180px;
+	}
+	.cell_4{
+		width:180px;
+	}
+	.cell_5{
+		width:207px;
+	}
+}
+.stamp{
+	position:absolute;
+	top: 12cm;
+	left: 6cm;
+	font-size: 5em;
+	border-top: 1px solid rgba(0,0,0,0.5);
+	border-bottom: 1px solid rgba(0,0,0,0.5);
+	opacity:0.5;
+	-ms-transform:rotate(340deg); /* IE 9 */
+  -moz-transform:rotate(340deg); /* Firefox */
+  -webkit-transform:rotate(340deg); /* Safari and Chrome */
+  -o-transform:rotate(340deg); 
+
+}
+.invoice_show{
+	width:100%;
+}
+.invoice_show_left{
+	width: 30%; 
+	height:100%;
+	margin-top: 30px;
+	padding:10px;
+	float:left;
+}
+.invoice_show_right{
+
+	float:left;
+}
+
+.invoice_wrapper{
+		float:left;
+	font-size: 75%; 
+	padding: 1cm;
+	height: 21.275cm;  
+	width: 14.75cm;
+	box-shadow: 0 0 10px #888;
+	margin: 0 auto;
+	margin-top: 30px;
+	position:relative;
+	ul{ padding:0;float:left;
+		li{padding-top:1cm;}
+	}
+	.page_header{
+		float:left;
+		display:block;
+		div{float:left;
+			padding: 1%;
+			font-size: 120%;
+		}
+		div.right{float:right;
+		}
+		width: 100%;
+
+	}
+	.invoice_header{
+		width: 100%;
+		float:left;
+		.logo_wrapper{
+			position:absolute;
+			top:3.1em;
+			display: block;
+			height:6.9%;
+			float:left;
+		}
+		.invoice_about_customer{
+			position:absolute;
+			top:9.3em;
+			width:45%;
+			p{margin-top:0;}
+		}
+		.invoice_about_firm{
+			width: 20em;
+			display: block;
+			float:right;
+			table td{padding: 0 2em 0 0;}
+	}
+	}
+	.on_what{
+		float:left;
+		width: 100%;
+		ul{
+			width: 100%;
+		}
+	}
+	
+
+	.free_lines_table{
+		width:100%; 
+		border-spacing: 1em;
+		padding-top:2%;
+		margin-top:2%;
+
+		thead{border-bottom: 1px solid #ddd;
+			td{text-align:right;}
+			td.invoice_print_description{
+			width: 60%;
+			text-align:left;
+
+		}
+		}
+		tbody{
+			border-bottom: 1px solid #ddd;
+			.invoice_line td{padding-top: 2%}
+			.invoice_line td.align_right{text-align:right;font-size: 100%}
+		}
+		
+	}
+	.listing_logs_invoice_container{
+		margin-top:2%;
+		width:100%;
+		div{float:left;
+				word-wrap:break-word;
+		}
+		.invoice_header_log{
+			margin-top:2%;
+			width:100%;
+			border-bottom: 1px solid #ddd;
+			
+		}
+		.invoice_line{
+			padding-top: 2%;
+			width: 100%;			
+		}
+		.event_on_log_invoice{
+			vertical-align: top;
+			min-width: 38%;
+			width: 38%;
+		}
+		.date_and_times_on_log_print{
+			width: 18%;
+			div{padding-right: 1%; font-size: 70%}
+			div.total_log_time_print{
+				font-size: 170%
+			}
+		}
+		.total_on_this, .total_invoice_header{
+			vertical-align: top;
+			width: 15%;
+			text-align: right;
+			}
+		.tax_field, .tax_field_invoice{
+			text-align: right;
+			width: 2%;
+			word-wrap:normal;
+
+		}
+	 .cus_emp_on_log{
+			padding-left:1%;
+		}
+		.log_user{
+			width: 15%;
+		}
+		.date_and_times_on_log_header{
+			width: 18%;
+		}
+		.hour_price_log_invoice{
+			width: 12%;
+		}
+	}
+	
+	.invoice_print_sub_header{
+		font-size: 120%;
+		font-weight: bold;
+	}
+
+	.invoice_table{position:absolute; width:88.5%; bottom:10px;
+		table{
+			width: 100%;
+		}
+	}
+	
+	
+	
+		
+	// .listing_logs_invoice_container, .date_format_setter, .clock_format_setter, .total_log_time{
+	// 	float:left;
+	// }
+ .checking_height{float:left;width:100%}
+	
+
+}
+.invoice_vat_line td, .subtotal_on_invoice, .total_on_invoice, .invoice_vat_head, .total_on_line{
+			text-align: right;
+			// width:100px;
+		}
+
+.total_line, .subtotal_invoice{
+		font-size: 170%;
+		border-top: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+	}
+
+.total_line_reminder{
+		font-size: 170%;
+	}

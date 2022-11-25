@@ -1,0 +1,18 @@
+columns do
+      column do
+        panel firm.name + ": " + firm.customers_count.to_s + " customers" do
+	table_for assigns[:firm].customers do
+		column "Name" do |customer|
+		 link_to customer.name, obeqaslksdssdfnfdfysdfxm_customer_path(customer)
+		end
+		column :email 
+		column "" do |customer|
+  		  links = ''.html_safe
+		  links += link_to I18n.t('active_admin.edit'), edit_obeqaslksdssdfnfdfysdfxm_customer_path(customer), :class => "member_link edit_link"
+		  links += link_to I18n.t('active_admin.delete'), obeqaslksdssdfnfdfysdfxm_customer_path(customer), :method => :delete, :confirm => I18n.t('active_admin.delete_confirmation'), :class => "member_link delete_link"
+		  links
+		end
+	end
+	end
+end
+end

@@ -1,0 +1,7 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+
+var tab = $("li.active").children("a").attr("href")
+$(tab).empty().append("<%= j( render :partial => "users_tab")  %>")
+droppable_members() // from memberships.js
+NProgress.done()

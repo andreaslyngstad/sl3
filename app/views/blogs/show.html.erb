@@ -1,0 +1,22 @@
+<% content_for :head do%>
+<title>Squadlink <%= @blog.title %></title>
+<%end %>
+<div class="blogs">
+	<h2><%= link_to @blog.title, blog_path(@blog)%></h2>
+	<p class="author">Posted by <%= @blog.author %> on <%= @blog.created_at.strftime("%b %d %Y") %></p>
+	<p><%= @blog.content.html_safe %></p>
+	<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style ">
+<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<a class="addthis_button_tweet"></a>
+<a class="addthis_button_pinterest_pinit"></a>
+
+<a class="addthis_counter addthis_pill_style"></a>
+<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+</div>
+<script type="text/javascript">
+var addthis_config = {"data_track_addressbar":false};</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51a7ceb7757fb5c5"></script>
+<!-- AddThis Button END -->
+</div>
+<%= render "disqus", :locals => { yes: @blog.title} %>

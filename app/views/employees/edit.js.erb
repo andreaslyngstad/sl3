@@ -1,0 +1,5 @@
+
+$("body").append('<div class="dialog_form" id="employee_update_<%= j (@employee.id.to_s) %>_form" title="Update employee" style="display:none;"></div>')
+$("#employee_update_<%= j (@employee.id.to_s) %>_form").empty().append("<%= j( render "form")  %>")
+$("#employee_update_<%= j (@employee.id.to_s) %>_form").UIdialogs_autoopen()
+$("#employee_update_<%= j (@employee.id.to_s) %>_form").find("form").validateWithErrors()

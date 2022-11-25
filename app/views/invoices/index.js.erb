@@ -1,0 +1,7 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+$(".invoice_range_date").datepicker({ 
+	onSelect: function() {
+		$('#todo_range_form').submit();
+		}
+		}).attr( 'readOnly' , 'true' )

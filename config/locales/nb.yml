@@ -1,0 +1,593 @@
+nb:
+  are_you_sure?: Er du sikker?
+  delete: slett
+  edit: endre
+  save: Lagre
+  show: vis
+  send: send
+  send_reminder: purring
+  download: last ned
+  quicksend: kjappsend
+  credit_note: Kreditnota
+  paid: betalt
+  not_paid: ikke betalt
+  lost: tapt
+  not_lost: ikke tapt
+  general:
+    try_again: Prøv igjen
+    sign_up: Abonner
+    card_number: Kort nummer
+    security_code: Sikkerhets kode (cvc)
+    expiration_date: Utløpsdato
+    delete_firm: Slette konto
+    cancel_plan: Avbryt abonnement?
+    current_plan: Ditt abonnement
+    enter_your_subdomain: Skriv inn ditt subdomene
+    enter_your_name: Skriv inn ditt navn
+    free_plan: Gratis konto
+    do_nothing: Ikke gjør noe
+    upgrading: oppgraderer
+    downgrading: nedgraderer
+    prices_in: Priser i
+    "yes": "ja"
+    pr_month: per måned
+    unlimited: ubegrenset
+    daily_backups: Daglig backup
+    ssl_encryption: SSL kryptering
+    latest_activity: Nylig aktivitet
+    online: online
+    offline: offline
+    in_progress: pågår
+    all: Alle
+    was_sent: ble sendt
+    is_being_sent: blir sendt
+    generation_of: Produksjonen av 
+    timed_out: tok for lang tid. Prøv igjen.
+    remove_from_invoice: Fjern fra faktura
+    for_invoice_emails: For faktura eposter.
+    my_firm: Mitt firma
+    your_firm: Ditt firma
+    with_out: Uten
+    please_upgrade: Vennligst oppdater
+    upgrade: Oppgrader
+    payments: Betalinger
+    search: Søk
+    email: epost
+    subdomain: Subdomain
+    member_since: Medlem siden
+    nott: Ingen 
+    no_model: Uten %{model}
+    sign_out: Logg ut
+    new: Ny
+    new_tt: Nytt
+    create_new: Lag ny
+    could_not_subscribe: Kunne ikke abonnere, prøv igjen.
+    select: Velg
+    none: Ikke valgt
+    last: Siste
+    or: eller
+    is_on: er med på 
+    is_not_on: er ikke med på 
+    is_active: er aktivt
+    is_not_active: er ikke aktivt
+    archive: Arkiv
+    archive_verb: arkiver
+    open: åpne
+    generate_report: Lag rapport
+    range: Tidsrom
+    format: Format
+    view_in_brower: Se i nettleser
+    export_to_csv: Exporter CSV
+    export_to_excel: Exporter excel
+    timesheet_for: Timeliste for
+    timesheet: Timeliste
+    available: Tilgjengelige
+    on_this: på dette
+  account_page:
+    account: Konto
+    contact: Kontakt
+    economic: Økonomisk
+    formats: Formater
+    invoicing: Fakturering
+  subscription:
+    thank_you_for_subscribing: Takk for at du stoler på oss!
+    you_are_now_on_the_free_plan: Du er nå på et gratis abonnement.
+  navigation:
+    access_denied: Ingen tilgang.
+    your_current_role_is: Din nåværende rolle er
+    you_do_not_have_permission: Du har ikke tillatelse til å se denne siden.
+    dashboard: Dashbord
+    settings: Innstillinger
+    home: Oversikt
+    logs: Logg
+    list: Liste
+    week: Uke
+    month: Måned
+    projects: Prosjekt
+    customers: Kunder
+    users: Brukere
+    invoices: Faktura
+    statistics: Statistikk
+    spendings: Forbruk
+    reports: Rapport
+    timesheets: Timeliste
+    account: Konto
+    next: Neste
+  times:
+    to_day: I dag
+    this_week: Denne uken
+    this_month: Denne måneden
+    this_year: I år
+    yesterday: I går
+    last_week: Forrige uke
+    last_month: Forrige måned
+    last_year: I fjor
+    hour:
+      one: time
+      more: timer
+    minute:
+      one: minutt
+      more: minutter
+  economic:
+    receivable: utestående
+    value: verdi
+    total_hours: Timer totalt
+    budget: Budsjett
+    invoice: faktura
+    uninvoiced: Ikke fakturert
+    invoiced: Fakturert
+    invoice_now: Fakturer nå?
+    invoice_date: Fakturadato
+    reminder_date: Reminder date
+    reminder_fee: Reminder fee
+    invoice_due: Forfallsdato
+    invoice_draft: Kladd
+    invoice_sent: Sendt
+    invoice_due_short: Forall
+    invoice_overdue: Forfalt
+    invoice_reminded: Påminnet
+    invoice_paid: Betalt
+    invoice_credit: Kreditert
+    invoice_lost: Tapt
+    invoice_no_number: Uten nummer
+    invoice_number: Fakturanummer
+    email_sent: Sendt
+    email_reminder: Purring
+    send_error: Feil
+    vat_number: Org.nr.
+    credit_note: Kreditnota
+    credit: Kredit
+    credit_on_invoice: Kredit på faktura
+    bank_account: Bankkonto
+    invoice_pages: Side
+    goods: Varer
+    services: Tjenester
+    notes: Merknader (vises på fakturaen)
+    notes_pub: Merknader
+    vat: MVA
+    price: Pris
+    quantity: Antall
+    amount: Sum
+    description: Beskrivelse
+    add_line: Ny linje
+    total: Totalt
+    subtotal: Subtotal
+    basis: Grunnlag
+    decimal: desimal
+  dashboard:
+    time_spent_projects: Tidsforbruk fordelt på prosjekter
+    time_spent_users: Tidsforbruk fordelt på brukere
+    income_last_12: Inntekt siste 12 måneder
+  activerecord:
+    flash:
+      saved: ble lagret
+      deleted: ble slettet
+      could_not_save: kunne ikke lagres
+      you_are_logged_in_as: Du er innlogget som
+      you_cannot_delete_yourself: . Du kan ikke slette deg selv.
+    models:
+      log: 
+        other: logg
+        one: logg
+        more: logger
+      project: 
+        the: prosjektet
+        other: prosjekt
+        one: prosjekt
+        more: prosjekter
+      todo: 
+        other: oppgave
+        one: oppgave
+        more: oppgaver
+      customer: 
+        other: kunde
+        one: kunde
+        more: kunder
+      user: 
+        other: bruker
+        one: bruker
+        more: brukere
+      invoice: 
+        other: faktura
+        one: faktura
+        more: fakturaer
+      employee: 
+        other: ansatt
+        one: ansatt
+        more: ansatte
+      milestone:
+        other: milepæl
+        one: milepæl
+        more: milepæler
+      plan:
+        other: abonnement  
+        one: abonnement
+        more: abonnement
+      subscription:
+        one: abonnement
+        more: abonnement
+        other: abonnement
+      email:
+        other: epost
+        one: epost
+        more: epost
+    attributes:
+      log:
+        log: Logg
+        date: Dato
+        from: Fra  
+        to: Til
+        rate: Timepris
+        project: Prosjekt
+        task: Oppgave
+        user: Bruker
+        customer: Kunde
+        employee: Ansatt
+        done?: Ferdig?
+        hour: Timer
+      customer:
+        name: Navn
+        phone: Telefon
+        email: Epost
+        address: Adresse
+      employee:
+        name: Navn
+        phone: Telefon
+        email: Epost
+      todo:
+        name: Navn
+        priority: Prioritet
+        project: Prosjekt
+        customer: Kunde
+        user: Bruker
+        due: Frist
+        done: ferdig
+        normal: Normal
+        middle: Middels
+        high: Høy
+      milestone:
+        goal: Mål
+        due: Frist
+      user:
+        name: Navn
+        phone: Telefon
+        email: Epost
+        role: Rolle
+        password: Passord
+        hourly_rate: Timespris
+        admin: Admin ( kan se og endre alt )
+        member: 'Medlem ( kan se alt, men bare endre prosjekter der de er medlemmer )'
+        external_user: Ekstern ( kan bare se og endre prosjekter der de er medlemmer )
+      project:
+        name: Navn
+        description: Beskrivelse
+        customer: Kunde
+        budget: Budsjett
+      firm:
+        name: Navn
+        subdomain: Domene
+        phone: Telefon
+        address: Adresse
+        language: Språk
+        currency: Valuta
+        bank_account: Bank konto
+        reminder_fee: Purregebyr
+        vat_number: Organisasjonsnummer
+        tax: MVA%
+        days_to_due: Dager til forfall
+        time_zone: Tidssone
+        time_format: Tidsformat
+        date_format: Datoformat
+        clock_format: Klokkeformat
+        invoice_email: Faktura epost 
+        invoice_email_subject: Faktura epost emne
+        invoice_email_message: Faktura epost melding
+        starting_invoice_number: Første fakturanummer
+        on_invoice_message: Melding på faktura
+        reminder_email_subject: Purreepost emne
+        reminder_email_message: Purreepost melding
+        on_reminder_message: Melding på purring
+      invoice:
+        receivable: Utestående
+        customer: Kunde
+        customer_id: Kunde
+        project_id: Prosjekt
+        status: Status
+        content: Merknader
+        number: Nummer
+        firm_id: Firma
+        amount: Beløp
+        total: Totalt
+        discount: Rabatt
+        currency: Valuta
+        subject: emne
+        reminder_sent: Purret
+        invoice_date: Fakturadato
+        invoice_due: Forfallsdato
+        sent: Sendt
+        change: endre
+      invoice_lines:
+        quantity: Antall
+        description: Beskrivelse
+        price: Pris
+        amount: Totalt
+        tax: MVA%
+        invoice: Faktura   
+      email:
+        was_sent: ble sendt.     
+
+  help:
+    account_html: <h2>Account settings</h2>
+                 <p>You can see and change you account settings.</p>
+                 <p>By clicking on the "Subscription" button, you can upgrade or downgrade you plan.</p>
+                 <p>Click on the "Edit Preference" button to change settings.</p>
+    statistics_html:  <h2>Statistics</h2>
+                  <p>You can see statistics for users, projects and customers in a selected time frame, presented in charts.</p> 
+               
+    plan_index_html: <h2>Your plan.</h2>
+                    <p>You can upgrade or downgrade your plan at any time. 
+                    <p>Payments are done up front each month and there is no refunds. If you change your subscription to a 
+                      different plan, the old subscription gets canceled and the new starts. But, the monthly payment for the old subscription is not refunded.</p> 
+                    <p>Be aware if you downgrade!</p> 
+                    <p>If you, for instance want to change from GOLD to BRONZE and have 62 projects, the 12 oldest projects will be deleted.</p>
+    logs_index_html: <h2>Tracking logs</h2>
+                    <p>Your logs are listed here and you can make new logs.</p>
+                    <p>You can log your time in two ways.</p> 
+                    <ul><li>1. Write what you are working on and click on the green arrow. When you stop working click on the stop button.
+                           You can click on the small grey arrow add more details about the log.</li><li>2. You can also add logs by clicking on the "Add log" button.</li> 
+                    </ul>
+                    <p>Tip; If you want to find logs on a particular project or customer, go to the project or customer and click on the logs tab.</p>
+    timesheets_html:  <h2>Timesheet use.</h2>
+                      <p>You can add hours to a project by selecting it on the left side and type in hours on the various days.
+                      You enter not whole hours in two ways 
+                      <ul>
+                        <li>1. If you use a colon like this "2:32". The digits after the colon will
+                      be interpered as minutes.</li>
+                        <li>2. You can use a period like this "2.32" for desimals. In this case the time will be 2 hours and 19 minutes.
+                      </ul>  
+                      For every entry to the timesheet, a log is created with the event "Added on timesheet". Just edit the log if you need corrections.
+                      </p> 
+                      
+    customers_index_html: <h2>Kunder</h2>
+                          <p>Her kan du se alle kundene dine.</p> 
+                          <p>Du kan gjøre kjappe søk, sende epost, oppdatere og slette kunder her.</p>
+                          <p>Klikker du på kundens navn kommer du til denne kundens side.</p>
+    projects_index_html:  <h2>Projects</h2>
+                          <p>Here you can see all your projects</p> 
+                          <p>Search by typing in the search box</p>
+                          <p>You can edit or archive the projects</p>
+                          <p>By clicking on the project name, you'll go to that projects page</p>
+    projects_show_html:    <h2>The project page</h2>
+                          <p>Here you can see information about your project</p> 
+                          <p>By clicking on the tabs, you'll see tasks, logs, milestones and users that are associated to this project</p> 
+                          <p>You can also create, edit and delete the assosiated objects, except on the users tab</p>
+                          <p>On the users tab you can decide what users you want on this project by dragging them over to the "Squad on this project" box</p> 
+                          <p>By dragging them back to the "Available squaders" box you'll remove them from this project</p>
+  date:
+    abbr_day_names:
+    - søn
+    - man
+    - tir
+    - ons
+    - tor
+    - fre
+    - lør
+    abbr_month_names:
+    - 
+    - jan
+    - feb
+    - mar
+    - apr
+    - mai
+    - jun
+    - jul
+    - aug
+    - sep
+    - okt
+    - nov
+    - des
+    day_names:
+    - søndag
+    - mandag
+    - tirsdag
+    - onsdag
+    - torsdag
+    - fredag
+    - lørdag
+    formats:
+      default: ! '%d.%m.%Y'
+      long: ! '%e. %B %Y'
+      short: ! '%e. %b'
+      month_n: ! '%B %Y'
+      short_with_day: ! '%a %e. %b'
+    month_names:
+    - 
+    - januar
+    - februar
+    - mars
+    - april
+    - mai
+    - juni
+    - juli
+    - august
+    - september
+    - oktober
+    - november
+    - desember
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: rundt 1 time
+        other: rundt %{count} timer
+      about_x_months:
+        one: rundt 1 måned
+        other: rundt %{count} måneder
+      about_x_years:
+        one: rundt 1 år
+        other: rundt %{count} år
+      almost_x_years:
+        one: nesten 1 år
+        other: nesten %{count} år
+      half_a_minute: et halvt minutt
+      less_than_x_minutes:
+        one: mindre enn 1 minutt
+        other: mindre enn %{count} minutter
+      less_than_x_seconds:
+        one: mindre enn 1 sekund
+        other: mindre enn %{count} sekunder
+      over_x_years:
+        one: over 1 år
+        other: over %{count} år
+      x_days:
+        one: 1 dag
+        other: ! '%{count} dager'
+      x_minutes:
+        one: 1 minutt
+        other: ! '%{count} minutter'
+      x_months:
+        one: 1 måned
+        other: ! '%{count} måneder'
+      x_seconds:
+        one: 1 sekund
+        other: ! '%{count} sekunder'
+    prompts:
+      day: Dag
+      hour: Time
+      minute: Minutt
+      week: Uke
+      month: Måned
+      second: Sekund
+      year: År
+
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: må være akseptert
+      blank: kan ikke være tom
+      confirmation: passer ikke bekreftelsen
+      empty: kan ikke være tom
+      equal_to: må være lik %{count}
+      even: må være partall
+      exclusion: er reservert
+      greater_than: må være større enn %{count}
+      greater_than_or_equal_to: må være større enn eller lik %{count}
+      inclusion: er ikke inkludert i listen
+      invalid: er ugyldig
+      less_than: må være mindre enn %{count}
+      less_than_or_equal_to: må være mindre enn eller lik %{count}
+      not_a_number: er ikke et tall
+      not_an_integer: er ikke et heltall
+      odd: må være oddetall
+      record_invalid: ! 'Det oppstod feil: %{errors}'
+      taken: er allerede i bruk
+      too_long: er for lang (maksimum %{count} tegn)
+      too_short: er for kort (minimum %{count} tegn)
+      wrong_length: er av feil lengde (maksimum %{count} tegn)
+      over_limit: Ditt abonnement tillater kun %{count} %{model} 
+      validates_presence_of_legal_attributes: Du må skrive inn ditt bankkuntonummer og organisasjonsnummer under innstillingene for ditt firma.
+      credit_note_less_than_invoice: Du kan ikke kreditere mer enn utestående på fakturaen.
+      firm_is_secure: Brukerens firma er ikke det samme som objectes firma.
+    template:
+      body: ! 'Det oppstod problemer i følgende felt:'
+      header:
+        one: Kunne ikke lagre %{model} på grunn av én feil.
+        other: Kunne ikke lagre %{model} på grunn av %{count} feil.
+  helpers:
+    select:
+      prompt: Vennligst velg
+    submit:
+      create: Lag %{model}
+      submit: Lagre %{model}
+      update: Oppdater %{model}
+      send: Send %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ' '
+        format: ! '%n %u'
+        precision: 2
+        separator: ! ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: kr
+    format:
+      delimiter: ! ' '
+      precision: 2
+      separator: ! ','
+      significant: false
+      strip_insignificant_zeros: true
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion:
+            one: milliard
+            other: milliarder
+          million:
+            one: million
+            other: millioner
+          quadrillion:
+            one: billiard
+            other: billiarder
+          thousand: tusen
+          trillion:
+            one: billion
+            other: billioner
+          unit: ''
+      format:
+        delimiter: ! ' '
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: kB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ' og '
+      two_words_connector: ! ' og '
+      words_connector: ! ', '
+  time:
+    am: ''
+    formats:
+      default: ! '%A, %e. %B %Y, %H:%M'
+      long: ! '%A, %e. %B %Y, %H:%M'
+      short: ! '%e. %B, %H:%M'
+    pm: ''

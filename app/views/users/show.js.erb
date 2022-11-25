@@ -1,0 +1,21 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+$("#dialog_task").UIdialogs_links(); 
+  $(".open_milestone_update").UIdialogs_edit_links();
+  $(".open_todo_update").UIdialogs_edit_links();
+  
+  $(".new_todo").validateWithErrors();
+// $( "#tabs" ).tabs({ cache: true },
+//   {spinner: '<img src="/images/spinner2.gif" />'},
+//    {
+//       ajaxOptions: {
+        
+//         error: function( xhr, status, index, anchor ) {
+//           $( anchor.hash ).html(
+//             "Couldn't load this tab. We'll try to fix this as soon as possible. ");
+//         }
+//       }
+//     });
+    
+$(".back_button").button().back_button_function();
+$('.spinning').hide();

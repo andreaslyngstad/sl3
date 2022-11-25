@@ -1,0 +1,18 @@
+<p>Hi, <%= @user.name %>.</p>
+
+Here is the invoice for your <%= @firm.name %> account at squadlink.com. Paid in full up to date. No payment is due.
+
+<p>February  6, 2013 at 10:54 AM
+<p>Transaction Number: 1446649
+<p>Product: <%= @subscription.plan.name %> 1 Month Amount Charged: $<%= @subscription.plan.price %>(USD)
+<p>Name: <%= @subscription.card_holder %>
+<p>Card Type: <%= @subscription.card_type %>
+
+
+<p>Here is your sign in page</p>
+<p><%= link_to "#{@firm.subdomain}.squadlink.com", sign_in_url(subdomain:@firm.subdomain) %></p>
+<p>Please let us know if you have any questions.</p> 
+
+<p>Regards </p> 
+
+<p>Squadlink <%= mail_to 'support@squadlink.com' %></p> 

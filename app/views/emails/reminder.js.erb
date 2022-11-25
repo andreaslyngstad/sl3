@@ -1,0 +1,26 @@
+$(".dialog_sending_invoice_form").remove()
+id = "<%= j (@invoice.id.to_s) %>"
+
+$('body').append('<div class="dialog_form dialog_sending_reminder_form" id="sending_reminder_' + id + '_form" title="<%= j((t"send").capitalize + " " + (t"send_reminder")) %>" style="display:none;"><%= j( render "reminder_form")  %></div>')
+
+
+
+form = $("#sending_reminder_" + id + "_form")
+form.dialog({
+      autoOpen: false,
+      resizable: false,
+      width: 400,
+      modal: true,
+      position: ['middle',50],
+      close: function(event, ui) { 	
+      	$(this).find(".hasDatepicker").datepicker( "destroy" );
+    	  $("#logProjectId").val('').trigger("chosen:updated")
+      	$(this).dialog("destroy"); 
+      	form.remove()
+      },
+
+  });
+form.dialog("open")
+form.find(".new_email").validateWithErrors();
+$(".date").datepicker();
+form.find(".date").datepicker();

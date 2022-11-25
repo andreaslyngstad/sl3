@@ -1,0 +1,19 @@
+<nav id="html_tabs" class="orange_bgr">
+  <div class="name_and_back_button">
+    <%= @klass.name %> <a class='open_user_update  edit_text' id="user_update" data-id="<%= @klass.id %>" data-object="user" title="Edit user"><%= (t"edit") %></a>
+     <div class="dialog_form" id="user_update_<%= @klass.id %>_form" title="<%= t'helpers.submit.update', model: User.model_name.human %>" style="display:none;"></div>
+  </div>
+
+  <ul>
+    <li class="">
+      <%=link_to (t"navigation.home"), tabs_state_path(string_for_klass(@klass),@klass.id), class: "tab_state"%>
+    </li>
+    <li class="">
+      <%=link_to ((t'activerecord.models.todo.more').capitalize), tabs_todos_path(string_for_klass(@klass), @klass.id ), class: "tab_tasks"%>
+    </li>
+    <li class="">
+      <%=link_to (t('activerecord.models.log.more' ).capitalize), tabs_logs_path(string_for_klass(@klass), @klass.id), class: "tab_logs"%>
+    </li>   
+    <!-- <li class=""><a href="#tabs-5" data-url="/tabs/statistics/<%= @klass.id %>/<%= @klass.class %>">Statistics</a></li> -->
+  </ul>
+</nav>

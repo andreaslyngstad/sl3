@@ -1,0 +1,32 @@
+<nav id="html_tabs" class="orange_bgr">
+  <div class="name_and_back_button">
+    <%= @klass.name %> <a class='open_customer_update  edit_text' id="customer_update" data-id="<%= @klass.id %>" data-object="customer" title="Edit customer"><%= (t"edit") %></a>
+     <div class="dialog_form" id="customer_update_<%= @klass.id %>_form" title="<%= t'helpers.submit.update', model: Customer.model_name.human %>" style="display:none;"></div>
+  </div>
+
+  <ul>
+    <li class="">
+      <%=link_to (t"navigation.home"), tabs_state_path(string_for_klass(@klass),@klass.id), class: "tab_state"%>
+    </li>
+    <li class="">
+      <%=link_to ((t'activerecord.models.todo.more').capitalize), tabs_todos_path(string_for_klass(@klass), @klass.id ), class: "tab_tasks"%>
+    </li>
+    <li class="">
+      <%=link_to (t('activerecord.models.log.more' ).capitalize), tabs_logs_path(string_for_klass(@klass), @klass.id), class: "tab_logs"%>
+    </li>
+    <li class="">
+      <%=link_to (t('activerecord.models.project.more' ).capitalize), tabs_projects_path(string_for_klass(@klass), @klass.id), class: "tab_projects"%>
+    </li>
+    <li class="">
+      <%=link_to (t('activerecord.models.employee.more' ).capitalize), tabs_employees_path(string_for_klass(@klass), @klass.id), class: "tab_employees"%>
+    </li>
+ <% if true  %><%# if can? :read, Invoice %>
+    <li class="">
+      <%=link_to (t('activerecord.models.invoice.more' ).capitalize), tabs_invoices_path(string_for_klass(@klass), @klass.id), class: "tab_invoices"%>
+    </li>
+    <% end %> 
+    
+    <!-- <li class=""><a href="#tabs-5" data-url="/tabs/statistics/<%= @klass.id %>/<%= @klass.class %>">Statistics</a></li> -->
+
+  </ul>
+</nav>

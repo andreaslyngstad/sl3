@@ -1,0 +1,18 @@
+<div class="info" id="milestone_<%=milestone.id%>">    
+	<div class="name_milestone"><%= milestone.goal %></div>
+	<div class="date_all date_format_setter" data-date="<%= milestone.due %>"></div>
+	<% if true  %><%# if can? :manage, milestone.project %>
+	<div class="delete_edit">
+		<span class="open_milestone_update edit" id="milestone_update" data-id="<%= milestone.id %>" data-object="milestone"><%= t('edit') %></span>
+		<%= link_to (t"delete"), milestone, data: { confirm: t('are_you_sure?') }, :title => "Delete milestone", :method => :delete, :class => "delete_milestone", :remote => true%>
+	</div>
+	<div class="dialog_form" id="milestone_update_<%= milestone.id %>_form" title="<%= t'helpers.submit.update', model: Milestone.model_name.human %>" style="display:none;">
+		<%= form_for milestone, :remote => true do |f| %>
+		<li><%= f.label :goal %><%= f.text_area :goal, :class => "required", :minlength => "2"  %></li>
+		<li><%= f.label :due %><%= f.text_field :due, :value =>  date_format(milestone.due), :class => "date", :id => "date_milestone_#{milestone.id}" %>
+		</li>
+		<li><%= f.submit (t'save'), :class => 'submit' %></li>
+		<% end %>
+	</div>
+	<% end %>
+</div>

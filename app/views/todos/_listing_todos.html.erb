@@ -1,0 +1,133 @@
+<div class="log_menu">
+	<span class="add_some_todo">  
+		<% if true  %><%# if can? :manage, @klass %>
+		<a id="dialog_todo" class="add_new_todo_button" data-object="todo"><%= t('helpers.submit.create', model: Todo.model_name.human) %></a>
+		<% end %>
+	</span>
+	    
+	<div class="range" >	   
+		<%= form_tag('/todo_range', :id => "todo_range_form", :remote => true, :method => :get) do -%>
+		<%= hidden_field_tag "url", @klass ? @klass.class : "index"  %>
+		<%= hidden_field_tag "id", @klass ? @klass.id : "index"%>
+		<div id="range_date_fields">
+		  <%= text_field_tag 'from', date_format(time_zone_now - 1.week), :class => "todo_range_date"%>
+			<%= text_field_tag 'to',date_format(time_zone_now), :class => "todo_range_date"  %>
+		</div>
+		<% end %>
+	</div>
+	<div class="logs_pr_date">
+		<select class="small_selector" id="todos_pr_date_select" data-object="todo" data-url="<%= @klass ? @klass.class : "index" %>" data-id="<%= @klass ? @klass.id : "index" %>">
+			<option value="to_day"><%= t'times.to_day' %></option>
+			<option value="this_week"><%= t'times.this_week' %></option>
+			<option value="this_month"><%= t'times.this_month' %> </option>
+			<option value="this_year"><%= t'times.this_year' %></option>   
+			<option value="yesterday"><%= t'times.yesterday' %></option>
+			<option value="last_week"><%= t'times.last_week' %></option>
+			<option value="last_month"><%= t'times.last_month' %></option>
+			<option value="last_year"><%= t'times.last_year' %></option>
+		</select>
+	</div> 
+</div>
+<div id="todos_list">
+	<% if true  %><%# if can? :manage, @klass %>
+	<div id="dialog_todo_form" class="dialog_form" title="<%= t('helpers.submit.create', model: Todo.model_name.human) %>" style="display:none;">	
+	    <%= form_for @klass.todos.build, :remote => true do |f| %>
+	    <%= f.hidden_field :completed, :value => false%>
+	    <ul>
+			<li><%= f.label :name %><%= f.text_area :name, :class => "required", :minlength => "2" %></li>
+			<li><%= f.label :priority %>
+			  	<%= f.radio_button :prior, 1, :checked => true %><%= label :role, (t'activerecord.attributes.todo.normal'), class: "todo_green" %>
+			  	<%= f.radio_button :prior, 2 %><%= label :role, (t'activerecord.attributes.todo.middle'), class: "todo_yellow" %>
+			  	<%= f.radio_button :prior, 3 %><%= label :role, (t'activerecord.attributes.todo.high'), class: "todo_red" %>
+			</li>
+			<% if @klass.class == Customer %>
+			<li><%= f.label :user %>
+				<select class="searchableTaskCustomer" id="todoUserId" name="todo[user_id]"><option value="">Select user</option>
+				  <%for user in all_users do %>
+				  <option value="<%=user.id.to_i%>"<%if user == current_user%>selected="<%=current_user.id.to_i%>"<%end%>>
+				  <%= user.name %></option>
+				  <% end %>
+				</select> 
+			</li>
+			<%= f.hidden_field :customer_id, :value => @klass.id%>
+			<li><%= f.label :project %>
+			  	<select class="searchableTaskCustomer" id="todoProjectId" name="todo[project_id]">
+			  		<option value=""><%= t'general.select' %> <%= t'activerecord.models.project.one' %></option>
+			      	<% all_projects.each do |project| %>
+			      	<option value="<%=project.id.to_i%>"><%= project.name %></option>
+			      	<% end %>
+			  	</select> 
+			</li>
+			<% end %> 
+			<% if @klass.class == Project%>
+			<li><%= f.label :user %>
+			<select class="searchableTaskCustomer" id="todoUserId" name="todo[user_id]"><option value=""><%= t'general.select' %> <%= t'activerecord.models.user.one' %></option>
+			  <%for user in @klass.users do %>
+			  <option value="<%=user.id.to_i%>"<%if user == current_user%>selected="<%=current_user.id.to_i%>"<%end%>>
+			  <%= user.name %></option>
+			  <% end %>
+			</select> 
+			</li>
+				<%= f.hidden_field :project_id, :value => @klass.id %>
+				<% if true  %><%# if can? :read, Customer %>
+			  	<% if @klass.customer.nil? %>
+			      <li><%= f.label :customer %>
+			      	<select class="searchableTaskCustomer" id="todoCustomerId" name="todo[customer_id]">
+			      		<option value=""><%= t'general.select' %> <%= t'activerecord.models.customer.one' %></option>
+			          	<% current_firm.customers.each do |customer| %>
+			          	<option value="<%=customer.id.to_i%>"><%= customer.name %></option>
+			          	<% end %>
+			      	</select> 
+			      </li>
+			  	<% else %>
+			  		<%= f.hidden_field :customer_id, :value => @klass.customer.id%>
+			  	<% end %> 
+			  	<% end %>
+			<% end %> 
+			<% if @klass.class == User%>
+			<li><%= f.label :user %>:
+			 <%= @klass.name %>
+			</li>
+			<%= f.hidden_field :user_id, :value => @klass.id%>
+			<li><%= f.label :customer %>
+			  	<select class="searchableTaskCustomer" id="todoCustomerId" name="todo[customer_id]">
+			  		<option value=""><%= t'general.select' %> <%= t'activerecord.models.customer.one' %></option>
+			      	<% all_customers.each do |customer| %>
+			      	<option value="<%=customer.id.to_i%>"><%= customer.name %></option>
+			      	<% end %>
+			  	</select> 
+			</li>
+			<li><%= f.label :project %>
+			  	<select class="searchableTaskCustomer" id="todoProjectId" name="todo[project_id]">
+			  		<option value=""><%= t'general.select' %> <%= t'activerecord.models.project.one' %></option>
+			      	<% all_projects.each do |project| %>
+			      	<option value="<%=project.id.to_i%>"><%= project.name %></option>
+			      	<% end %>
+			  	</select> 
+			</li>
+			<% end %>
+			<li><%= f.label :due %><%= f.text_field :due, :value => date_format(time_zone_now), :class => "date", :id => "dialog_todo_date" %></li>
+			<li><%= f.submit (t'save'), :class => 'submit', :id => "new_todo_submit"%></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<div class="info"> 	
+		<div class="name_todo_head info_head"><%= (t'activerecord.models.todo.one').capitalize %></div>
+		<div class="project_todo info_head"><%= (t'activerecord.models.project.one').capitalize %></div>
+		<div class="user_todo info_head"><%= (t'activerecord.models.user.one').capitalize %></div>
+		<div class="customer_todo info_head"><%= (t'activerecord.models.customer.one').capitalize %></div>
+	  	<div class="date_all info_head"><%= (t'activerecord.attributes.todo.due').capitalize %></div>
+	</div>
+	<div id="not_done_tasks">
+		<%= render :partial => "todos/todo", :collection => @not_done_todos, :as => :todo %>
+	</div>
+	    <br/>
+	<div id="done_tasks_header">	
+		<div class="name_todo_head info_head"><%= (t'activerecord.attributes.todo.done').capitalize %></div>
+		<div class="project_todo info_head"></div>
+	</div>	
+	<div id="done_tasks">
+		<%= render :partial => "todos/todo" , :collection => @done_todos, :as => :todo %>
+	</div> 
+</div>

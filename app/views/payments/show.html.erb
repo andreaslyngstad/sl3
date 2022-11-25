@@ -1,0 +1,113 @@
+<div style="width:800px;font-family: monospace;" >
+<div style="float:left; margin-right:100px;"><%= image_tag('squadlink.png') %></div>
+<div style="float:left">Åsheim<br>1820 Spydeberg<br>Norway<br>support@squadlink.com<br>MVA985002975</div>
+<div style="float:left">
+<h3>Receipt</h3>
+<p>One month subscription on the <%= (current_firm.plan.name).downcase  %> plan</p>
+<p>Paid in full up to date.</p> 
+
+<p>No payment is due.</p>
+
+<p>-----------------------------------------------------------------------------------------------------</p>
+<table style="width:400px;">
+	<tr>
+				<td>
+					Firm
+				</td>
+				<td>
+					<%= @payment.firm.name %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Date
+				</td>
+				<td>
+					<%= date_format(@payment.created_at) %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Plan
+				</td>
+				<td>
+					<%= @payment.plan_name %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Card type
+				</td>
+				<td>
+					<%= @payment.card_type %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Card number
+				</td>
+				<td>
+					**** **** **** <%= @payment.last_four %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Amount
+				</td>
+				<td>
+					<%= payment_currency(@payment)%> 
+				</td>
+			</tr>
+</table>
+<p>-----------------------------------------------------------------------------------------------------<p>
+<p>Thank you for subscribing!</p>
+
+
+
+<div style="font-size: 8px">
+<br/>
+<br/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<br/>
+<br/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<br/>
+<br/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+
+
+
+<p>Prices exclude tax.</p>
+<p>Services that are subject to tax must be reported by the recipient.</p>
+<p>For EU Counties: General rule for services, article 44 and 196 Council Directive 2006/112/EC (Reverse charge).</p>
+</div>
+</div>

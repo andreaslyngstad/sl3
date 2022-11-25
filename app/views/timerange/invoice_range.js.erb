@@ -1,0 +1,12 @@
+// $(".listing_invoices > tbody").html("<tr></tr>");
+$(".listing_invoices > tbody").empty()
+$(".listing_invoices > tbody").append("<%= j(render(:partial => @invoices)) %>");
+$('#range_date_fields_invoice').set_selected_value("<%= j(@time_range_first) %>", "<%= j(@time_range_last) %>" )
+$(".button").button();
+// $('.invoice_list').find('.invoice_amount').convert_money_field()
+$('.date_format_setter').set_date_format()
+
+ 
+<%= render "invoices/js_partial" %>
+$("table").trigger("updateCache");
+NProgress.done();

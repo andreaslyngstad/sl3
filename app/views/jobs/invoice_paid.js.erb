@@ -1,0 +1,3 @@
+$('#invoice_<%= j(@klass.id.to_s) %>').replaceWith('<%= j(render "invoices/invoice", invoice: @klass) %>')
+$('#tabs-1').replaceWith('<%= j(render "invoices/show") %>')	
+<%= render partial: "invoices/js_partial" %>

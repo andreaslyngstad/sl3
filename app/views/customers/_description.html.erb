@@ -1,0 +1,14 @@
+<div id="description">
+		<% unless @klass.phone.blank? %>
+		<div class="state_headers"><%= t('activerecord.attributes.customer.phone' )%></div>
+		<div class="state_unit"><%= simple_format(@klass.phone) %></div>
+		<%end %>
+		<% unless @klass.email.blank?%>
+  	<div class="state_headers"><%= t('activerecord.attributes.customer.email' )%></div>
+  	<div class="state_unit"><%= mail_to "#{@klass.email}" %></div>
+  	<% end %>
+  	<% unless @klass.address.blank?%>
+  	<div class="state_headers"><%= t('activerecord.attributes.customer.address' )%></div>
+  	<div class="state_unit"><%= simple_format(@klass.address )%></div>
+		<% end %>
+</div>

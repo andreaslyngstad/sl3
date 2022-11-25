@@ -1,0 +1,61 @@
+
+<% if true  %><%# if can? :read, log.project or can? :manage, log%>
+
+<li class="log_list_element">
+<div id="log_<%=log.id%>" >
+ <div id="log_info_<%=log.id%>"  class="info" data-log="<%= log.id %>">
+ 	<div class="gravatar_on_log">
+ 	<%= link_to image(log.user, "image32"),user_path(log.user), :title => "#{log.user.name}" %>
+ 	</div>
+  <div class="event_on_log">
+    <%= simple_format(log.event, class: 'log_event_paragraf') %>
+     </div>
+     <% if !log.end_time.nil? %>
+    <div class="date_and_times_on_log" >
+	    <div class="date_format_setter" data-date="<%= log.log_date %>"><%= log.log_date %></div>
+	    <div class="clock_format_setter" data-time="<%= log.begin_time.strftime("%Y/%m/%d %H:%M:%S")%>"></div>-<div class="clock_format_setter" data-time="<%= log.end_time.strftime("%Y/%m/%d %H:%M:%S")%>"></div>
+	    <div class="total_log_time" data-hours="<%= log.hours %>"></div>
+    </div>
+      <div class="pro_tod_cus_emp_on_log">
+      	<div class="pro_tod_on_log">
+      		<div class="pro_cus_on_log"><% if log.project %><%= link_to log.project.name, project_path(log.project) %><% end %></div>
+ 			<div class="tod_emp_on_log"><% if log.todo %><%= link_to log.todo.name, project_path(log.project) %><% end %></div>
+      	</div>
+      	<div class="cus_emp_on_log">
+      		<div class="pro_cus_on_log"><% if log.customer %><%= link_to log.customer.name, customer_path(log.customer) %><% end %></div>
+ 			<div class="tod_emp_on_log"><% if log.employee %><%= link_to log.employee.name, customer_path(log.customer) %><% end %></div>
+      	</div>
+      	</div>
+
+ <div class="delete_edit">
+ 	<% if true  %><%# if can? :manage, log %>
+
+  <% if !log.invoiced? %>
+  <span class="open_log_update edit" id="log_update" title="<%= t'edit' %>" data-id="<%= log.id %>"><%= t'edit' %></span>
+  <%= link_to (t"delete"), log, data: { confirm: ( t'are_you_sure?') }, :title => (t"delete"), :method => :delete, :class => "delete_log", :remote => true%>
+  </div>
+  </div>
+  <div class="dialog_form" id="log_update_<%= log.id %>_form" title="<%= t'helpers.submit.update', model: Log.model_name.human %>" style="display:none;" data-id="<%= log.id %>"></div>
+    <% else %>
+   <%= link_to( t('economic.invoice'), invoice_path(log.invoice) )%>
+    <% end %>
+  <% end %>
+  </div>
+    <% else %>
+    <div class="date_and_times_on_log" >
+    	<%=link_to( t('general.in_progress'), logs_path) %>
+    </div>
+    <div class="pro_tod_cus_emp_on_log">
+      	<div class="pro_tod_on_log">
+      		<div class="pro_cus_on_log"><% if log.project %><%=  link_to log.project.name, project_path(log.project) %><% end %>&nbsp;</div>
+ 			<div class="tod_emp_on_log"><% if log.todo %><%=  link_to log.todo.name, project_path(log.project)  %><% end %>&nbsp;</div>
+      	</div>
+      	<div class="cus_emp_on_log">
+      		<div class="pro_cus_on_log"><% if log.customer %><%= link_to log.customer.name, customer_path(log.customer) %><% end %>&nbsp;</div>
+ 			<div class="tod_emp_on_log"><% if log.employee %><%= link_to log.employee.name, customer_path(log.customer)  %><% end %>&nbsp;</div>
+      	</div>
+      	</div>
+     </div>
+    <% end %>
+</li>
+ <% end %>

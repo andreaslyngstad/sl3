@@ -1,0 +1,12 @@
+$(".listing_logs").empty();
+$(".listing_logs").append("<div class='total_header'><%= j(t('economic.total_hours') + ': ' + time_format(@hours).to_s) %></div>");
+$(".listing_logs").append("<%= j(render(:partial => @logs)) %>");
+$('#range_date_fields').set_selected_value("<%= j(@time_range_first) %>", "<%= j(@time_range_last) %>" )
+$(".total_log_time").set_hours()
+$('.date_format_setter').set_date_format()
+$('.clock_format_setter').set_clock_format()
+$(".open_log_update").UIdialogs_edit_logs_links();
+$("#dialog_log").UIdialogs_links();
+$('.view_selector a').removeClass('current')
+$('#day_link').addClass('current')
+NProgress.done();

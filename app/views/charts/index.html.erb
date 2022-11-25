@@ -1,0 +1,12 @@
+<% content_for :help do %>
+<div class="page_help">
+	<div class="page_help_container">
+		<%= t "help.statistics_html" %>
+	</div>
+</div>
+<% end %>
+<%= render "shared/home_header" %>
+<div id="left" class="home_content">
+	<%= render "charts/header" %>
+	<%= render "index" %>
+</div>

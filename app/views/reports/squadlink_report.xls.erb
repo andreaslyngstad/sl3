@@ -1,0 +1,28 @@
+<table class="report_table">
+<tr>
+<th class="report_event"><%= t'activerecord.attributes.log.log' %></th>
+<th class="report_hours"><%= t'activerecord.attributes.log.hours' %></th>
+<th class="report_user"><%= t'activerecord.attributes.log.user' %></th>
+<th class="report_project"><%= t'activerecord.attributes.log.project' %></th>
+<th class="report_project"><%= t'activerecord.attributes.log.todo' %></th>
+<th class="report_customer"><%= t'activerecord.attributes.log.customer' %></th>
+<th class="report_customer"><%= t'activerecord.attributes.log.employee' %></th>
+<th class="report_date"><%= t'activerecord.attributes.log.date' %></th>
+</tr>
+<% if @logs %>
+<% @logs.each do |log| %>
+<tr>
+<td class="report_event"><%= log.event %></td>
+<td class="report_hours"><%= time_format(log.hours ) %></td>
+<td class="report_user"><%= log.user.try(:name) %></td>
+<td class="report_customer"><%= log.project.try(:name) %></td>
+<td class="report_customer"><%= log.todo.try(:name) %></td>
+<td class="report_project"><%= log.customer.try(:name) %></td>
+<td class="report_project"><%= log.employee.try(:name) %></td>
+<td class="report_date"><%= date_format(log.log_date) %></td>
+</tr>
+<% end %>
+<% end %>
+</table>
+
+<%= t'activerecord.attributes.log.log' %>

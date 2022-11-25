@@ -1,0 +1,9 @@
+<%= form_for(current_firm.customers.new, :remote => true) do |f| %>
+	<ul>
+		<li><%= f.label :name %><%= f.text_field :name, :class => "required", :minlength => "2"  %></li>
+		<li><%= f.label :phone %><%= f.text_field :phone %></li>
+		<li><%= f.label :email %><%= f.text_field :email %></li>
+		<li><%= f.label :address %><%= f.text_area :address %></li>
+		<li><%= f.submit  (t'save'), :class => 'submit' %></li>
+	</ul>
+<% end %>

@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/12
+    body:
+      encoding: UTF-8
+      string: id=12&email=foo12%40example.com&created_at=1402396881&name=name21&firm=name20&firm_subdomain=subdomain9&subscription=&send_welcome_email=
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 10 Jun 2014 10:41:20 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 10:41:22 GMT
+- request:
+    method: put
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/228
+    body:
+      encoding: UTF-8
+      string: id=228&email=foo333%40example.com&created_at=1402429905&name=name590&firm=name589&firm_subdomain=subdomain272&subscription=&send_welcome_email=
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 10 Jun 2014 19:51:44 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 19:51:46 GMT
+- request:
+    method: put
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/230
+    body:
+      encoding: UTF-8
+      string: id=230&email=foo334%40example.com&created_at=1402430822&name=name592&firm=name591&firm_subdomain=subdomain273&subscription=&send_welcome_email=
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 10 Jun 2014 20:07:01 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 20:07:03 GMT
+recorded_with: VCR 2.9.0

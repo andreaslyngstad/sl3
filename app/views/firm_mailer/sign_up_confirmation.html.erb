@@ -1,0 +1,15 @@
+<p>Hi, <%= @user.name %>.</p> 
+
+<p>Welcome to squadlink.com</p>
+
+<p>We hope you'll enjoy your stay and are proud that you put your trust in us.</p>
+
+<p>You can sign in to you account here:</p>
+
+<p><%= link_to "#{@firm.subdomain}.squadlink.com", sign_in_url(subdomain:@firm.subdomain) %></p>
+
+<p>Please email us if you have any questions at <%= mail_to 'support@squadlink.com' %></p> 
+
+<p>Regards </p> 
+
+<p>Squadlink</p> 

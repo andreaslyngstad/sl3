@@ -1,0 +1,16 @@
+<div id="description">
+  <% if !@klass.description.blank? %>
+  <div class="state_headers"><%= t'activerecord.attributes.project.description' %></div>
+  <div id="project_description">
+    <%= simple_format(@klass.description )%> 
+  </div>
+  <% end %>
+  <% if @klass.milestones.next.first %>
+  <div class="state_headers"><%= t('navigation.next' ).capitalize%> <%= t('activerecord.models.milestone.one' )%> <%= date_format(@klass.milestones.next.first.due) %></div>
+    <div class="state_unit"> <%=  simple_format(@klass.milestones.next.first.goal) %></div>
+    <% end %>
+    <% if @klass.customer %>
+  <div class="state_headers"><%= (t'activerecord.models.customer.one' ).capitalize %> </div>
+    <div class="state_unit"> <%=   @klass.customer.name  %></div>
+    <% end %>
+</div>

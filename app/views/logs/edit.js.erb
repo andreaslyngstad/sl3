@@ -1,0 +1,23 @@
+var form_wrapper = $("#log_update_<%= j (@log.id.to_s) %>_form")
+form_wrapper.empty().append("<%= j( render "form")  %>")
+var data_id = <%= j (@log.id.to_s) %>
+form = form_wrapper.find(".edit_log")
+
+// form.find("select").chosen({width:'369px'});
+
+var log_time_from = $("#log_times_from_" + data_id).val();
+var log_time_to = $("#log_times_to_" + data_id).val();
+form.validateWithErrors();
+form.find("#slider_range_" + data_id).slider({
+    range: true,
+    min: 0,
+    max: 1439,
+    values: [ time_to_value(log_time_from), time_to_value(log_time_to) ],
+    step:10,
+    slide: slideTime
+});
+// $(".total_log_time").set_hours()
+$("#log_date_edit_" + data_id).datepicker();  
+$("#dialog_log").UIdialogs_log_links();
+form.find(".searchableSE").chosen({width:'369px'});
+form_wrapper.select_projects_customers(data_id)

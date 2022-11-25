@@ -1,0 +1,21 @@
+$('.flash_error').empty();
+$(".flash_notice").empty();
+$('#dialog_log_form').empty()
+$('#dialog_log_form').append('<%= j(render "logs/log_menu_form_tags") %>')
+tab = $("li.active").children("a").attr("href")
+$(tab).empty().append("<%= j( render :partial => "logs/listing_logs")  %>")
+$("#dialog_log").UIdialogs_log_links();
+$("select#logs_pr_date_select").logs_pr_date_select();
+$(".logs_pr_date_select").chosen({width:'150px'});
+$(".total_log_time").set_hours()
+$('.clock_format_setter').set_clock_format()
+$('.date_format_setter').set_date_format()
+$('.view_selector').find('span').set_view()
+$(".range_date").datepicker({ 
+		onSelect: function() {
+			$('#range_form').submit();
+		
+  		}
+  		}).attr( 'readOnly' , 'true' )
+$(".open_log_update").UIdialogs_edit_logs_links();
+NProgress.done()

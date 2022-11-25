@@ -1,0 +1,55 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>");
+var firm_format = $(".current_firm_data").data("timeformat")
+
+if ($("#calendar").length != 0 ) {
+	var field = $("#<%= j(@log.log_date.to_s) %>")
+	var prehours_date_mounth = field.data("hours")
+	var posthours_date_mounth = parseFloat(prehours_date_mounth) + parseFloat(<%= j( @log.hours.to_s )%>)
+	field.empty().append(secondsToString(posthours_date_mounth, firm_format))
+	field.css("color", "black" )
+	field.css("font-size", "20px")
+	field.data("hours", posthours_date_mounth)
+}else if($(".timesheet_table").length != 0){
+<% if (Time.zone.now.beginning_of_week.to_date..Time.zone.now.end_of_week.to_date).cover?(@log.log_date) %>
+<% if @log.project %>
+	if ($(".project_total_<%= j(@log.project.id.to_s)%>").length === 0){
+		$(".project_hours").last().before('<%= j(render :partial => "timesheet_project_row", :locals => {:log => @log} )%>')
+	}
+	var field = $(".project_date_<%= j(@log.project.id.to_s)%>_<%= j(@log.log_date.to_s)%>")
+	var total_project = $(".project_total_<%= j(@log.project.id.to_s)%>")
+<% else %>
+	var field = $(".project_date__<%= j(@log.log_date.to_s)%>")
+	var total_project = $(".project_total_")
+<% end  %>
+// var input = $(".log_date_<%= j(@log.log_date.to_s)%>")
+// input.data("logid",<%= j(@log.id.to_s)%> )
+var prehours_total_project = total_project.data("hours")
+var prehours_total_date = $(".day_<%= j(@log.log_date.to_s) %>").data("hours")
+var prehours_total = $(".timesheet_week_total").data("hours")
+var prehours_log = field.data("hours")
+var posthours_total_project = parseFloat(prehours_total_project) + parseFloat(<%= j( @log.hours.to_s )%>)
+var posthours_total_date = parseFloat(prehours_total_date) + parseFloat(<%= j( @log.hours.to_s )%>)
+var posthours_total = parseFloat(prehours_total) + parseFloat(<%= j( @log.hours.to_s )%>)
+var posthours = parseFloat(prehours_log) + parseFloat(<%= j( @log.hours.to_s )%>)
+
+$(".day_<%= j(@log.log_date.to_s) %>").empty().append(secondsToString(posthours_total_date, firm_format))
+$(".day_<%= j(@log.log_date.to_s) %>").data("hours",posthours_total_date) 
+total_project.empty().append(secondsToString(posthours_total_project, firm_format))
+total_project.data("hours",posthours_total_project)
+$(".timesheet_week_total").empty().append(secondsToString(posthours_total, firm_format))
+$(".timesheet_week_total").data("hours",posthours_total)
+// input.data("prehours", parseFloat(<%= j(@log.hours.to_s) %>))
+field.empty().append(secondsToString(posthours, firm_format))
+field.data("hours", posthours)
+
+<% end  %>
+}else{
+	if (window.location.href.split("/").pop() == "<%= @log.log_date.to_s %>")
+	{
+	$(".listing_logs").prepend("<%= j(render(:partial => @log)) %>");
+	$(".total_log_time").set_hours()
+	}
+}
+$('#dialog_log_form').empty().append("<%= j( render 'logs/log_menu_form_tags')  %>")
+$('.spinning').hide();

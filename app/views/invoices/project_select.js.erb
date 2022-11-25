@@ -1,0 +1,26 @@
+$(".flash_notice").empty()
+<% if @customer %>
+	$('#selected_customer').remove();
+	$('#invoice_customer_select').after("<%= j(render 'selected_customer') %>");
+	$('#dialog_customer').hide();
+	$('#invoice_customer_select').hide();
+	$('.listing_logs_invoice_container').empty();
+	$('.listing_logs_invoice_container').append("<%= j(render 'invoices/logs_list', logs: @logs) %>");
+	$(".total_log_time").set_hours()
+	$('.clock_format_setter').set_clock_format()
+	$("#change_customer").change_object()
+	NProgress.done()
+<% end %>
+$(".log_list_element").show();
+$('#selected_project').remove();
+$('#invoice_project_select').after("<%= j(render 'selected_project') %>");
+$('#dialog_project').hide();
+$("#invoice_customer_id").attr("data-other-object" ,"<%= j(@project.id.to_s) %>")
+$('#invoice_project_select').hide();
+$('.listing_logs_invoice_container').empty();
+$('.listing_logs_invoice_container').append("<%= j(render 'invoices/logs_list', logs: @logs) %>");
+$('.listing_logs_invoice_container').log_related_updates()
+$("#change_project").change_object()
+$("#dialog_project").UIdialogs_links();
+$("#dialog_customer").UIdialogs_links();
+NProgress.done()

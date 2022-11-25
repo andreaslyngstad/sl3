@@ -1,0 +1,6 @@
+$('.flash_error').empty();
+var form_wrapper = $("#todo_update_<%= j (todo.id.to_s) %>_form")
+form_wrapper.empty().append("<%= j( render :partial => "form", :locals => {:todo => todo})  %>")
+form_wrapper.find(".edit_todo").validateWithErrors();
+$("#date_todo_<%= j (todo.id.to_s) %>").datepicker(); 
+form_wrapper.find("select").chosen({width: '369px'});

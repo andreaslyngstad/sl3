@@ -1,0 +1,4 @@
+<%= t'activerecord.attributes.log.log' %>,<%= t'activerecord.attributes.log.hour' %>,<%= t'activerecord.attributes.log.user' %>,<%= t'activerecord.attributes.log.project' %>,<%= t'activerecord.attributes.log.customer' %>,<%= t'activerecord.attributes.log.date' %>,
+    <% @logs.each do |log| %>
+      <%= log.event %>,<%= time_format(log.hours ) %>,<%= log.user.try(:name) %>,<%= log.customer.try(:name) %>,<%= log.project.try(:name) %>,<%= date_format(log.log_date) %>,
+    <% end %>

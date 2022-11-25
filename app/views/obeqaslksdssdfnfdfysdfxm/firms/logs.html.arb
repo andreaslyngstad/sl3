@@ -1,0 +1,20 @@
+columns do
+      column do
+        panel firm.name + ": " + firm.logs_count.to_s + " logs" do
+	table_for assigns[:firm].logs do
+		column "Event", :sortable => :event do |log|
+		 link_to log.event, obeqaslksdssdfnfdfysdfxm_log_path(log)
+		end
+		column :log_date, :sortable => :log_date 
+		column "" do |log|
+  		  links = ''.html_safe
+		  links += link_to I18n.t('active_admin.edit'), edit_obeqaslksdssdfnfdfysdfxm_log_path(log), :class => "member_link edit_link"
+		  links += link_to I18n.t('active_admin.delete'), obeqaslksdssdfnfdfysdfxm_log_path(log), :method => :delete, :confirm => I18n.t('active_admin.delete_confirmation'), :class => "member_link delete_link"
+		  links
+		end
+	end
+	end
+end
+
+end
+ 

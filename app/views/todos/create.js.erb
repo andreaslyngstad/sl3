@@ -1,0 +1,18 @@
+$('.flash_error').empty();
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= j(flash.discard(:notice))%>")
+$("#new_todo")[0].reset();
+$(".searchableTaskCustomer").val('').trigger("chosen:updated");
+$("#not_done_tasks").prepend("<%= j(render(:partial => todo)) %>");
+$("#<%= j(todo.id.to_s)%>").click(function() { 
+  	 var id = $(this).attr("id")
+  	 $("#edit_done_todo_" + id).submitDoneWithAjax(id)
+  });
+$('.date_format_setter').set_date_format()
+$(".open_todo_update").UIdialogs_edit_links();
+$(".searchableTaskCustomer").chosen({width: '369px'});
+if($('.far_right_container[style*="none"]').data() === null){
+$(".roster_tasks").empty();
+$.getScript("/roster_task")
+}
+NProgress.done();	

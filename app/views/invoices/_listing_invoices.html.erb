@@ -1,0 +1,20 @@
+<div id="index_log_header">
+	<%= render "invoices/invoices_menu" %>
+</div>
+<div>
+	<table id="invoices_table" class="listing_invoices tablesorter">
+		<thead>
+		<tr id="invoices_head">
+			<th class="status"><%= t'activerecord.attributes.invoice.status' %></th>
+			<th class="invoice_dates"><%= t'activerecord.attributes.invoice.invoice_due' %></th>
+			<th class="invoice_number"><%= t'activerecord.attributes.invoice.number' %></th>
+			<th class="invoice_customer"><%= t'activerecord.attributes.invoice.customer' %></th>
+			<th class="invoice_amount"><%= t'activerecord.attributes.invoice.total' %></th>
+		</tr>
+</thead>
+<tbody id="tbodyid">
+	<%= render @invoices %>
+		</tbody>
+	</table>
+	</div>
+<%= render "invoices/customer_project_form" %>

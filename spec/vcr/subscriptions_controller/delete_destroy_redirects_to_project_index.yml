@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://e182c1a46cfaf1b70308d973d940b970:@api.paymill.com/v2/subscriptions/test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Feb 2015 11:26:40 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"exception\":\"subscription_not_found\",\n\t\"error\":\"Subscription
+        not found\"\n}"
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 11:26:41 GMT
+- request:
+    method: delete
+    uri: https://e182c1a46cfaf1b70308d973d940b970:@api.paymill.com/v2/clients/test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Feb 2015 12:36:32 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"exception\":\"client_not_found\",\n\t\"error\":\"Client not
+        found\"\n}"
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 12:36:33 GMT
+- request:
+    method: get
+    uri: https://e182c1a46cfaf1b70308d973d940b970:@api.paymill.com/v2/subscriptions/test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 13 Feb 2015 13:17:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "{\n\t\"exception\":\"subscription_not_found\",\n\t\"error\":\"Subscription
+        not found\"\n}"
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 13:17:32 GMT
+recorded_with: VCR 2.9.0

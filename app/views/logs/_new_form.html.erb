@@ -1,0 +1,3 @@
+<%= form_for(current_firm.logs.new, :remote => true) do |l| %>  
+	<%= render :partial => "logs/log_menu_form", :locals => {:l => l } %>
+<% end %>

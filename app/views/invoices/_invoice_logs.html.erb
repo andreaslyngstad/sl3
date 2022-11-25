@@ -1,0 +1,48 @@
+<% if true  %><%# if can? :read, log.project or can? :manage, log%>
+
+<div id="log_<%=log.id%>">
+ <div id="log_info_<%=log.id%>"  class="info" data-log="<%= log.id %>">
+  <div title="<%= t'general.remove_from_invoice' %>" class="remove_log circle" data-log="log_<%=log.id%>" data-log-id="<%=log.id%>"><div class="circle-text">x</div></div>
+ 	<div class="gravatar_on_log">
+ 	  <%= link_to image(log.user, "image32"),user_path(log.user), :title => "#{log.user.name}" %>
+ 	</div>
+  <div class="event_on_log_invoice">
+    <%= simple_format(log.event, class: 'log_event_paragraf') %>
+  </div>
+  <div class="date_and_times_on_log" >
+    <div class="date_format_setter" data-date="<%= log.log_date %>"><%= log.log_date %></div>
+    <div class="clock_format_setter" data-time="<%= log.begin_time.strftime("%Y/%m/%d %H:%M:%S")%>"></div>-<div class="clock_format_setter" data-time="<%= log.end_time.try(:strftime,"%Y/%m/%d %H:%M:%S")%>"></div>
+    <div class="total_log_time" data-hours="<%= log.hours %>"></div>
+  </div>
+  <div class="pro_tod_cus_emp_on_log">
+  	<div class="pro_tod_on_log">
+  		<div class="pro_cus_on_log"><% if log.project %><%= link_to log.project.name, project_path(log.project) %><% end %></div>
+  	    <div class="tod_emp_on_log"><% if log.todo %><%= link_to log.todo.name, project_path(log.project) %><% end %></div>
+  	</div>
+  	<div class="cus_emp_on_log">
+  		<div class="pro_cus_on_log"><% if log.customer %><%= link_to log.customer.name, customer_path(log.customer) %><% end %></div>
+  	    <div class="tod_emp_on_log"><% if log.employee %><%= link_to log.employee.name, customer_path(log.customer) %><% end %></div>
+  	</div>
+  </div>
+ <div class="delete_edit">
+
+  <% if true  %><%# if can? :manage, log %>
+
+  <span class="open_log_update edit" id="log_update" title="<%= t'edit' %>" data-id="<%= log.id %>"><%= t'edit' %></span>
+  <%= link_to (t"delete"), log, data: { confirm: (t'are_you_sure?') }, :title => (t"delete"), :method => :delete, :class => "delete_log", :remote => true%>
+   <% end %>
+  </div>
+    <% if true  %><%# if can? :manage, log %>
+
+  <% if @invoice %>
+  <input class="invoice_id_field" id="logs_attributes_<%= log.id %>_invoice_id" name="logs_attributes[<%= log.id %>][invoice_id]" type="hidden" value="<%=  @invoice.id %>">
+  <% end %>
+  <input class="tax_field" id="logs_attributes_<%= log.id %>_tax" name="logs_attributes[<%= log.id %>][tax]" type="text" value="<%= log.tax.blank? ? current_firm.tax.try(:prettify) : log.tax.try(:prettify) %>">
+
+ <div class="total_on_log total_on_this" data-price="<%= log.rate %>" data-quantity="<%= (log.hours/3600).prettify %>" data-vat="<%= log.tax.blank? ? current_firm.tax.try(:prettify) : log.tax.try(:prettify) %>"></div>
+  </div>
+
+  <div class="dialog_form" id="log_update_<%= log.id %>_form" title="Update log" style="display:none;" data-id="<%= log.id %>"></div>
+  <% end %>
+</div>
+ <% end %>

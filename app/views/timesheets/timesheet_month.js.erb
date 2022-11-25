@@ -1,0 +1,6 @@
+$('.listing_logs').empty()
+$('#dialog_log_form').empty()
+$('#dialog_log_form').append('<%= j(render "logs/log_menu_form_tags") %>')
+
+$('.listing_logs').append('<%= j(render "month_view") %>')
+ready_timesheet()

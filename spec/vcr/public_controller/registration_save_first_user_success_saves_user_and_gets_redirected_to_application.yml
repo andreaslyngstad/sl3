@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/1
+    body:
+      encoding: UTF-8
+      string: id=1&email=foo1%40example.com&created_at=1397341052&name=name2&firm=name1&firm_subdomain=subdomain1&firm_plan=Free&first_user=true
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 12 Apr 2014 22:17:52 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sat, 12 Apr 2014 22:17:33 GMT
+- request:
+    method: put
+    uri: https://10521ac52be0a2ab8ada:aef1feca7f004425362e@track.customer.io/api/v1/customers/150
+    body:
+      encoding: UTF-8
+      string: id=150&email=foo249%40example.com&created_at=1397423553&name=name393&firm=name392&firm_subdomain=subdomain192&firm_plan=Free&first_user=true
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 13 Apr 2014 21:12:33 GMT
+      Server:
+      - nginx/1.1.19
+      Status:
+      - 200 OK
+      Content-Length:
+      - '3'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |
+        {}
+    http_version: 
+  recorded_at: Sun, 13 Apr 2014 21:12:34 GMT
+recorded_with: VCR 2.9.0

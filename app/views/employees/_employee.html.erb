@@ -1,0 +1,9 @@
+<tr id="employee_<%= employee.id %>">
+  <td class=""><%= employee.name %></td>
+  <td class=""><%= employee.phone %></td>
+  <td class=""><%= mail_to employee.email,  employee.email %></td>
+ <td class="employee_table_links">
+  <span class="open_employee_update edit" id="employee_update" data-id="<%= employee.id %>" data-object="employee"><%= (t"edit") %></span>
+  <%= link_to (t"delete"), employee, data: { confirm: (t'are_you_sure?') }, :title => (t'delete'), :method => :delete, :class => "delete_employee", :remote => true-%>
+</td>
+</tr>

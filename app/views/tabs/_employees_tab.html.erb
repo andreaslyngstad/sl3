@@ -1,0 +1,28 @@
+<div class="log_menu">
+	<div class="add_some">
+    <a id="dialog_employees" data-object="employee"><%= t('helpers.submit.create', model: Employee.model_name.human) %></a>
+    <div id="dialog_employees_form" class="dialog_form" title="Create new employee" style="display:none;">  
+      <%= form_for(Employee.new, :remote => true) do |f| %>
+      <%= f.hidden_field :customer_id, value: @klass.id %>
+      <li><%= f.label :name %><%= f.text_field :name, :class => "required", :minlength => "2"%></li>
+      <li><%= f.label :phone %><%= f.text_field :phone %></li>
+      <li><%= f.label :email %><%= f.text_field :email %></li>
+      <li><%= f.submit ( t'save'), :class => 'submit', :id => "new_employee_submit" %></li>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div id="listing_employees">
+  <table class="employee_table"> 
+    <thead>
+    <tr>
+  	<th class=""><%= t('activerecord.attributes.employee.name' )%></th>
+  	<th class=""><%= t('activerecord.attributes.employee.phone') %></th>
+  	<th class=""><%= t('activerecord.attributes.employee.email') %></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render @employees %>
+    </tbody>
+    </table>
+</div>

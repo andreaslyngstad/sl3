@@ -1,0 +1,37 @@
+<div class="far_right_container_min">
+  <div class="far_right_header">Squaders</div><div class="open_chatbox">+</div>
+</div>
+<div class="far_right_container ver_down_on_help" >
+	<div class="far_right_container_max">
+  <div class="far_right_header">Squaders</div><div class="open_chatbox">-</div>
+	</div>
+	
+	<div id="accordion">
+		<h3><%= (t'activerecord.models.user.more').capitalize %></h3>
+	  	<div id="signed_in_users">
+		  	<ul>
+			  <% all_users.each do |user|%>
+			  <% if user.current_sign_in_at != nil%>
+			  <li><div class="row_user green"><%= image(user, "image32") %><div class="user_row_name"><%= user.name %></div></div> </li>
+			  <%else%>
+			  <li><div class="row_user red"><%= image(user, "image32") %><div class="user_row_name"><%= user.name %></div></div> </li>
+			  <%end%>
+			  <%end%>
+		  	</ul>
+		</div>
+		<h4 class="task_accordion"><%= (t'activerecord.models.todo.more').capitalize %></h4>
+		<div id="upcomming_tasks">
+			<div id="ajax-loader" style="margin: 0 auto;width:200px">
+			  	<%= image_tag("ajax-loader.gif")%>
+			</div>
+		</div>
+		<h3 class="milestone_accordion"><%= (t'activerecord.models.milestone.more').capitalize %></h3>
+		<div id="upcomming_milestones">
+			<div id="ajax-loader" style="margin: 0 auto;width:200px">
+			<%= image_tag("ajax-loader.gif")%>
+		  </div>
+		</div>
+	
+	</div>
+	
+</div>

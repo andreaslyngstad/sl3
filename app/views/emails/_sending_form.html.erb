@@ -1,0 +1,21 @@
+<%= form_for(@email, remote: true) do |f| %>
+<%= f.hidden_field :invoice_id, value: @invoice.id %>
+<%= f.hidden_field :sent, value: Date.current %>
+<ul>
+ 	<li><%= f.label :email %><%= f.text_field :address, value: @invoice.customer.email, :class => "required email", :minlength => "2"%></li>
+ 	<% if @invoice.status == 3 or @invoice.status == 4 %>
+ 	<%= f.hidden_field :status, value: 2 %>
+ 		<li><%= f.label :subject %><%= f.text_field :subject, value: current_firm.reminder_email_subject%></li>
+	 	<li><%= f.label :content %><%= f.text_area :content, value: current_firm.reminder_email_message  %></li>
+ 	<% else %>
+ 	<%= f.hidden_field :status, value: 1%>
+	 	<li><%= f.label :subject %><%= f.text_field :subject, value: current_firm.invoice_email_subject %></li>
+	 	<li><%= f.label :content %><%= f.text_area :content, value: current_firm.invoice_email_message  %></li>
+ 	<% end %>
+ 	<li><%= f.label :attachment %></br>
+ 		<div class="file_image_container"></div><%= current_firm.subdomain %>_<%= @invoice.number ? @invoice.number : InvoiceSender.give_invoice_number(@invoice,Invoice.last_with_number(current_firm)) %>.pdf</li>
+
+<li><%= f.submit (t'send'), :class => "submit"%></li>
+
+</ul>
+<% end %>

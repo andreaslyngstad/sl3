@@ -1,0 +1,21 @@
+columns do
+      column do
+        panel plan.name + ": " + plan.firms_count.to_s + " firms" do
+	table_for assigns[:plan].firms do
+		column "Name" do |firm|
+		 link_to firm.name, obeqaslksdssdfnfdfysdfxm_firm_path(firm)
+		end
+		column "Customers", :sortable => :customers_count  do |firm|
+      		link_to firm.customers_count, customers_obeqaslksdssdfnfdfysdfxm_firm_path(firm)
+    	end
+    	column "Projects", :projects_count
+    	column "Users", :sortable => :users_count  do |firm|
+      		link_to firm.users_count, users_obeqaslksdssdfnfdfysdfxm_firm_path(firm)
+    	end
+    
+    	column "Logs", :logs_count
+    	column :created_at
+		end
+	end
+end
+end
